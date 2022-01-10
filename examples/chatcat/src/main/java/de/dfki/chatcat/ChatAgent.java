@@ -14,10 +14,15 @@ import de.dfki.mlt.rudimant.agent.Agent;
 import de.dfki.mlt.rudimant.agent.Behaviour;
 import de.dfki.mlt.rudimant.agent.DialogueAct;
 
+
+
 public abstract class ChatAgent extends Agent implements Constants {
 
   Rdf user;
   Rdf robot;
+
+  public HFCUtils hfcutils;
+
   String DEFNS = "cat";
 
   private HfcDbHandler handler;
@@ -50,6 +55,8 @@ public abstract class ChatAgent extends Agent implements Constants {
     super.init(configDir, language, proxy, configs);
     robot = proxy.getRdf("<chatcat:robot1>");
 
+
+    hfcutils = new HFCUtils(this);
     // start first round of rule evaluations
     newData();
     // log all rules to stdout

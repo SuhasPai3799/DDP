@@ -1,5 +1,6 @@
 /*@
 import de.dfki.chatcat.util.Date;
+
  @*/
 
 ask_for_name:
@@ -46,4 +47,28 @@ if (! hasActiveTimeout("robot_starts") && ! isTimedOut("robot_starts")) {
       }
     }
   }
+}
+
+answer_courses:
+/** Provides description about the course */
+if (lastDA()>= #Request(Courses))
+{	
+	course_name = lastDA().what;
+	course_info = "Placeholder Info - Ideally to be queried from the database, get the label of a course matching the course name";
+	propose("return_course_info"){
+		emitDA(#Request(Courses, cname={course_name}, info={course_info}));
+	}
+	lastDAprocessed();
+}
+
+answer_dept_courses:
+/** Provides total number of courses for the department */
+if (lastDA()>= #Request(Department))
+{
+	tot_c = (String)hfcutils.testFunc();
+	propose("return_course_total")
+	{
+		emitDA(#Request(Department,tot_courses={tot_c}));
+	}
+	lastDAprocessed();
 }

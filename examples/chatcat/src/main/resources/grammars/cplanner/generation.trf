@@ -30,3 +30,13 @@ raw:InitialGreeting ^ Greet
 ->
 # =  :canned ^ <string>concatenate("Good ", #tod, " .").
 }
+
+raw:Request ^ Courses
+^ <cname>#cname ^ <info>#info
+->
+# = :canned ^ <string>concatenate("Info about the course, ", #cname,": , ",#info).
+
+raw:Request ^ Department
+^ <tot_courses>#t
+->
+# = :canned ^ <string>concatenate("Tot courses offered, ", #t).
