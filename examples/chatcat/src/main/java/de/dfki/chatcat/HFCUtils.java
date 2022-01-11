@@ -24,6 +24,9 @@ import de.dfki.lt.hfc.types.XsdAnySimpleType;
 import de.dfki.lt.hfc.types.XsdDateTime;
 import de.dfki.lt.loot.jada.Pair;
 
+import static de.dfki.chatcat.ConstUtils.*;
+
+
 
 
 
@@ -31,34 +34,36 @@ public class HFCUtils{
 	private int testVal;
 	static ChatAgent _agent;
 	public static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-	public static String testFunc()
+	public static String testFunc(String dept_name)
 	{
-
-		String query = "select ?a where ?a <univ:offeredBy> ?c ?d";
-		
-		if(_agent._proxy == null)
+		String closest_dept_name = getClosestDept(dept_name);
+		if(closest_dept_name == "NULL")
 		{
-
-			System.out.println("Agent proxy null");
+			return "-1";
 		}
-		else
-		{
-			System.out.println("Works agent proxy");
-			List<Object> res = _agent._proxy.query(query);
-			for(Object o : res)
-			{	
-				if(o!= null)
+		String dept_uri = "<univ:" + closest_dept_name + ">";
+		String query = String.format("select ?a where ?a <univ:offeredBy> %s ?d", dept_uri );
+		List<Object> res = _agent._proxy.query(query);
+		return String.valueOf(res.size());
+		
+	}
+	public static String getClosestDept(String dept_name)
+	{
+		logger.log(Level.INFO, "Hello");
+		for (Map.Entry mapElement : dept_syns.entrySet()) {
+			String dept_official_name = (String)mapElement.getKey();
+			List<String> dept_name_syns = (List)mapElement.getValue();
+			for(String syn: dept_name_syns)
+			{
+				if(syn.equals(dept_name))
 				{
-					System.out.println(String.valueOf(o));
+					return dept_official_name;
 				}
 			}
-			logger.log(Level.INFO,"Not Null");
 			
+			logger.log(Level.INFO, dept_official_name);
 		}
-		
-		
-    	
-		return "5";
+		return "NULL";
 	}
 	public HFCUtils(ChatAgent agent)
 	{

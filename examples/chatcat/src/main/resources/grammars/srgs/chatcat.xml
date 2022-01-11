@@ -24,8 +24,8 @@
       <item>
         <item>How many courses does</item>
         <item>$$.*</item>
-        <item>offer? </item>
-        <tag>out.da="Request"; out.prop="Department"; out.what="$$1"</tag>
+        <item>offer?</item>
+        <tag>out.da="Request"; out.prop="Department"; out.what="$$2"</tag>
       </item>
     </one-of>
   </rule>

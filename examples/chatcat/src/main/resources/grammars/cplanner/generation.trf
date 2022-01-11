@@ -37,6 +37,6 @@ raw:Request ^ Courses
 # = :canned ^ <string>concatenate("Info about the course, ", #cname,": , ",#info).
 
 raw:Request ^ Department
-^ <tot_courses>#t
+^ <tot_courses>#t ^ <dept_name>#d
 ->
-# = :canned ^ <string>concatenate("Tot courses offered, ", #t).
+# = :canned ^ <string>concatenate("The ", #d, " department offers ", #t, " courses in total").
