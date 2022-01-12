@@ -61,12 +61,12 @@ if (lastDA()>= #Request(Courses))
 	lastDAprocessed();
 }
 
-answer_dept_courses:
+answer_dept_num_courses:
 /** Provides total number of courses for the department */
 if (lastDA()>= #Request(Department))
 {
   dept_name = lastDA().what;
-	tot_c = (String)hfcutils.testFunc(dept_name);
+	tot_c = (String)hfcutils.answerDeptCourseCount(dept_name);
 	propose("return_course_total")
 	{
 		emitDA(#Request(Department,tot_courses={tot_c}, dept_name={dept_name}));

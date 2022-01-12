@@ -19,7 +19,7 @@ NLG:
 NLU:
   eng:
     class: de.dfki.chatcat.SrgsParser
-    grammar: src/main/resources/grammars/srgs/chatcat.xml
+    grammar: src/main/resources/grammars/srgs/conversation.abnf
 debugPort: 9777
 
 # for the debugger/GUI

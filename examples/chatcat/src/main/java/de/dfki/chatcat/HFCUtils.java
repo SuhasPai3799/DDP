@@ -34,7 +34,7 @@ public class HFCUtils{
 	private int testVal;
 	static ChatAgent _agent;
 	public static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-	public static String testFunc(String dept_name)
+	public static String answerDeptCourseCount(String dept_name)
 	{
 		String closest_dept_name = getClosestDept(dept_name);
 		if(closest_dept_name == "NULL")
