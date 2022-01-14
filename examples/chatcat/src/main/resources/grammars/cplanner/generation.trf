@@ -45,3 +45,8 @@ raw:Request ^ Department
 ^ <tot_courses>#t ^ <dept_name>#d
 ->
 # = :canned ^ <string>concatenate("The ", #d, " department offers ", #t, " courses in total").
+
+
+raw:Request ^ Professor ^ <prof_name>#p ^ <prof_courses>#c
+->
+# = :canned ^ <string>#c.

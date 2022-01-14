@@ -11,7 +11,8 @@ public $top = ($greet |
               $tellName |
               $courseInfo |
               $countDeptCourses | 
-              $courseTeacherInfo
+              $courseTeacherInfo |
+              $teacherCourseInfo
               )  {!{ out = $%1; }!} [$punct] ;
 
 $punct = ("$$[.;?!]"|$NULL);
@@ -22,6 +23,9 @@ $greet = (hi | hello) {!{ out.da="InitialGreeting" ; out.prop="Greet";}!} ;
 
 $tellName = my name is "$$.*" {out.da="Inform" ; out.prop="Name" ; out.what="$$1" ;};
 
+$teach = (teach | take | instruct | teaches | instructs | takes) ; 
+
+// Course related grammar rules
 $courseInfo = ((tell [me] about | describe | explain | help on) [the]  
                 (course "$$.*" {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseInfo"} |
                 "$$.*"<0-10> course {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseInfo"} )) 
@@ -30,11 +34,14 @@ $courseInfo = ((tell [me] about | describe | explain | help on) [the]
             | (what is "$$.*"<0-10> course [about] {out.da="Request" ; out.prop="Courses" ; out.what="$$3"; out.theme="CourseInfo"})
             | (what is [a|the] course "$$.*"<0-10> {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseInfo"});
 
-$courseTeacherInfo = who teaches [course] "$$.*"<0-10> {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseTeacherInfo";} |
-                     who teaches "$$.*"<0-10>   course {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseTeacherInfo";} |
-                     which $prof teaches [course] "$$.*"<0-10> {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseTeacherInfo";} |
-                     which $prof teaches "$$.*"<0-10> course   {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseTeacherInfo";};
+$courseTeacherInfo = who $teach [course] "$$.*"<0-10> {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseTeacherInfo";} |
+                     who $teach  "$$.*"<0-10>   course {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseTeacherInfo";} |
+                     which $prof $teach  [course] "$$.*"<0-10> {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseTeacherInfo";} |
+                     which $prof $teach "$$.*"<0-10> course   {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseTeacherInfo";};
 
 
 $countDeptCourses = [ (could you) | please ] [ (tell | tell me ) ] how many courses does "$$.*" offer {out.da="Request"; out.prop="Department"; out.what="$$2";};
 
+// Prof related grammar rules
+
+$teacherCourseInfo = [what|which] [course | courses| topics | subjects ] does [$prof] "$$.*"<0-3> $teach {out.da="Request" ; out.prop="Professor"; out.what="$$2"; out.theme="CourseInfo";};

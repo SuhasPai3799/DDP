@@ -34,6 +34,15 @@ public class HFCUtils{
 	private int testVal;
 	static ChatAgent _agent;
 	public static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
+	public static String getNameFromURI(String uri)
+	{
+		return uri.split(":")[1].split(">")[0];
+	}
+	public static String cleanXSD(String input)
+	{
+		return input.split("\"")[1];
+	}
 	public static String answerDeptCourseCount(String dept_name)
 	{
 		String closest_dept_name = getClosestDept(dept_name);
@@ -165,6 +174,42 @@ public class HFCUtils{
 			}	
 		}
 		return "No such course exists.";
+	}
+
+	public static String answerProfCourses(String query_prof_name)
+	{
+		String query_prof_uri = "<univ:" + query_prof_name + ">";
+		String query = "select ?a where ?a <rdf:type> <univ:Professors> ?_";
+		List<Object> all_profs = _agent._proxy.query(query);
+		Boolean flag = false;
+		for(Object prof: all_profs)
+		{
+			String prof_uri = String.valueOf(prof);
+			String prof_name = getNameFromURI(prof_uri);
+			if(prof_name.toLowerCase().contains(query_prof_name.toLowerCase()))
+			{
+				String prof_course_query = String.format("select ?a ?b where %s <univ:teaches> ?a ?_  & ?a <rdfs:label> ?b ?_ ", prof_uri);
+				QueryResult res = _agent._proxy.selectQuery(prof_course_query);
+				flag = true;
+				Integer count = 1;
+				String ret = query_prof_name + " teaches the following courses: \n" ;
+				for(List<String> row: res.getTable().getRows())
+				{
+					
+					String course_label = cleanXSD(String.valueOf(row.get(1)));
+					String course_id = getNameFromURI(String.valueOf(row.get(0)));
+					ret += String.valueOf(count) + ". " + course_id + " - " + course_label;
+					count++;
+				}
+				return ret;
+			}
+		}
+		if(!flag)
+		{
+			return "Prof." + query_prof_name + " does not teach any course. "; 
+		}
+		return "There is no Prof with the name - " + query_prof_name;
+		
 	}
 	
 

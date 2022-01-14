@@ -86,3 +86,17 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="CourseCountDept")
 	}
 	lastDAprocessed();
 }
+
+
+answer_prof_courses:
+/** Provides answer on courses a professor takes */
+if (lastDA()>= #Request(Professor) && lastDA().theme=="CourseInfo")
+{
+  prof_name = lastDA().what;
+  prof_courses = (String)hfcutils.answerProfCourses(prof_name);
+  propose("return_prof_courses")
+  {
+    emitDA(#Request(Professor, prof_name={prof_name}, prof_courses = {prof_courses}));
+  }
+  lastDAprocessed();
+}
