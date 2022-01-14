@@ -36,6 +36,11 @@ raw:Request ^ Courses
 ->
 # = :canned ^ <string>concatenate("Info about the course, ", #cname,": , ",#info).
 
+raw:Request ^ Courses
+^ <cname>#cname ^ <course_teacher_info>#info
+->
+# = :canned ^ <string>concatenate("Prof.", #info," teaches the course ", #cname).
+
 raw:Request ^ Department
 ^ <tot_courses>#t ^ <dept_name>#d
 ->

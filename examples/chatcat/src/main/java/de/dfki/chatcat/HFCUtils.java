@@ -72,15 +72,15 @@ public class HFCUtils{
 	}
 	/**
 	 * Given the name of a course, return the details of that particular course
-	 * @param c_name
-	 * @return
+	 * @param c_name Name of the course for which details are being returned
+	 * @return String containing the label for the course as described in the ontology
 	 */
 	public static String answerCourseInfo(String c_name)
 	{
 		String c_name_uri = "<univ:" + c_name + ">";
 		if(c_name.matches("[a-zA-Z][a-zA-Z][0-9]+"))
 		{
-			String check_course = c_name.toLowerCase();
+			
 			String query = "select ?a where ?a <rdf:type> <univ:Courses> ?d";
 			List<Object> res = _agent._proxy.query(query);
 			
@@ -91,7 +91,7 @@ public class HFCUtils{
 				
 				if(c_name_uri.toLowerCase().equals(course_id.toLowerCase()))
 				{	
-					logger.log(Level.INFO, "Working");
+					
 					String course_comment_query = String.format("select ?a where %s <rdfs:comment> ?a ?x", course_id);
 					List<Object> comments = _agent._proxy.query(course_comment_query);
 					return (String)(comments.get(0));
@@ -120,6 +120,52 @@ public class HFCUtils{
 		return "No such course exists.";
 	}
 
+	public static String answerCourseTeacherInfo(String c_name)
+	{
+		String c_name_uri = "<univ:" + c_name + ">";
+		if(c_name.matches("[a-zA-Z][a-zA-Z][0-9]+"))
+		{
+			
+			String query = "select ?a where ?a <rdf:type> <univ:Courses> ?d";
+			List<Object> res = _agent._proxy.query(query);
+			
+
+			for(Object course: res)
+			{
+				String course_id = String.valueOf(course);
+				
+				if(c_name_uri.toLowerCase().equals(course_id.toLowerCase()))
+				{	
+					logger.log(Level.INFO, course_id);
+					String course_teacher_query = String.format("select ?b where ?a <univ:teaches> %s ?_ & ?a <rdfs:label> ?b ?_", course_id);
+					List<Object> course_teacher = _agent._proxy.query(course_teacher_query);
+					logger.log(Level.INFO, String.valueOf((course_teacher.get(0))));
+					return String.valueOf((course_teacher.get(0)));
+				}
+			}
+		}
+		else
+		{
+			String query = "select ?a ?b "
+						+  " where " +  " ?a <rdf:type> <univ:Courses> ?_ " 
+						+  " & ?a <rdfs:label> ?b ?_ ";
+			QueryResult res = _agent._proxy.selectQuery(query);
+			for(List<String> row: res.getTable().getRows())
+			{
+				String course_label = row.get(1).toLowerCase();
+				if(course_label.contains(c_name.toLowerCase()))
+				{
+					String course_id = row.get(0);
+					String course_teacher_query = String.format("select ?b where ?a <univ:teaches> %s ?_ &  ?a <rdfs:label> ?b ?_", course_id);
+					List<Object> course_teacher = _agent._proxy.query(course_teacher_query);
+					logger.log(Level.INFO, String.valueOf((course_teacher.get(0))));
+					return String.valueOf((course_teacher.get(0)));
+				}
+
+			}	
+		}
+		return "No such course exists.";
+	}
 	
 
 	// public static List<String> answerDeptCoursesOffered(String dept_name)

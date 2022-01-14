@@ -51,7 +51,7 @@ if (! hasActiveTimeout("robot_starts") && ! isTimedOut("robot_starts")) {
 
 answer_courses:
 /** Provides description about the course */
-if (lastDA()>= #Request(Courses))
+if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseInfo")
 {	
 	course_name = lastDA().what;
 	course_info = (String)hfcutils.answerCourseInfo(course_name);
@@ -59,6 +59,19 @@ if (lastDA()>= #Request(Courses))
 		emitDA(#Request(Courses, cname={course_name}, info={course_info}));
 	}
 	lastDAprocessed();
+}
+
+answer_course_instructor:
+/** Provides info about which prof is teaching the course **/
+if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseTeacherInfo")
+{
+  course_name = lastDA().what;
+  course_teacher_info = (String)hfcutils.answerCourseTeacherInfo(course_name);
+  propose("return_course_teacher_info")
+  {
+    emitDA(#Request(Courses, cname={course_name}, course_teacher_info={course_teacher_info}));
+  }
+  lastDAprocessed();
 }
 
 answer_dept_num_courses:
