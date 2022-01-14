@@ -19,9 +19,14 @@ $greet = (hi | hello) {!{ out.da="InitialGreeting" ; out.prop="Greet";}!} ;
 
 $tellName = my name is "$$.*" {out.da="Inform" ; out.prop="Name" ; out.what="$$1" ;};
 
-$courseInfo = (tell [me] about | describe | explain | help on) [the]  
+$courseInfo = ((tell [me] about | describe | explain | help on) [the]  
                 (course "$$.*" {out.da="Request" ; out.prop="Courses" ; out.what="$$1";} |
-                "$$.*"<0-5> course {out.da="Request" ; out.prop="Courses" ; out.what="$$2";} );
+                "$$.*"<0-10> course {out.da="Request" ; out.prop="Courses" ; out.what="$$2";} )) 
+                
+            | (what is [a|the] course "$$.*"<0-10> about {out.da="Request" ; out.prop="Courses" ; out.what="$$2";})
+            | (what is "$$.*"<0-10> course [about] {out.da="Request" ; out.prop="Courses" ; out.what="$$3";})
+            | (what is [a|the] course "$$.*"<0-10> {out.da="Request" ; out.prop="Courses" ; out.what="$$1";});
+
 
 $countDeptCourses = [ (could you) | please ] [ (tell | tell me ) ] how many courses does "$$.*" offer {out.da="Request"; out.prop="Department"; out.what="$$2";};
 
