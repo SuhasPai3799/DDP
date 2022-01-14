@@ -54,7 +54,7 @@ answer_courses:
 if (lastDA()>= #Request(Courses))
 {	
 	course_name = lastDA().what;
-	course_info = "Placeholder Info - Ideally to be queried from the database, get the label of a course matching the course name";
+	course_info = (String)hfcutils.answerCourseInfo(course_name);
 	propose("return_course_info"){
 		emitDA(#Request(Courses, cname={course_name}, info={course_info}));
 	}
@@ -63,7 +63,7 @@ if (lastDA()>= #Request(Courses))
 
 answer_dept_num_courses:
 /** Provides total number of courses for the department */
-if (lastDA()>= #Request(Department))
+if (lastDA()>= #Request(Department) && lastDA().theme=="CourseCountDept")
 {
   dept_name = lastDA().what;
 	tot_c = (String)hfcutils.answerDeptCourseCount(dept_name);
