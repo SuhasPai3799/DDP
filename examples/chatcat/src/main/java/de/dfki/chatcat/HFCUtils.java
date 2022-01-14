@@ -98,8 +98,29 @@ public class HFCUtils{
 				}
 			}
 		}
-		return "Course Info";
+		else
+		{
+			String query = "select ?a ?b "
+						+  " where " +  " ?a <rdf:type> <univ:Courses> ?_ " 
+						+  " & ?a <rdfs:label> ?b ?_ ";
+			QueryResult res = _agent._proxy.selectQuery(query);
+			for(List<String> row: res.getTable().getRows())
+			{
+				String course_label = row.get(1).toLowerCase();
+				if(course_label.contains(c_name.toLowerCase()))
+				{
+					String course_id = row.get(0);
+					String course_comment_query = String.format("select ?a where %s <rdfs:comment> ?a ?x", course_id);
+					List<Object> comments = _agent._proxy.query(course_comment_query);
+					return (String)(comments.get(0));
+				}
+
+			}
+		}
+		return "No such course exists.";
 	}
+
+	
 
 	// public static List<String> answerDeptCoursesOffered(String dept_name)
 	// {
