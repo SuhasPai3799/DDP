@@ -100,3 +100,17 @@ if (lastDA()>= #Request(Professor) && lastDA().theme=="CourseInfo")
   }
   lastDAprocessed();
 }
+
+
+answer_prof_research:
+/** Provides answer on research areas of a prof */
+if (lastDA()>= #Request(Professor) && lastDA().theme=="ResearchInfo")
+{
+  prof_name = lastDA().what;
+  prof_areas = (String)hfcutils.answerProfResearchArea(prof_name);
+  propose("return_prof_research_area")
+  {
+    emitDA(#Request(Professor, prof_name={prof_name}, prof_areas = {prof_areas}));
+  }
+  lastDAprocessed();
+}

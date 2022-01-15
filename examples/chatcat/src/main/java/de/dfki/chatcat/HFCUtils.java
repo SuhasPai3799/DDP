@@ -43,6 +43,25 @@ public class HFCUtils{
 	{
 		return input.split("\"")[1];
 	}
+	public static String cleanProfNames(String query_prof_name)
+	{
+		if(query_prof_name.matches("prof\\..*") || query_prof_name.matches("dr\\..*"))
+		{
+			query_prof_name = query_prof_name.split("\\.")[1];
+			
+		}
+		logger.log(Level.INFO, query_prof_name);
+		if(query_prof_name.matches("prof .*") || query_prof_name.matches("dr .*"))
+		{
+			query_prof_name = query_prof_name.substring(query_prof_name.indexOf(' ')+1);
+		}
+		logger.log(Level.INFO, query_prof_name);
+		if(query_prof_name.contains("'"))
+		{
+			query_prof_name = query_prof_name.split("'")[0];
+		}
+		return query_prof_name;
+	}
 	public static String answerDeptCourseCount(String dept_name)
 	{
 		String closest_dept_name = getClosestDept(dept_name);
@@ -178,6 +197,8 @@ public class HFCUtils{
 
 	public static String answerProfCourses(String query_prof_name)
 	{
+
+		query_prof_name = cleanProfNames(query_prof_name);
 		String query_prof_uri = "<univ:" + query_prof_name + ">";
 		String query = "select ?a where ?a <rdf:type> <univ:Professors> ?_";
 		List<Object> all_profs = _agent._proxy.query(query);
@@ -210,6 +231,41 @@ public class HFCUtils{
 		}
 		return "There is no Prof with the name - " + query_prof_name;
 		
+	}
+
+	public static String answerProfResearchArea(String query_prof_name)
+	{
+		query_prof_name = cleanProfNames(query_prof_name);
+		String query_prof_uri = "<univ:" + query_prof_name + ">";
+		String query = "select ?a where ?a <rdf:type> <univ:Professors> ?_";
+		List<Object> all_profs = _agent._proxy.query(query);
+		Boolean flag = false;
+		for(Object prof: all_profs)
+		{
+			String prof_uri = String.valueOf(prof);
+			String prof_name = getNameFromURI(prof_uri);
+			if(prof_name.toLowerCase().contains(query_prof_name.toLowerCase()))
+			{
+				String prof_research_query = String.format("select ?b where %s <univ:isSpecializedIn> ?a ?_  & ?a <rdfs:label> ?b ?_ ", prof_uri);
+				List<Object> all_areas = _agent._proxy.query(prof_research_query);
+				flag = true;
+				Integer count = 1;
+				String ret = query_prof_name + " has the following research interests: \n" ;
+				for(Object area: all_areas)
+				{
+					
+					String res_area = String.valueOf(area);
+					ret += String.valueOf(count) + ". " + res_area + "\n";
+					count++;
+				}
+				return ret;
+			}
+		}
+		if(!flag)
+		{
+			return "Prof." + query_prof_name + " does not have any enlisted research areas. "; 
+		}
+		return "There is no Prof with the name - " + query_prof_name;
 	}
 	
 

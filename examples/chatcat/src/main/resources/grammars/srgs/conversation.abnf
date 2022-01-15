@@ -12,7 +12,8 @@ public $top = ($greet |
               $courseInfo |
               $countDeptCourses | 
               $courseTeacherInfo |
-              $teacherCourseInfo
+              $teacherCourseInfo |
+              $teacherResearchInfo
               )  {!{ out = $%1; }!} [$punct] ;
 
 $punct = ("$$[.;?!]"|$NULL);
@@ -21,9 +22,15 @@ $prof = (prof | professor | prof. | instructor | teacher) ;
 
 $greet = (hi | hello) {!{ out.da="InitialGreeting" ; out.prop="Greet";}!} ;
 
+$course = (course | courses | topics | subjects | topic | subject | topic);
+
 $tellName = my name is "$$.*" {out.da="Inform" ; out.prop="Name" ; out.what="$$1" ;};
 
 $teach = (teach | take | instruct | teaches | instructs | takes) ; 
+
+$researchField = (research [field | area | topic | interest | fields | areas | topics | interests] )
+                | (( area | topic | field | areas | topics | fields )  [of interest | specialization | speciality | specialities | of interests])
+                | (interest | interests);
 
 // Course related grammar rules
 $courseInfo = ((tell [me] about | describe | explain | help on) [the]  
@@ -44,4 +51,9 @@ $countDeptCourses = [ (could you) | please ] [ (tell | tell me ) ] how many cour
 
 // Prof related grammar rules
 
-$teacherCourseInfo = [what|which] [course | courses| topics | subjects ] does [$prof] "$$.*"<0-3> $teach {out.da="Request" ; out.prop="Professor"; out.what="$$2"; out.theme="CourseInfo";};
+$teacherCourseInfo = ( [what|which] [$course] does [$prof] "$$.*"<0-3> $teach ) {out.da="Request" ; out.prop="Professor"; out.what="$$2"; out.theme="CourseInfo";}
+                     | ([what|which] [$course] [ is | are ] [taught | instructed] by [$prof] "$$.*"<0-3> ){out.da="Request" ; out.prop="Professor"; out.what="$$1"; out.theme="CourseInfo";}
+                     | (what are [$prof] "$$.*"<0-4> $course )  {out.da="Request" ; out.prop="Professor"; out.what="$$2"; out.theme="CourseInfo";};
+
+$teacherResearchInfo = ( What does [$prof] "$$.*"<0-4> (specialize|research) in ) {out.da="Request" ; out.prop="Professor"; out.what="$$3"; out.theme="ResearchInfo";}
+                      |( What [is | are] [$prof] "$$.*"<0-4>  $researchField) {out.da="Request" ; out.prop="Professor"; out.what="$$2"; out.theme="ResearchInfo";};

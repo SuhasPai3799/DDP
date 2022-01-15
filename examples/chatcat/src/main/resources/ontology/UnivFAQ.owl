@@ -378,6 +378,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Analog">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:label>Analog</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -592,6 +593,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Information_Theory">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
         <rdfs:comment>Information theory is the scientific study of the quantification, storage, and communication of digital information.[1] The field was fundamentally established by the works of Harry Nyquist and Ralph Hartley, in the 1920s, and Claude Shannon in the 1940s. The field is at the intersection of probability theory, statistics, computer science, statistical mechanics, information engineering, and electrical engineering.</rdfs:comment>
+        <rdfs:label>Information Theory</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -634,7 +636,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Network_Control">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
         <rdfs:comment>A Networked Control System (NCS) is a control system wherein the control loops are closed through a communication network. The defining feature of an NCS is that control and feedback signals are exchanged among the system&apos;s components in the form of information packages through a network.</rdfs:comment>
-        <rdfs:label>Netword Control</rdfs:label>
+        <rdfs:label>Network Control</rdfs:label>
     </owl:NamedIndividual>
     
 

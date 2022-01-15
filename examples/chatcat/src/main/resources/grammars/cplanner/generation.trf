@@ -50,3 +50,8 @@ raw:Request ^ Department
 raw:Request ^ Professor ^ <prof_name>#p ^ <prof_courses>#c
 ->
 # = :canned ^ <string>#c.
+
+
+raw:Request ^ Professor ^ <prof_name>#p ^ <prof_areas>#r
+->
+# = :canned ^ <string>#r.
