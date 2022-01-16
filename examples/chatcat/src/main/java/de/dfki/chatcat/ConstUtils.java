@@ -28,7 +28,7 @@ public interface ConstUtils{
 
 
 public static final List<String> CS_syns = Arrays.asList("Computer Science", "CS","CSE","CSE.", "Comp. Sci", "Comp. Science");
-public static final List<String> Elec_syns = Arrays.asList("Electrical Engineering", "EEE", "Elec. Engg", "Elec", "Electrical", "Electronics", "ECE");
+public static final List<String> Elec_syns = Arrays.asList("Electrical Engineering", "EEE", "Elec. Engg", "Elec", "Electrical", "Electronics", "ECE", "EE");
 
 public static final HashMap<String, List<String>> dept_syns = new HashMap<String, List<String>> ()
 {

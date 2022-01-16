@@ -528,6 +528,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
+        <UnivFAQ:hasFacility rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#AIDB_Lab"/>
+        <UnivFAQ:hasFacility rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DCF_Lab"/>
+        <UnivFAQ:hasFacility rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PACE_Lab"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1100"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1200"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS3700"/>
@@ -580,6 +583,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Electrical_Engineering">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
+        <UnivFAQ:hasFacility rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Microelectronics_and_MEMS_laboratory"/>
+        <UnivFAQ:hasFacility rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#VLSI_Lab"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE3002"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE6112"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE6150"/>

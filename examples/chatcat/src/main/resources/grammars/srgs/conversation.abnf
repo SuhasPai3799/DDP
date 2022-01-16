@@ -14,7 +14,8 @@ public $top = ($greet |
               $courseTeacherInfo |
               $teacherCourseInfo |
               $teacherResearchInfo |
-              $profResearchField
+              $profResearchField |
+              $deptFacilities
               )  {!{ out = $%1; }!} [$punct] ;
 
 $punct = ("$$[.;?!]"|$NULL);
@@ -27,17 +28,25 @@ $course = (course | courses | topics | subjects | topic | subject | topic);
 
 $tellName = my name is "$$.*" {out.da="Inform" ; out.prop="Name" ; out.what="$$1" ;};
 
+$department = (dept. | department | branch | branches | departments | dept);
+
 $teach = (teach | take | instruct | teaches | instructs | takes) ; 
+
+$labs = (labs | laboratories | lab | laboratory | workshop);
+
+$facilities = ([$labs] facilities | [$labs] facility | labs | lab | laboratory | laboratories | workshop | workstation | space | spaces | provisions | provision |
+              equipments | equipment | amenity | amenities);
 
 $polite = ( [ could | can ] [you] [please] [tell | describe | explain ] [me] [about] );
 
 $performingResearch = (performing research [in|on] | studying [in|on] | researching [in|on] | doing research [in|on] | specializing [in|on] | working [in|on]);
+
 $researchField = (research [field | area | topic | interest | fields | areas | topics | interests] )
                 | (( area | topic | field | areas | topics | fields )  [of interest | specialization | speciality | specialities | of interests])
                 | (interest | interests);
 
 // Course related grammar rules
-$courseInfo = ((tell [me] about | describe | explain | help on) [the]  
+$courseInfo = ([$polite] (tell [me] about | describe | explain | help on) [the]  
                 (course "$$.*" {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseInfo"} |
                 "$$.*"<0-10> course {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseInfo"} )) 
                 
@@ -51,7 +60,7 @@ $courseTeacherInfo = [$polite] who $teach [course] "$$.*"<0-10> {out.da="Request
                      [$polite] which $prof $teach "$$.*"<0-10> course   {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseTeacherInfo";};
 
 
-$countDeptCourses = [$polite] how many courses does "$$.*" offer {out.da="Request"; out.prop="Department"; out.what="$$2";};
+
 
 // Prof related grammar rules
 
@@ -68,3 +77,13 @@ $profResearchField = ( [$polite] $prof in "$$.*"<0-4> $researchField) {out.da="R
                     |([$polite] [what|which] $prof (work | research | study ) [in] "$$.*"<0-4> ){out.da="Request"; out.prop="ResearchField"; out.theme="Professor"; out.what="$$1";}
                     |( [$polite] (list|enumerate|mention|tell) [all] [the] $prof $performingResearch "$$.*"<0-4>){out.da="Request"; out.prop="ResearchField"; out.theme="Professor"; out.what="$$1";}
                     |([$polite] [list|enumerate|mention|tell] (what [are]|which [are]|who [are]) [all] [the] $prof $performingResearch "$$.*"<0-4> ){out.da="Request"; out.prop="ResearchField"; out.theme="Professor"; out.what="$$1";} ;
+
+
+
+// Department related grammar rules
+
+$countDeptCourses = [$polite] how many courses does "$$.*"<0-4> offer {out.da="Request"; out.prop="Department"; out.what="$$2";out.theme="CourseCount";};
+
+$deptFacilities = [$polite] (what|which) $facilities are in [the] "$$.*"<0-4> $department {out.da="Request"; out.prop="Department"; out.what="$$2"; out.theme="Facilities";}
+                | [$polite] $facilities (in | on | offered by) [the] "$$.*"<0-4> $department {out.da="Request"; out.prop="Department"; out.what="$$2"; out.theme="Facilities";}
+                | [$polite] "$$.*"<0-4> $department $facilities {out.da="Request"; out.prop="Department"; out.what="$$3"; out.theme="Facilities";};

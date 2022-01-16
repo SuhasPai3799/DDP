@@ -49,6 +49,8 @@ if (! hasActiveTimeout("robot_starts") && ! isTimedOut("robot_starts")) {
   }
 }
 
+/** Rules related to courses */
+
 answer_courses:
 /** Provides description about the course */
 if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseInfo")
@@ -74,19 +76,8 @@ if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseTeacherInfo")
   lastDAprocessed();
 }
 
-answer_dept_num_courses:
-/** Provides total number of courses for the department */
-if (lastDA()>= #Request(Department) && lastDA().theme=="CourseCountDept")
-{
-  dept_name = lastDA().what;
-	tot_c = (String)hfcutils.answerDeptCourseCount(dept_name);
-	propose("return_course_total")
-	{
-		emitDA(#Request(Department,tot_courses={tot_c}, dept_name={dept_name}));
-	}
-	lastDAprocessed();
-}
 
+/** Rules related to professors */
 
 answer_prof_courses:
 /** Provides answer on courses a professor takes */
@@ -124,6 +115,35 @@ if (lastDA()>= #Request(ResearchField) && lastDA().theme=="Professor")
   propose("return_field_profs")
   {
     emitDA(#Request(ResearchField, prof_names={field_profs}, field_name={field_name}));
+  }
+  lastDAprocessed();
+}
+
+
+/** Rules related to departments */
+
+answer_dept_num_courses:
+/** Provides total number of courses for the department */
+if (lastDA()>= #Request(Department) && lastDA().theme=="CourseCount")
+{
+  dept_name = lastDA().what;
+	tot_c = (String)hfcutils.answerDeptCourseCount(dept_name);
+	propose("return_course_total")
+	{
+		emitDA(#Request(Department,tot_courses={tot_c}, dept_name={dept_name}));
+	}
+	lastDAprocessed();
+}
+
+answer_dept_facilities:
+/** Provides answer on facillities in a department */
+if (lastDA()>= #Request(Department) && lastDA().theme=="Facilities")
+{
+  dept_name = lastDA().what;
+  facilities = (String)hfcutils.answerDeptFacilities(dept_name);
+  propose("return_dept_facilities")
+  {
+    emitDA(#Request(Department, dept_name = {dept_name}, dept_facilities = {facilities}));
   }
   lastDAprocessed();
 }

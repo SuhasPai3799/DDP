@@ -62,19 +62,7 @@ public class HFCUtils{
 		}
 		return query_prof_name;
 	}
-	public static String answerDeptCourseCount(String dept_name)
-	{
-		String closest_dept_name = getClosestDept(dept_name);
-		if(closest_dept_name == "NULL")
-		{
-			return "-1";
-		}
-		String dept_uri = "<univ:" + closest_dept_name + ">";
-		String query = String.format("select ?a where ?a <univ:offeredBy> %s ?d", dept_uri );
-		List<Object> res = _agent._proxy.query(query);
-		return String.valueOf(res.size());
-		
-	}
+	
 	/**
 	 * Given a department name, return the name of a close department name as stored in the database.
 	 * @param dept_name Name of the department for which we are trying to find the closest possible name in the database.
@@ -98,6 +86,12 @@ public class HFCUtils{
 		}
 		return "NULL";
 	}
+
+	/* 
+	Functions related to answering prof-related queries
+	*/
+
+
 	/**
 	 * Given the name of a course, return the details of that particular course
 	 * @param c_name Name of the course for which details are being returned
@@ -194,6 +188,11 @@ public class HFCUtils{
 		}
 		return "No such course exists.";
 	}
+
+
+	/* 
+	Functions related to answering prof-related queries
+	*/
 
 	public static String answerProfCourses(String query_prof_name)
 	{
@@ -296,6 +295,50 @@ public class HFCUtils{
 		return "There are no professors enlisted doing research in the field " + query_field_name;
 
 	}
+
+
+
+	/* 
+	Functions related to answering dept-related queries
+	*/
+
+	public static String answerDeptCourseCount(String dept_name)
+	{
+		String closest_dept_name = getClosestDept(dept_name);
+		if(closest_dept_name == "NULL")
+		{
+			return "-1";
+		}
+		String dept_uri = "<univ:" + closest_dept_name + ">";
+		String query = String.format("select ?a where ?a <univ:offeredBy> %s ?d", dept_uri );
+		List<Object> res = _agent._proxy.query(query);
+		return String.valueOf(res.size());
+		
+	}
+
+	public static String answerDeptFacilities(String dept_name)
+	{
+		String closest_dept_name = getClosestDept(dept_name);
+		if(closest_dept_name == "NULL")
+		{
+			return "No department with name " + dept_name + " exists";
+		}
+		String dept_uri = "<univ:" + closest_dept_name + ">";
+		String query = String.format("select ?b where %s <univ:hasFacility> ?a ?_ & ?a <rdfs:label> ?b ?_", dept_uri);
+		List<Object> res = _agent._proxy.query(query);
+		String ret = "The department of " + dept_name + " has the following lab facilities : \n";
+		Integer count = 1;
+		for(Object fac: res)
+		{
+			String lab_fac = String.valueOf(fac);
+			ret += String.valueOf(count) + ". " + lab_fac + "\n";
+			count++;
+		} 
+		return ret;
+	}
+
+
+
 	// public static List<String> answerDeptCoursesOffered(String dept_name)
 	// {
 	// 	String closest_dept_name = getClosestDept(dept_name)
