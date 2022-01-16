@@ -200,25 +200,25 @@ public class HFCUtils{
 
 		query_prof_name = cleanProfNames(query_prof_name);
 		String query_prof_uri = "<univ:" + query_prof_name + ">";
-		String query = "select ?a where ?a <rdf:type> <univ:Professors> ?_";
-		List<Object> all_profs = _agent._proxy.query(query);
+		String query = "select ?a ?b where ?a <rdf:type> <univ:Professors> ?_ & ?a <rdfs:label> ?b ?_";
+		QueryResult res = _agent._proxy.selectQuery(query);
 		Boolean flag = false;
-		for(Object prof: all_profs)
+		for(List<String> row: res.getTable().getRows())
 		{
-			String prof_uri = String.valueOf(prof);
-			String prof_name = getNameFromURI(prof_uri);
+			String prof_uri = String.valueOf(row.get(0));
+			String prof_name = String.valueOf(row.get(1));
 			if(prof_name.toLowerCase().contains(query_prof_name.toLowerCase()))
 			{
 				String prof_course_query = String.format("select ?a ?b where %s <univ:teaches> ?a ?_  & ?a <rdfs:label> ?b ?_ ", prof_uri);
-				QueryResult res = _agent._proxy.selectQuery(prof_course_query);
+				QueryResult course_res = _agent._proxy.selectQuery(prof_course_query);
 				flag = true;
 				Integer count = 1;
 				String ret = query_prof_name + " teaches the following courses: \n" ;
-				for(List<String> row: res.getTable().getRows())
+				for(List<String> course_row: course_res.getTable().getRows())
 				{
 					
-					String course_label = cleanXSD(String.valueOf(row.get(1)));
-					String course_id = getNameFromURI(String.valueOf(row.get(0)));
+					String course_label = cleanXSD(String.valueOf(course_row.get(1)));
+					String course_id = getNameFromURI(String.valueOf(course_row.get(0)));
 					ret += String.valueOf(count) + ". " + course_id + " - " + course_label;
 					count++;
 				}
@@ -237,13 +237,13 @@ public class HFCUtils{
 	{
 		query_prof_name = cleanProfNames(query_prof_name);
 		String query_prof_uri = "<univ:" + query_prof_name + ">";
-		String query = "select ?a where ?a <rdf:type> <univ:Professors> ?_";
-		List<Object> all_profs = _agent._proxy.query(query);
+		String query = "select ?a ?b where ?a <rdf:type> <univ:Professors> ?_ & ?a <rdfs:label> ?b ?_";
+		QueryResult res = _agent._proxy.selectQuery(query);
 		Boolean flag = false;
-		for(Object prof: all_profs)
+		for(List<String> row: res.getTable().getRows())
 		{
-			String prof_uri = String.valueOf(prof);
-			String prof_name = getNameFromURI(prof_uri);
+			String prof_uri = String.valueOf(row.get(0));
+			String prof_name = String.valueOf(row.get(1));
 			if(prof_name.toLowerCase().contains(query_prof_name.toLowerCase()))
 			{
 				String prof_research_query = String.format("select ?b where %s <univ:isSpecializedIn> ?a ?_  & ?a <rdfs:label> ?b ?_ ", prof_uri);
@@ -269,6 +269,33 @@ public class HFCUtils{
 	}
 	
 
+	public static String answerFieldProfs(String query_field_name)
+	{
+		String query = "select ?a ?b where ?a <rdf:type> <univ:ResearchFields> ?_ & ?a <rdfs:label> ?b ?_";
+		String query_field_uri = "<univ:" + (query_field_name.trim()) + ">";
+		QueryResult res = _agent._proxy.selectQuery(query);
+		for(List<String> row: res.getTable().getRows())
+		{
+			String field_name = String.valueOf(row.get(1));
+			String field_uri = String.valueOf(row.get(0));
+			if(field_name.toLowerCase().contains(query_field_name.toLowerCase().trim()))
+			{
+				String prof_query = String.format("select ?b where ?a <univ:isSpecializedIn> %s ?_ & ?a <rdfs:label> ?b ?_", field_uri);
+				List<Object> prof_obj = _agent._proxy.query(prof_query);
+				Integer count = 1;
+				String ret = "The following professors are working in the field " + query_field_name + ": \n";
+				for(Object prof_name_obj: prof_obj )
+				{	
+					
+					ret += String.valueOf(count) + ". " + String.valueOf(prof_name_obj) + "\n";
+					count++;
+				}
+				return ret;
+			}
+		}
+		return "There are no professors enlisted doing research in the field " + query_field_name;
+
+	}
 	// public static List<String> answerDeptCoursesOffered(String dept_name)
 	// {
 	// 	String closest_dept_name = getClosestDept(dept_name)

@@ -114,3 +114,16 @@ if (lastDA()>= #Request(Professor) && lastDA().theme=="ResearchInfo")
   }
   lastDAprocessed();
 }
+
+answer_researchField_profs:
+/** Provides answer on profs in a given research aread */
+if (lastDA()>= #Request(ResearchField) && lastDA().theme=="Professor")
+{
+  field_name = lastDA().what;
+  field_profs = (String)hfcutils.answerFieldProfs(field_name);
+  propose("return_field_profs")
+  {
+    emitDA(#Request(ResearchField, prof_names={field_profs}, field_name={field_name}));
+  }
+  lastDAprocessed();
+}

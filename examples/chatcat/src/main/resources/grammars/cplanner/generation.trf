@@ -55,3 +55,8 @@ raw:Request ^ Professor ^ <prof_name>#p ^ <prof_courses>#c
 raw:Request ^ Professor ^ <prof_name>#p ^ <prof_areas>#r
 ->
 # = :canned ^ <string>#r.
+
+
+raw:Request ^ ResearchField ^ <field_name>#f ^ <prof_names>#p
+->
+# = :canned ^ <string>#p.
