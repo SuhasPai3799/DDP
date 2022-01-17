@@ -75,3 +75,13 @@ raw:Request ^ Department ^ <dept_name>#d ^ <dept_facilities>#df
 raw:Request ^ Department ^ <dept_name>#d ^ <course_list>#c
 ->
 # = :canned ^ <string> #c.
+
+
+raw:Request ^ Department ^ <dept_name>#d ^ <prof_list>#p
+->
+# = :canned ^ <string> #p.
+
+
+raw:Request ^ Department ^ <dept_name>#d ^ <program_list>#p
+->
+# = :canned ^ <string> #p.

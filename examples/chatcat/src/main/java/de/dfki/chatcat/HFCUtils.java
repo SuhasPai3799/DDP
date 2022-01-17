@@ -310,7 +310,7 @@ public class HFCUtils{
 			return "-1";
 		}
 		String dept_uri = "<univ:" + closest_dept_name + ">";
-		String query = String.format("select ?a where ?a <univ:offeredBy> %s ?d", dept_uri );
+		String query = String.format("select ?a where ?a <univ:offeredBy> %s ?_ & ?a <rdf:type> <univ:Courses> ?_", dept_uri );
 		List<Object> res = _agent._proxy.query(query);
 		return String.valueOf(res.size());
 		
@@ -345,7 +345,7 @@ public class HFCUtils{
 			return "No department with name " + dept_name + " exists";
 		}
 		String dept_uri = "<univ:" + closest_dept_name + ">";
-		String query = String.format("select ?a ?b where %s <univ:offers> ?a ?_ & ?a <rdfs:label> ?b ?_", dept_uri);
+		String query = String.format("select ?a ?b where %s <univ:offers> ?a ?_ & ?a <rdf:type> <univ:Courses> ?_ & ?a <rdfs:label> ?b ?_", dept_uri);
 		QueryResult res = _agent._proxy.selectQuery(query);
 		Integer count = 1;
 		String ret = dept_name + " department offers the following courses : \n";
@@ -354,6 +354,51 @@ public class HFCUtils{
 			String course_label = cleanXSD(String.valueOf(course_row.get(1)));
 			String course_id = getNameFromURI(String.valueOf(course_row.get(0)));
 			ret += String.valueOf(count) + ". " + course_id + " - " + course_label + "\n";
+			count++;
+		}
+		return ret;
+	}
+
+	public static String answerDeptProfList(String dept_name)
+	{
+		String closest_dept_name = getClosestDept(dept_name);
+		if(closest_dept_name=="NULL")
+		{
+			return "No department with name " + dept_name + " exists";
+		}
+		String dept_uri = "<univ:" + closest_dept_name + ">";
+		String query = String.format("select distinct ?b where ?a <univ:teaches> ?x ?_ & ?x <univ:offeredBy> %s ?_ & ?a <rdfs:label> ?b ?_", dept_uri);
+		List<Object> res = _agent._proxy.query(query);
+		Integer count = 1;
+		String ret = dept_name + " department has the following professors : \n";
+		for(Object prof_obj:res)
+		{
+			String prof_name = String.valueOf(prof_obj);
+			ret += String.valueOf(count) + ". " + prof_name + "\n";
+			count++;
+		}
+		return ret;
+	}
+
+
+	public static String answerDeptProgramList(String dept_name)
+	{
+		logger.log(Level.INFO, "Workinggg");
+		String closest_dept_name = getClosestDept(dept_name);
+		if(closest_dept_name=="NULL")
+		{
+			return "No department with name " + dept_name + " exists";
+		}
+		String dept_uri = "<univ:" + closest_dept_name + ">";
+		String query = String.format("select ?b where %s <univ:offers> ?a ?_ & ?a <rdfs:label> ?b ?_ & ?a <rdf:type> <univ:Programs> ?_", dept_uri);
+		List<Object> res = _agent._proxy.query(query);
+		Integer count = 1;
+		logger.log(Level.INFO, "Workinggg");
+		String ret = dept_name + " department offers the following programs : \n";
+		for(Object prog_obj:res)
+		{
+			String prog_name = String.valueOf(prog_obj);
+			ret += String.valueOf(count) + ". " + prog_name + "\n";
 			count++;
 		}
 		return ret;

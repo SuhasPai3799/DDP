@@ -1,3 +1,9 @@
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:genid1 <http://www.w3.org/2002/07/owl#unionOf> _:genid2 .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses> .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid3 .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Programs> .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Abishek_Sinha> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isSpecializedIn> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Information_Theory> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Abishek_Sinha> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isSpecializedIn> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Network_Control> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Abishek_Sinha> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#teaches> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE6112> .
@@ -38,10 +44,12 @@
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#B_Ravindran> <http://www.w3.org/2000/01/rdf-schema#label> "Balaram Ravindran" .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech._Computer_Science> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech.> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech._Computer_Science> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech._Computer_Science> <http://www.w3.org/2000/01/rdf-schema#comment> "The B.Tech. program is a four-year course oriented undergraduate program. The course work is spread accross all the semesters. The courses include a set of core courses offered by the department, a set of departmental electives and some free electives. In total, the academic activities include 7 department electives and 8 free electives. A B.Tech project is optional and the student can take 2 additional department electives in lieu of the B.Tech project." .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech._Computer_Science> <http://www.w3.org/2000/01/rdf-schema#label> "BTech. Computer Science" .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech.> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech.> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#UndergradPrograms> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Chandra_Sekhar> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#headsDepartment> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Chandra_Sekhar> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#teaches> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6910> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Chandra_Sekhar> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Chandra_Sekhar> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Chandra_Sekhar> <http://www.w3.org/2000/01/rdf-schema#label> "C Chandra Sekhar" .
@@ -52,6 +60,7 @@
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasFacility> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#AIDB_Lab> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasFacility> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DCF_Lab> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasFacility> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PACE_Lab> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offers> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech._Computer_Science> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offers> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1100> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offers> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1200> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offers> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS3700> .
@@ -97,14 +106,25 @@
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6852> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6852> <http://www.w3.org/2000/01/rdf-schema#comment> "To discuss topics in the emerging areas of Semantic Web Technology, Ontologies for Knowledge Representation and their Applications." .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6852> <http://www.w3.org/2000/01/rdf-schema#label> "Theory and Applications of Ontologies" .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6910> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offeredBy> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6910> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6910> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6910> <http://www.w3.org/2000/01/rdf-schema#comment> "Neural Networks have made tremendous impact on various AI fields in the recent past. In this course, we study the basics of Neural Networks and their various variants such as the Convolutional Neural Networks and Recurrent Neural Networks. We also study the different ways in which they can be used to solve problems in various domains such as Computer Vision, Speech and NLP. We also look at the latest results and trends in the field." .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6910> <http://www.w3.org/2000/01/rdf-schema#label> "Deep Learning" .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offeredBy> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dual_Degree> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD> <http://www.w3.org/2000/01/rdf-schema#comment> "The Dual Degree program is a five year program. At the end of five years, the student is awarded both a B.Tech. and M.Tech. degree." .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD> <http://www.w3.org/2000/01/rdf-schema#label> "Dual Degree (BTech. + MTech.) Computer Science" .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-MTech> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offeredBy> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-MTech> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MTech.> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-MTech> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-MTech> <http://www.w3.org/2000/01/rdf-schema#comment> "The M.Tech. program is a two-year course oriented graduate program. The student has to take a set of core courses and a set of electives. The course work is spread accross the first two semesters with an option of taking one elective in the third semester. This is followed by a project in the third and fourth semester in which the student can take up a project of his or her interest, supervised by a faculty member." .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-MTech> <http://www.w3.org/2000/01/rdf-schema#label> "MTech. Computer Science" .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-PhD> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offeredBy> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-PhD> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PhD> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-PhD> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-PhD> <http://www.w3.org/2000/01/rdf-schema#comment> "PhD. programs are postgraduate research oriented programs. The scholar works in an area of his/her interest under the supervision of a faculty member. The scholar has to obtain a minimum number of credits by taking courses. The highlight of the program is the independent research work taken by scholar, leading to a dissertation at the end of the program. The average duration of a PhD. program is between four to five years." .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-PhD> <http://www.w3.org/2000/01/rdf-schema#label> "PHD. Computer Science" .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DCF_Lab> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#InstituteFacilities> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DCF_Lab> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
@@ -193,7 +213,7 @@
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offeredBy> <http://www.w3.org/2002/07/owl#inverseOf> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offers> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offers> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department> .
-<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offers> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offers> <http://www.w3.org/2000/01/rdf-schema#range> _:genid1 .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Ontologies_and_Application> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Ontologies_and_Application> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Ontologies_and_Application> <http://www.w3.org/2000/01/rdf-schema#comment> "An ontology is the specification of conceptualizations, used to help programs and humans share knowledge. An Ontology is a formal and explicit specification of a shared conceptualization." .

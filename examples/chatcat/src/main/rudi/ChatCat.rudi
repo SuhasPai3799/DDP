@@ -154,9 +154,36 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="CourseList")
 {
   dept_name = lastDA().what;
 	all_courses = (String)hfcutils.answerDeptCourseList(dept_name);
-	propose("return_course_list")
+	propose("return_dept_course_list")
 	{
 		emitDA(#Request(Department,dept_name={dept_name}, course_list={all_courses}));
+	}
+	lastDAprocessed();
+}
+
+
+answer_dept_profs:
+/** Provides list of profs for the department */
+if (lastDA()>= #Request(Department) && lastDA().theme=="ProfList")
+{
+  dept_name = lastDA().what;
+	all_profs = (String)hfcutils.answerDeptProfList(dept_name);
+	propose("return_dept_prof_list")
+	{
+		emitDA(#Request(Department,dept_name={dept_name}, prof_list={all_profs}));
+	}
+	lastDAprocessed();
+}
+
+answer_dept_programs:
+/** Provides list of programs for the department */
+if (lastDA()>= #Request(Department) && lastDA().theme=="ProgList")
+{
+  dept_name = lastDA().what;
+	all_programs = (String)hfcutils.answerDeptProgramList(dept_name);
+	propose("return_dept_program_list")
+	{
+		emitDA(#Request(Department,dept_name={dept_name}, program_list={all_programs}));
 	}
 	lastDAprocessed();
 }

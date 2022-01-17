@@ -5,6 +5,8 @@ import static de.dfki.chatcat.Constants.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.json.JSONObject;
 import org.jvoicexml.processor.srgs.ChartGrammarChecker;
@@ -39,8 +41,17 @@ public class SrgsParser extends Interpreter {
     return true;
   }
 
+  public String clean(String text)
+  {
+    text = text.replace("?", "");
+    text = text.replaceAll("(,)*$", "");
+    text = text.replaceAll("(\\.)*$", "");
+    return text;
+  }
   @Override
   public DialogueAct analyse(String text) {
+    
+    text = clean(text);
     String[] tokens = text.split(" +");
     try {
       //TODO: Find out why no validRule is returned
