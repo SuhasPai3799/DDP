@@ -31,6 +31,8 @@ raw:InitialGreeting ^ Greet
 # =  :canned ^ <string>concatenate("Good ", #tod, " .").
 }
 
+
+
 raw:Request ^ Courses
 ^ <cname>#cname ^ <info>#info
 ->
@@ -41,10 +43,7 @@ raw:Request ^ Courses
 ->
 # = :canned ^ <string>concatenate("Prof.", #info," teaches the course ", #cname).
 
-raw:Request ^ Department
-^ <tot_courses>#t ^ <dept_name>#d
-->
-# = :canned ^ <string>concatenate("The ", #d, " department offers ", #t, " courses in total").
+
 
 
 raw:Request ^ Professor ^ <prof_name>#p ^ <prof_courses>#c
@@ -61,6 +60,18 @@ raw:Request ^ ResearchField ^ <field_name>#f ^ <prof_names>#p
 ->
 # = :canned ^ <string>#p.
 
+
+
+
+raw:Request ^ Department
+^ <tot_courses>#t ^ <dept_name>#d
+->
+# = :canned ^ <string>concatenate("The ", #d, " department offers ", #t, " courses in total").
+
 raw:Request ^ Department ^ <dept_name>#d ^ <dept_facilities>#df
 ->
 # = :canned ^ <string> #df.
+
+raw:Request ^ Department ^ <dept_name>#d ^ <course_list>#c
+->
+# = :canned ^ <string> #c.

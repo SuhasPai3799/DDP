@@ -218,7 +218,7 @@ public class HFCUtils{
 					
 					String course_label = cleanXSD(String.valueOf(course_row.get(1)));
 					String course_id = getNameFromURI(String.valueOf(course_row.get(0)));
-					ret += String.valueOf(count) + ". " + course_id + " - " + course_label;
+					ret += String.valueOf(count) + ". " + course_id + " - " + course_label + "\n";
 					count++;
 				}
 				return ret;
@@ -334,6 +334,28 @@ public class HFCUtils{
 			ret += String.valueOf(count) + ". " + lab_fac + "\n";
 			count++;
 		} 
+		return ret;
+	}
+
+	public static String answerDeptCourseList(String  dept_name)
+	{
+		String closest_dept_name = getClosestDept(dept_name);
+		if(closest_dept_name=="NULL")
+		{
+			return "No department with name " + dept_name + " exists";
+		}
+		String dept_uri = "<univ:" + closest_dept_name + ">";
+		String query = String.format("select ?a ?b where %s <univ:offers> ?a ?_ & ?a <rdfs:label> ?b ?_", dept_uri);
+		QueryResult res = _agent._proxy.selectQuery(query);
+		Integer count = 1;
+		String ret = dept_name + " department offers the following courses : \n";
+		for(List<String> course_row: res.getTable().getRows())
+		{
+			String course_label = cleanXSD(String.valueOf(course_row.get(1)));
+			String course_id = getNameFromURI(String.valueOf(course_row.get(0)));
+			ret += String.valueOf(count) + ". " + course_id + " - " + course_label + "\n";
+			count++;
+		}
 		return ret;
 	}
 

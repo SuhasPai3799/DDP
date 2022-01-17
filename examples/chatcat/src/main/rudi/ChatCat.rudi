@@ -147,3 +147,16 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="Facilities")
   }
   lastDAprocessed();
 }
+
+answer_dept_courses:
+/** Provides list of courses for the department */
+if (lastDA()>= #Request(Department) && lastDA().theme=="CourseList")
+{
+  dept_name = lastDA().what;
+	all_courses = (String)hfcutils.answerDeptCourseList(dept_name);
+	propose("return_course_list")
+	{
+		emitDA(#Request(Department,dept_name={dept_name}, course_list={all_courses}));
+	}
+	lastDAprocessed();
+}

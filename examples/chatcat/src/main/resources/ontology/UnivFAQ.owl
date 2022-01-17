@@ -76,6 +76,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#headsDepartment -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#headsDepartment">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isSpecializedIn -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isSpecializedIn">
@@ -114,6 +123,14 @@
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#requiredForMinor -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#requiredForMinor"/>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#taughtBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#taughtBy">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#teaches"/>
+    </owl:ObjectProperty>
     
 
 
@@ -200,14 +217,6 @@
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#FinancialScholarship -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#FinancialScholarship"/>
-    
-
-
-    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#HeadOfDepartments -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#HeadOfDepartments">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
-    </owl:Class>
     
 
 
@@ -383,6 +392,27 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Artificial_Intelligence -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Artificial_Intelligence">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:comment>Artificial intelligence is intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans.</rdfs:comment>
+        <rdfs:label>Artificial Intelligence</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Arun_Rajkumar -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Arun_Rajkumar">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#AssistantProfessor"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Machine_Learning"/>
+        <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1100"/>
+        <rdfs:label>Arun Rajkumar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech._Computer_Science -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech._Computer_Science">
@@ -461,17 +491,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS3205 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS3205">
-        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
-        <UnivFAQ:offeredBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
-        <rdfs:comment>Concepts and implementation of computer networks; architecture, protocol layers, inter-networking and addressing; network application development.</rdfs:comment>
-        <rdfs:label>Introduction to Computer Architecture</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS3700 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS3700">
@@ -519,7 +538,18 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Chandra_Sekhar">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor"/>
+        <UnivFAQ:headsDepartment rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
         <rdfs:label>C Chandra Sekhar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Compilers -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Compilers">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:comment>research into foundational software tools helping scientists to program for speed, interoperability, interactivity, flexibility, and reproducibility.</rdfs:comment>
+        <rdfs:label>Compilers</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -535,6 +565,16 @@
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1200"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS3700"/>
         <rdfs:label>Computer Science</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Cryptography -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Cryptography">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:comment>Cryptography, or cryptology, is the practice and study of techniques for secure communication in the presence of adversarial behavior.</rdfs:comment>
+        <rdfs:label>Cryptography</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -627,11 +667,32 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Machine_Learning -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Machine_Learning">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:comment>Machine learning is the study of computer algorithms that can improve automatically through experience and by the use of data. It is seen as a part of artificial intelligence</rdfs:comment>
+        <rdfs:label>Machine Learning</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Microelectronics_and_MEMS_laboratory -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Microelectronics_and_MEMS_laboratory">
         <rdfs:comment>Microelectronics and MEMS Lab is well-equipped for semiconductor device and MEMS fabrication, characterization, modeling and simulation. It has Class-100 and Class-1000 clean rooms which house the major facilities that include a Mask writer, double-sided lithography facility, substrate bond aligner, LPCVD for polysilicon deposition, PECVD for dielectrics, diffusion furnaces, e-beam metallization unit and RIE for dry etching. DC and RF probe stations, parametric analyzer and LCR meter are used for electrical characterization, while a non-contact surface profiler and ellipsometer are used for process characterization. ATLAS, SenTaurus, Coventorware and Intellisuite are some of the commercial softwares used for simulation. The facilities have been used for fabrication and characterization of devices based on Silicon, GaAs and InP based materials, and for modeling various types of devices as listed below. Some activity has also been initiated on GaN and silicon based photonic devices. A wide array of devices, e.g. polysilicon gate n-channel MOSFETs, bipolar junction transistors, pressure sensors with integrated amplifiers, GaAs MESFETs, pigtailed InGaAs/InP PIN photodiodes and variable optical attenuators have been fabricated in the laboratory.</rdfs:comment>
         <rdfs:label>Microelectronics and MEMS laboratory</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#N_S_Narayanaswamy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#N_S_Narayanaswamy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Artificial_Intelligence"/>
+        <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1200"/>
+        <rdfs:label>N.S. Narayanaswamy</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -685,6 +746,17 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Rupesh_Nasre -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Rupesh_Nasre">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#AssociateProfessor"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Compilers"/>
+        <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6023"/>
+        <rdfs:label>Rupesh Nasre</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#S_Aniruddhan -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#S_Aniruddhan">
@@ -700,6 +772,17 @@
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Scholarship_1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Scholarship_1"/>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Shweta_Agarwal -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Shweta_Agarwal">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#AssociateProfessor"/>
+        <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS2800"/>
+        <rdfs:comment>Cryptography, or cryptology, is the practice and study of techniques for secure communication in the presence of adversarial behavior.</rdfs:comment>
+        <rdfs:label>Shweta Agarwal</rdfs:label>
+    </owl:NamedIndividual>
     
 
 
@@ -732,6 +815,21 @@
         <rdfs:comment>Involved in research in the areas of analog, mixed signal, and RF design, analysis and simulation of noise in circuits, VLSI DSP architectures, Programmable Analog Pulse Shaping for Ultra-Wideband Applications and reconfigurable computing.</rdfs:comment>
         <rdfs:label>VLSI Lab</rdfs:label>
     </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS3205">
+        <rdfs:comment>Concepts and implementation of computer networks; architecture, protocol layers, inter-networking and addressing; network application development.</rdfs:comment>
+        <rdfs:label>Introduction to Computer Networks</rdfs:label>
+    </rdf:Description>
 </rdf:RDF>
 
 
