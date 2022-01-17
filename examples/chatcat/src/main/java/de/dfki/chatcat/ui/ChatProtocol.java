@@ -9,6 +9,7 @@ import java.awt.Adjustable;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
@@ -47,7 +48,7 @@ public class ChatProtocol extends JPanel {
       ActionListener exe, JLabel statusbar) {
     _listener = listener;
     _exe = exe;
-    this.setPreferredSize(new Dimension(300, 120));
+    this.setPreferredSize(new Dimension(400, 120));
 
     String homepath = System.getProperty("user.home");
     File file = new File(homepath + "/.chat-history.yml");
@@ -68,7 +69,7 @@ public class ChatProtocol extends JPanel {
     this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
      _scrollpane = new JScrollPane(_table = makeTable());
     _table.setTableHeader(null);
-    _table.setRowHeight(30);
+    _table.setRowHeight(50);
     this.add(_scrollpane, BorderLayout.CENTER);
     scrollToBottom(_scrollpane);
   }
@@ -98,10 +99,26 @@ public class ChatProtocol extends JPanel {
       throw new RuntimeException(ex);
     }
   }
+  private void updateRowHeights()
+  {
+      for (int row = 0; row < _table.getRowCount(); row++)
+      {
+          int rowHeight = _table.getRowHeight();
 
+          for (int column = 0; column < _table.getColumnCount(); column++)
+          {
+              Component comp = _table.prepareRenderer(_table.getCellRenderer(row, column), row, column);
+              rowHeight = Math.max(rowHeight, comp.getPreferredSize().height);
+          }
+
+          _table.setRowHeight(row, rowHeight);
+      }
+  }
   public void sendMessage(String input) {
     messages.addLast(input);
     ((AbstractTableModel) _table.getModel()).fireTableStructureChanged();
+    
+    updateRowHeights();
     scrollToBottom(_scrollpane);
     try {
       String homepath = System.getProperty("user.home");

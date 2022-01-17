@@ -75,10 +75,14 @@ public class Reaction implements Runnable, Listener<Behaviour> {
       }
     }
   }
-
+  public static String convertToMultiline(String orig)
+{
+     //return orig;
+     return "<html><pre>" + orig.replaceAll("\n", "<br>") + "</pre></html>";
+}
   @Override
   public void listen(Behaviour q) {
-    _chat.sendMessage(Utilities.getTimeStamp() + " >>> " + q.getText());
+    _chat.sendMessage(convertToMultiline(Utilities.getTimeStamp() + " >>> " + q.getText()));
     System.out.println("Response:" + q.getText());
   }
 }

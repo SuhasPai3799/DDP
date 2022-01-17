@@ -45,6 +45,7 @@ public class HFCUtils{
 	}
 	public static String cleanProfNames(String query_prof_name)
 	{
+		query_prof_name = query_prof_name.toLowerCase();
 		if(query_prof_name.matches("prof\\..*") || query_prof_name.matches("dr\\..*"))
 		{
 			query_prof_name = query_prof_name.split("\\.")[1];
