@@ -213,3 +213,16 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="PGProgList")
 	}
 	lastDAprocessed();
 }
+
+answer_dept_info:
+/** Gives overview about a department */
+if (lastDA()>= #Request(Department) && lastDA().theme=="DeptInfo")
+{
+  dept_name = lastDA().what;
+	dept_info = (String)hfcutils.answerDeptInfo(dept_name);
+	propose("return_dept_info")
+	{
+		emitDA(#Request(Department,dept_name={dept_name}, dept_info={dept_info}));
+	}
+	lastDAprocessed();
+}

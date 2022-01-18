@@ -20,7 +20,8 @@ public $top =  ($greet |
               $listDeptProfs |
               $listDeptUGPrograms |
               $listDeptPrograms |
-              $listDeptPGPrograms
+              $listDeptPGPrograms |
+              $deptInfo
               )  {!{ out = $%1; }!} [$punct] ;
 
 $thanks = ("$$.*"<0->);
@@ -43,6 +44,8 @@ $department = (dept. | department | branch | branches | departments | dept);
 
 $teach = (teach | take | instruct | teaches | instructs | takes) ; 
 
+$ask = (tell | list | enumerate | explain | describe ) [me] [about] ;
+
 $offer = (offer | offers | take | takes | give | gives | have | haves | list | lists | offered );
 
 $labs = (labs | laboratories | lab | laboratory | workshop);
@@ -52,7 +55,7 @@ $program = (programs | program | degrees | academic programs | 4-year [program|p
 $facilities = ([$labs] facilities | [$labs] facility | labs | lab | laboratory | laboratories | workshop | workstation | space | spaces | provisions | provision |
               equipments | equipment | amenity | amenities);
 
-$polite = ( [ could | can ] [you] [please] [tell | describe | explain ] [me] [about] );
+$polite = ( [ could | can ] [you] [please] [tell | describe | explain | list | enumerate | talk ] [to] [me] [about] );
 
 $performingResearch = (performing research [in|on] | studying [in|on] | researching [in|on] | doing research [in|on] | specializing [in|on] | working [in|on]);
 
@@ -104,6 +107,9 @@ $deptFacilities = [$polite] (what|which) $facilities are in [the] "$$.*"<0-4> $d
                 | [$polite] $facilities (in | on | offered by) [the] "$$.*"<0-4> $department {out.da="Request"; out.prop="Department"; out.what="$$2"; out.theme="Facilities";}
                 | [$polite] "$$.*"<0-4> $department $facilities {out.da="Request"; out.prop="Department"; out.what="$$3"; out.theme="Facilities";};
 
+$deptInfo = ($polite) "$$.*"<0-4> $department {out.da="Request";out.prop="Department"; out.what="$$2";out.theme="DeptInfo";}
+        |    [$polite] $department "$$.*"<0-4> {out.da="Request";out.prop="Department"; out.what="$$1";out.theme="DeptInfo";} ;
+
 
 $listDeptCourses = [$polite] what $course does "$$.*"<0-4> $department $offer [this semester | this year | this time] {out.da = "Request";out.prop="Department";out.what="$$4";out.theme="CourseList";}
                 |  [$polite] what $course does $department "$$.*"<0-4>  $offer [this semester | this year | this time] {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="CourseList";}
@@ -127,7 +133,8 @@ $listDeptPGPrograms = [$polite] what $postgrads $program does "$$.*"<0-4> $depar
 $listDeptPrograms = [$polite] what $program does "$$.*"<0-4> $department $offer {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="ProgList";}
                  |  [$polite] what $program does $department "$$.*"<0-4>  $offer {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="ProgList";}
                 |  [$polite] [what] $program [is | are] [offered | taught] [in | by | from] "$$.*"<0-4> $department {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="ProgList";}
-                |  [$polite] "$$.*"<0-4> $department $program {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="ProgList";};
+                |  [$polite] "$$.*"<0-4> $department $program {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="ProgList";}
+                |  (what|which) [are|is] $program in "$$.*"<0-4> $department {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="ProgList";};
 
 
               

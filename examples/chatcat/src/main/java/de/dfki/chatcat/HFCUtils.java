@@ -117,7 +117,7 @@ public class HFCUtils{
 					
 					String course_comment_query = String.format("select ?a where %s <rdfs:comment> ?a ?x", course_id);
 					List<Object> comments = _agent._proxy.query(course_comment_query);
-					return (String)(comments.get(0));
+					return formatNewLine((String)(comments.get(0)));
 				}
 			}
 		}
@@ -135,7 +135,7 @@ public class HFCUtils{
 					String course_id = row.get(0);
 					String course_comment_query = String.format("select ?a where %s <rdfs:comment> ?a ?x", course_id);
 					List<Object> comments = _agent._proxy.query(course_comment_query);
-					return (String)(comments.get(0));
+					return formatNewLine((String)(comments.get(0)));
 				}
 
 			}
@@ -384,7 +384,7 @@ public class HFCUtils{
 
 	public static String answerDeptProgramList(String dept_name)
 	{
-		logger.log(Level.INFO, "Workinggg");
+		
 		String closest_dept_name = getClosestDept(dept_name);
 		if(closest_dept_name=="NULL")
 		{
@@ -394,7 +394,7 @@ public class HFCUtils{
 		String query = String.format("select ?b where %s <univ:offers> ?a ?_ & ?a <rdfs:label> ?b ?_ & ?a <rdf:type> <univ:Programs> ?_", dept_uri);
 		List<Object> res = _agent._proxy.query(query);
 		Integer count = 1;
-		logger.log(Level.INFO, "Workinggg");
+		
 		String ret = dept_name + " department offers the following programs : \n";
 		for(Object prog_obj:res)
 		{
@@ -407,7 +407,7 @@ public class HFCUtils{
 
 	public static String answerDeptUGProgramList(String dept_name)
 	{
-		logger.log(Level.INFO, "Workinggg");
+		
 		String closest_dept_name = getClosestDept(dept_name);
 		if(closest_dept_name=="NULL")
 		{
@@ -417,7 +417,7 @@ public class HFCUtils{
 		String query = String.format("select ?b where %s <univ:offers> ?a ?_ & ?a <rdfs:label> ?b ?_ & ?a <rdf:type> <univ:UndergradPrograms> ?_", dept_uri);
 		List<Object> res = _agent._proxy.query(query);
 		Integer count = 1;
-		logger.log(Level.INFO, "Workinggg");
+	
 		String ret = dept_name + " department offers the following undergraduate programs : \n";
 		for(Object prog_obj:res)
 		{
@@ -430,7 +430,7 @@ public class HFCUtils{
 
 	public static String answerDeptPGProgramList(String dept_name)
 	{
-		logger.log(Level.INFO, "Workinggg");
+		
 		String closest_dept_name = getClosestDept(dept_name);
 		if(closest_dept_name=="NULL")
 		{
@@ -440,7 +440,7 @@ public class HFCUtils{
 		String query = String.format("select ?b where %s <univ:offers> ?a ?_ & ?a <rdfs:label> ?b ?_ & ?a <rdf:type> <univ:PostgradPrograms> ?_", dept_uri);
 		List<Object> res = _agent._proxy.query(query);
 		Integer count = 1;
-		logger.log(Level.INFO, "Workinggg");
+	
 		String ret = dept_name + " department offers the following postgraduate programs : \n";
 		for(Object prog_obj:res)
 		{
@@ -449,6 +449,35 @@ public class HFCUtils{
 			count++;
 		}
 		return ret;
+	}
+	public static String formatNewLine(String word)
+	{
+		int index = word.indexOf(" ");
+		int count = 1;
+		StringBuffer string = new StringBuffer(word);
+        
+		while(index >= 0) {
+		if(count%10==0)
+		{
+			string.setCharAt(index,'\n');
+		}
+		count++;
+		index = word.indexOf(" ", index+1);
+		}
+		return string.toString(); 
+	}
+	public static String answerDeptInfo(String dept_name)
+	{
+		String closest_dept_name = getClosestDept(dept_name);
+		if(closest_dept_name=="NULL")
+		{
+			return "No department with name " + dept_name + " exists";
+		}
+		String dept_uri = "<univ:" + closest_dept_name + ">";
+		String query = String.format("select ?b where %s <rdfs:comment> ?b ?_", dept_uri);
+		List<Object> res = _agent._proxy.query(query);
+		logger.log(Level.INFO, String.valueOf(res.get(0)));
+		return formatNewLine(String.valueOf(res.get(0)));
 	}
 
 

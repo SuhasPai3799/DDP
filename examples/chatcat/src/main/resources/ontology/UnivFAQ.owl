@@ -591,7 +591,12 @@
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1100"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1200"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS3700"/>
-        <rdfs:label>Computer Science</rdfs:label>
+        <rdfs:comment>Global excellence and local relevance in research, teaching, and technology development is the vision of the Department. The Department was started as the Computer Centre in 1973 with the acquisition of an IBM 370, perhaps the most powerful computer in India at that time. It offered M.Tech, M.S and PhD degree programmes. In 1983, the B.Tech degree programme was started.
+
+Today the Department has a vibrant student body numbering about 700. Over 60% are postgraduate, mostly supported by scholarships. The Department also offers several attractive industry-sponsored Fellowships for outstanding PhD scholars and liberally supports participation in top-ranking international conferences.
+
+The department has been funded by FIST program from DST, Govt. of India in 2002 and 2017. The Secure Systems Laboratory is funded by FIST program 2017.</rdfs:comment>
+        <rdfs:label>Computer Science Department</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -655,7 +660,10 @@
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE3002"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE6112"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE6150"/>
-        <rdfs:label>Electrical Engineering</rdfs:label>
+        <rdfs:comment>The Electrical Engineering department was established in 1959. We currently have about 1000 students, 60 faculty members, 30 supporting staff members and 2 post-doctoral fellows with us.
+
+We perform a variety of research work from absolute fundamentals to component design to system integration to deployment/commercialisation. We have strong industry interaction and have been involved in development of state-of-art products. We house extensive fabrication, calibration and testing facilities for carrying out academic projects, sponsored research and consultancy projects.</rdfs:comment>
+        <rdfs:label>Electrical Engineering Department</rdfs:label>
     </owl:NamedIndividual>
     
 

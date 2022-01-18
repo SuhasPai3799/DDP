@@ -68,6 +68,10 @@ raw:Request ^ Department
 ->
 # = :canned ^ <string>concatenate("The ", #d, " department offers ", #t, " courses in total").
 
+raw:Request ^ Department ^ <dept_name>#d ^ <dept_info>#di
+->
+# = :canned ^ <string> #di.
+
 raw:Request ^ Department ^ <dept_name>#d ^ <dept_facilities>#df
 ->
 # = :canned ^ <string> #df.
