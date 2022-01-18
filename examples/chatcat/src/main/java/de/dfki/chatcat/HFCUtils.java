@@ -405,6 +405,52 @@ public class HFCUtils{
 		return ret;
 	}
 
+	public static String answerDeptUGProgramList(String dept_name)
+	{
+		logger.log(Level.INFO, "Workinggg");
+		String closest_dept_name = getClosestDept(dept_name);
+		if(closest_dept_name=="NULL")
+		{
+			return "No department with name " + dept_name + " exists";
+		}
+		String dept_uri = "<univ:" + closest_dept_name + ">";
+		String query = String.format("select ?b where %s <univ:offers> ?a ?_ & ?a <rdfs:label> ?b ?_ & ?a <rdf:type> <univ:UndergradPrograms> ?_", dept_uri);
+		List<Object> res = _agent._proxy.query(query);
+		Integer count = 1;
+		logger.log(Level.INFO, "Workinggg");
+		String ret = dept_name + " department offers the following undergraduate programs : \n";
+		for(Object prog_obj:res)
+		{
+			String prog_name = String.valueOf(prog_obj);
+			ret += String.valueOf(count) + ". " + prog_name + "\n";
+			count++;
+		}
+		return ret;
+	}
+
+	public static String answerDeptPGProgramList(String dept_name)
+	{
+		logger.log(Level.INFO, "Workinggg");
+		String closest_dept_name = getClosestDept(dept_name);
+		if(closest_dept_name=="NULL")
+		{
+			return "No department with name " + dept_name + " exists";
+		}
+		String dept_uri = "<univ:" + closest_dept_name + ">";
+		String query = String.format("select ?b where %s <univ:offers> ?a ?_ & ?a <rdfs:label> ?b ?_ & ?a <rdf:type> <univ:PostgradPrograms> ?_", dept_uri);
+		List<Object> res = _agent._proxy.query(query);
+		Integer count = 1;
+		logger.log(Level.INFO, "Workinggg");
+		String ret = dept_name + " department offers the following postgraduate programs : \n";
+		for(Object prog_obj:res)
+		{
+			String prog_name = String.valueOf(prog_obj);
+			ret += String.valueOf(count) + ". " + prog_name + "\n";
+			count++;
+		}
+		return ret;
+	}
+
 
 
 	// public static List<String> answerDeptCoursesOffered(String dept_name)

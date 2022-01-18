@@ -187,3 +187,29 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="ProgList")
 	}
 	lastDAprocessed();
 }
+
+answer_dept_ug_programs:
+/** Provides list of UG programs for the department */
+if (lastDA()>= #Request(Department) && lastDA().theme=="UGProgList")
+{
+  dept_name = lastDA().what;
+	all_programs = (String)hfcutils.answerDeptUGProgramList(dept_name);
+	propose("return_dept_ug_program_list")
+	{
+		emitDA(#Request(Department,dept_name={dept_name}, ug_program_list={all_programs}));
+	}
+	lastDAprocessed();
+}
+
+answer_dept_pg_programs:
+/** Provides list of PG programs for the department */
+if (lastDA()>= #Request(Department) && lastDA().theme=="PGProgList")
+{
+  dept_name = lastDA().what;
+	all_programs = (String)hfcutils.answerDeptPGProgramList(dept_name);
+	propose("return_dept_pg_program_list")
+	{
+		emitDA(#Request(Department,dept_name={dept_name}, pg_program_list={all_programs}));
+	}
+	lastDAprocessed();
+}

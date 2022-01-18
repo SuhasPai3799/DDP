@@ -18,12 +18,18 @@ public $top =  ($greet |
               $deptFacilities |
               $listDeptCourses |
               $listDeptProfs |
-              $listDeptPrograms
+              $listDeptUGPrograms |
+              $listDeptPrograms |
+              $listDeptPGPrograms
               )  {!{ out = $%1; }!} [$punct] ;
 
 $thanks = ("$$.*"<0->);
 
 $punct = ("$$[.;?!]"|$NULL);
+
+$undergrads = (undergraduates | undergrads | school students | 12th pass | UG | undergraduate | under-graduate | undergrad);
+
+$postgrads = (postgrads | postgraduate | post-graduate | postgraduate | PG | postgrad);
 
 $prof = (prof | professor | prof. | instructor | teacher | profs | professors | instructors | teachers) ;
 
@@ -108,9 +114,20 @@ $listDeptProfs = [$polite] [what|which] $prof [$teach] [are|is] in "$$.*"<0-4> $
                 |[$polite] $prof in "$$.*"<0-4> $department {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="ProfList";}
                 |[$polite] "$$.*"<0-4> $department $prof {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="ProfList";};
 
+$listDeptUGPrograms = [$polite] what $undergrads $program does "$$.*"<0-4> $department $offer {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="UGProgList";}
+                 |  [$polite] what $undergrads $program does $department "$$.*"<0-4>  $offer {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="UGProgList";}
+                |  [$polite] [what] $undergrads $program [is | are] [offered | taught] [in | by | from] "$$.*"<0-4> $department {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="UGProgList";}
+                |  [$polite] "$$.*"<0-4> $department $undergrads  $program {out.da = "Request";out.prop="Department";out.what="$$4";out.theme="UGProgList";};
+
+$listDeptPGPrograms = [$polite] what $postgrads $program does "$$.*"<0-4> $department $offer {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="PGProgList";}
+                 |  [$polite] what $postgrads $program does $department "$$.*"<0-4>  $offer {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="PGProgList";}
+                |  [$polite] [what] $postgrads $program [is | are] [offered | taught] [in | by | from] "$$.*"<0-4> $department {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="PGProgList";}
+                |  [$polite] "$$.*"<0-4> $department $postgrads $program {out.da = "Request";out.prop="Department";out.what="$$4";out.theme="PGProgList";};
 
 $listDeptPrograms = [$polite] what $program does "$$.*"<0-4> $department $offer {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="ProgList";}
                  |  [$polite] what $program does $department "$$.*"<0-4>  $offer {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="ProgList";}
                 |  [$polite] [what] $program [is | are] [offered | taught] [in | by | from] "$$.*"<0-4> $department {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="ProgList";}
                 |  [$polite] "$$.*"<0-4> $department $program {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="ProgList";};
+
+
               

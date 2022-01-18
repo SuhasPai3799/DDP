@@ -85,3 +85,11 @@ raw:Request ^ Department ^ <dept_name>#d ^ <prof_list>#p
 raw:Request ^ Department ^ <dept_name>#d ^ <program_list>#p
 ->
 # = :canned ^ <string> #p.
+
+raw:Request ^ Department ^ <dept_name>#d ^ <ug_program_list>#p
+->
+# = :canned ^ <string> #p.
+
+raw:Request ^ Department ^ <dept_name>#d ^ <pg_program_list>#p
+->
+# = :canned ^ <string> #p.
