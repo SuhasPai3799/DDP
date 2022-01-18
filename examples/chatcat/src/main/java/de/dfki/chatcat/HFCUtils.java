@@ -64,6 +64,23 @@ public class HFCUtils{
 		return query_prof_name;
 	}
 	
+	public static String formatNewLine(String word)
+	{
+		int index = word.indexOf(" ");
+		int count = 1;
+		StringBuffer string = new StringBuffer(word);
+        
+		while(index >= 0) {
+		if(count%10==0)
+		{
+			string.setCharAt(index,'\n');
+		}
+		count++;
+		index = word.indexOf(" ", index+1);
+		}
+		return string.toString(); 
+	}
+
 	/**
 	 * Given a department name, return the name of a close department name as stored in the database.
 	 * @param dept_name Name of the department for which we are trying to find the closest possible name in the database.
@@ -188,6 +205,68 @@ public class HFCUtils{
 			}	
 		}
 		return "No such course exists.";
+	}
+
+	public static String answerCoursePrereqInfo(String c_name)
+	{
+		String c_name_uri = "<univ:" + c_name + ">";
+		if(c_name.matches("[a-zA-Z][a-zA-Z][0-9]+"))
+		{
+			
+			String query = "select ?a where ?a <rdf:type> <univ:Courses> ?d";
+			List<Object> res = _agent._proxy.query(query);
+			
+
+			for(Object course: res)
+			{
+				String course_id = String.valueOf(course);
+				
+				if(c_name_uri.toLowerCase().equals(course_id.toLowerCase()))
+				{	
+					String prereq_query = String.format("select ?a ?b where %s <univ:hasPrerequisite> ?a ?_ & ?a <rdfs:label> ?b ?_",course_id);
+					QueryResult prereq_res = _agent._proxy.selectQuery(prereq_query);
+					Integer count = 1;
+					String ret = "The course : " + c_name + " has the following prerequisite courses: \n";
+					for(List<String> course_row: prereq_res.getTable().getRows())
+					{
+						String prereq_course_label = cleanXSD(String.valueOf(course_row.get(1)));
+						String prereq_course_id = getNameFromURI(String.valueOf(course_row.get(0)));
+						ret += String.valueOf(count) + ". " + prereq_course_id + " - " + prereq_course_label + "\n";
+						count++;
+					}
+					return ret;
+				}
+			}
+		}
+		else
+		{
+			String query = "select ?a ?b "
+						+  " where " +  " ?a <rdf:type> <univ:Courses> ?_ " 
+						+  " & ?a <rdfs:label> ?b ?_ ";
+			QueryResult res = _agent._proxy.selectQuery(query);
+			for(List<String> row: res.getTable().getRows())
+			{
+				String course_label = row.get(1).toLowerCase();
+				if(course_label.contains(c_name.toLowerCase()))
+				{
+					String course_id = row.get(0);
+					String prereq_query = String.format("select ?a ?b where %s <univ:hasPrerequisite> ?a ?_ & ?a <rdfs:label> ?b ?_",course_id);
+					QueryResult prereq_res = _agent._proxy.selectQuery(prereq_query);
+					Integer count = 1;
+					String ret = "The course : " + c_name + " has the following prerequisite courses: \n";
+					for(List<String> course_row: prereq_res.getTable().getRows())
+					{
+						String prereq_course_label = cleanXSD(String.valueOf(course_row.get(1)));
+						String prereq_course_id = getNameFromURI(String.valueOf(course_row.get(0)));
+						ret += String.valueOf(count) + ". " + prereq_course_id + " - " + prereq_course_label + "\n";
+						count++;
+					}
+					return ret;
+				}
+
+			}
+		}
+		return "No course with name " + c_name + " exists.";
 	}
 
 
@@ -450,22 +529,7 @@ public class HFCUtils{
 		}
 		return ret;
 	}
-	public static String formatNewLine(String word)
-	{
-		int index = word.indexOf(" ");
-		int count = 1;
-		StringBuffer string = new StringBuffer(word);
-        
-		while(index >= 0) {
-		if(count%10==0)
-		{
-			string.setCharAt(index,'\n');
-		}
-		count++;
-		index = word.indexOf(" ", index+1);
-		}
-		return string.toString(); 
-	}
+
 	public static String answerDeptInfo(String dept_name)
 	{
 		String closest_dept_name = getClosestDept(dept_name);

@@ -76,6 +76,18 @@ if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseTeacherInfo")
   lastDAprocessed();
 }
 
+answer_course_prereqs:
+/** Provides info about prerequisite courses for a given course **/
+if (lastDA()>= #Request(Courses) && lastDA().theme=="CoursePrereqInfo")
+{
+  course_name = lastDA().what;
+  course_prereq_info = (String)hfcutils.answerCoursePrereqInfo(course_name);
+  propose("return_course_prereq_info")
+  {
+    emitDA(#Request(Courses, cname={course_name}, course_prereq_info={course_prereq_info}));
+  }
+  lastDAprocessed();
+}
 
 /** Rules related to professors */
 

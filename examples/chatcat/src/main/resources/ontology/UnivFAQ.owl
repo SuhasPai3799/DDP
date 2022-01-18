@@ -58,6 +58,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasPrerequisite -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasPrerequisite">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isPrerequisiteFor"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasPublished -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasPublished">
@@ -81,6 +90,16 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#headsDepartment">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isPrerequisiteFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isPrerequisiteFor">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
     </owl:ObjectProperty>
     
 
@@ -478,6 +497,11 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1100">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#UndergradCourses"/>
+        <UnivFAQ:isPrerequisiteFor rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1200"/>
+        <UnivFAQ:isPrerequisiteFor rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS2800"/>
+        <UnivFAQ:isPrerequisiteFor rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS3700"/>
+        <UnivFAQ:isPrerequisiteFor rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6023"/>
+        <UnivFAQ:isPrerequisiteFor rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6910"/>
         <rdfs:comment>The introductory computer science course - teaches basic programming to fresher students</rdfs:comment>
         <rdfs:label>Introduction to Programming</rdfs:label>
     </owl:NamedIndividual>
@@ -509,6 +533,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS3700">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+        <UnivFAQ:isPrerequisiteFor rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6852"/>
         <rdfs:comment>General introduction to database systems; Database - DBMS disctinction, approaches to building a database, data models, database management system, three-schema architecture of a database, challenges in building a DBMS, various components of a DBMS. E/R Model - Conceptual data modeling - motivation, entities, entity types, various types of attributes, relationships, relationship types, E/R diagram notation, examples. Relational Data Model - Concept of relations, schema-instance distinction, keys, referential integrity and foreign keys, relational algebra operators: selection, projection, cross product, various types of joins, division, example queries, tuple relation calculus, domain relational calculus, converting the database specification in E/R notation to the relational schema. SQL - Introduction, data definition in SQL, table, key and foreign key definitions, update behaviors. Querying in SQL - basic select-from-where block and its semantics, nested queries - correlated and uncorrelated, notion of aggregation, aggregation functions group by and having clauses, embedded SQL. Dependencies and Normal forms - Importance of a good schema design, problems encountered with bad schema designs, motivation for normal forms, dependency theory - functional dependencies, Armstrong&apos;s axioms for FD&apos;s, closure of a set of FD&apos;s, minimal covers, definitions of 1NF, 2NF, 3NF and BCNF, decompositions and desirable properties of them, algorithms for 3NF and BCNF normalization, multi-valued dependencies and 4NF, join dependencies and definition of 5NF. Data Storage and Indexes - file organizations, primary, secondary index structures, various index structures - hash-based, dynamic hashing techniques, multi-level indexes, B+ trees. Transaction processing and Error recovery - concepts of transaction processing, ACID properties, concurrency control, locking based protocols for CC, error recovery and logging, undo, redo, undo-redo logging and recovery methods.</rdfs:comment>
         <rdfs:label>Introduction to Database Systems</rdfs:label>
     </owl:NamedIndividual>

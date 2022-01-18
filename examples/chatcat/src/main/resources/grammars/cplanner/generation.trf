@@ -43,6 +43,9 @@ raw:Request ^ Courses
 ->
 # = :canned ^ <string>concatenate("Prof.", #info," teaches the course ", #cname).
 
+raw:Request ^ Courses ^ <cname>#c ^ <course_prereq_info>#cp
+->
+# = :canned ^ <string>#cp.
 
 
 

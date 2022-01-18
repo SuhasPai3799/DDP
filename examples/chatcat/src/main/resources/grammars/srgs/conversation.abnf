@@ -12,6 +12,7 @@ public $top =  ($greet |
               $courseInfo |
               $countDeptCourses | 
               $courseTeacherInfo |
+              $coursePrereqInfo |
               $teacherCourseInfo |
               $teacherResearchInfo |
               $profResearchField |
@@ -50,6 +51,8 @@ $offer = (offer | offers | take | takes | give | gives | have | haves | list | l
 
 $labs = (labs | laboratories | lab | laboratory | workshop);
 
+$prereqs = (prereqs | prerequisites | pre-requisites );
+
 $program = (programs | program | degrees | academic programs | 4-year [program|programs] | 5-year [program|programs]);
 
 $facilities = ([$labs] facilities | [$labs] facility | labs | lab | laboratory | laboratories | workshop | workstation | space | spaces | provisions | provision |
@@ -65,7 +68,7 @@ $researchField = (research [field | area | topic | interest | fields | areas | t
 
 // Course related grammar rules
 $courseInfo = ([$polite] (tell [me] about | describe | explain | help on) [the]  
-                (course "$$.*" {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseInfo"} |
+                (course "$$.*"<0-5> {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseInfo"} |
                 "$$.*"<0-10> course {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseInfo"} )) 
                 
             | ([$polite] what is [a|the] course "$$.*"<0-10> about {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseInfo"})
@@ -77,6 +80,9 @@ $courseTeacherInfo = [$polite] who $teach [course] "$$.*"<0-10> {out.da="Request
                      [$polite] which $prof $teach  [course] "$$.*"<0-10> {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseTeacherInfo";} |
                      [$polite] which $prof $teach "$$.*"<0-10> course   {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseTeacherInfo";};
 
+$coursePrereqInfo = [$polite] [what|which] [$course] [is|are] [a | the] $prereqs for "$$.*"<0-5> $course {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CoursePrereqInfo";}
+                   |[$polite] "$$.*"<0-5> $course $prereqs [$course]{out.da="Request" ; out.prop="Courses" ; out.what="$$4"; out.theme="CoursePrereqInfo";}
+                   |[$polite] [what|which] [$course] $prereqs does "$$.*"<0-5> [$course] have {out.da="Request" ; out.prop="Courses" ; out.what="$$3"; out.theme="CoursePrereqInfo";};
 
 
 
