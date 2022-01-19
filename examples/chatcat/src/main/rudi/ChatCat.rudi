@@ -238,3 +238,19 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="DeptInfo")
 	}
 	lastDAprocessed();
 }
+
+
+/** Anaphora resolution rules */
+
+if(lastDA()>= #Request(Professor) && lastDA().theme=="testAnaphora1")
+{
+  tes = new Professors;
+  tes.testProp = "hi";
+  lastDAprocessed();
+}
+
+if(lastDA()>= #Request(Professor) && lastDA().theme=="testAnaphora2")
+{
+  prof_name = (String)hfcutils.resolveProfName();
+  lastDAprocessed();
+}

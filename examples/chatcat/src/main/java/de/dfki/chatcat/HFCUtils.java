@@ -546,15 +546,25 @@ public class HFCUtils{
 
 
 
-	// public static List<String> answerDeptCoursesOffered(String dept_name)
-	// {
-	// 	String closest_dept_name = getClosestDept(dept_name)
-	// 	if(closest_dept_name == "NULL")
-	// 	{
-	// 		return "-1";
-	// 	}
-	// 	String dept_uri 
-	// }
+
+	/* 
+	Anaphora Resolution
+	*/
+
+	public static String resolveProfName()
+	{
+		String query = "select ?a where ?b <rdf:type> <univ:Professor> ?_ & ?b <univ:name> ?a ?_";
+		List<Object> res = _agent._proxy.query(query);
+		for(Object prof_name:res)
+		{
+			String prof_name_str = String.valueOf(prof_name);
+			logger.log(Level.INFO, prof_name_str);
+		}
+		return "Mani";
+	}
+
+
+
 	public HFCUtils(ChatAgent agent)
 	{
 		this._agent = agent;

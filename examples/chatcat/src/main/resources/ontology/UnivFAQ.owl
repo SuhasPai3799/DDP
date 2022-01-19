@@ -172,6 +172,37 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#name">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#testProp -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#testProp">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -404,6 +435,7 @@
         <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Information_Theory"/>
         <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Network_Control"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE6112"/>
+        <UnivFAQ:name>Abishek Sinha</UnivFAQ:name>
         <rdfs:label>Abishek Sinha</rdfs:label>
     </owl:NamedIndividual>
     
@@ -434,6 +466,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#AssistantProfessor"/>
         <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Machine_Learning"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1100"/>
+        <UnivFAQ:name>Arun Rajkumar</UnivFAQ:name>
         <rdfs:label>Arun Rajkumar</rdfs:label>
     </owl:NamedIndividual>
     
@@ -455,7 +488,8 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor"/>
         <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Reinforcement_Learning"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6700"/>
-        <rdfs:label>Balaram Ravindran</rdfs:label>
+        <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Balaram Ravindran</UnivFAQ:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Balaram Ravindran</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -590,7 +624,8 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor"/>
         <UnivFAQ:headsDepartment rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6910"/>
-        <rdfs:label>C Chandra Sekhar</rdfs:label>
+        <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C Chandra Sekhar</UnivFAQ:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C Chandra Sekhar</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -722,7 +757,8 @@ We perform a variety of research work from absolute fundamentals to component de
         <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Network_Control"/>
         <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Transportation_Networks"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE6150"/>
-        <rdfs:label>Krishna Jagannathan</rdfs:label>
+        <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Krishna Jagannathan</UnivFAQ:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Krishna Jagannathan</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -752,7 +788,8 @@ We perform a variety of research work from absolute fundamentals to component de
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor"/>
         <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Artificial_Intelligence"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1200"/>
-        <rdfs:label>N.S. Narayanaswamy</rdfs:label>
+        <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">N.S. Narayanaswamy</UnivFAQ:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">N.S. Narayanaswamy</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -812,7 +849,8 @@ We perform a variety of research work from absolute fundamentals to component de
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#AssociateProfessor"/>
         <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Compilers"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6023"/>
-        <rdfs:label>Rupesh Nasre</rdfs:label>
+        <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rupesh Nasre</UnivFAQ:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rupesh Nasre</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -824,7 +862,8 @@ We perform a variety of research work from absolute fundamentals to component de
         <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Analog"/>
         <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#RFIC_Design"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE3002"/>
-        <rdfs:label>S Aniruddhan</rdfs:label>
+        <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S Aniruddhan</UnivFAQ:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S Aniruddhan</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -840,8 +879,9 @@ We perform a variety of research work from absolute fundamentals to component de
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Shweta_Agarwal">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#AssociateProfessor"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS2800"/>
+        <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shweta Agarwal</UnivFAQ:name>
         <rdfs:comment>Cryptography, or cryptology, is the practice and study of techniques for secure communication in the presence of adversarial behavior.</rdfs:comment>
-        <rdfs:label>Shweta Agarwal</rdfs:label>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shweta Agarwal</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -853,7 +893,8 @@ We perform a variety of research work from absolute fundamentals to component de
         <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Ontologies_and_Application"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS3700"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6852"/>
-        <rdfs:label>P Sreenivasa Kumar</rdfs:label>
+        <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">P Sreenivasa Kumar</UnivFAQ:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">P Sreenivasa Kumar</rdfs:label>
     </owl:NamedIndividual>
     
 

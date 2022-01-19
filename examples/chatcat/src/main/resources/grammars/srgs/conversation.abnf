@@ -22,7 +22,9 @@ public $top =  ($greet |
               $listDeptUGPrograms |
               $listDeptPrograms |
               $listDeptPGPrograms |
-              $deptInfo
+              $deptInfo |
+              $test1 |
+              $test2
               )  {!{ out = $%1; }!} [$punct] ;
 
 $thanks = ("$$.*"<0->);
@@ -143,4 +145,9 @@ $listDeptPrograms = [$polite] what $program does "$$.*"<0-4> $department $offer 
                 |  (what|which) [are|is] $program in "$$.*"<0-4> $department {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="ProgList";};
 
 
-              
+
+// test anaphora resolution
+
+$test1 = test1 "$$.*"<0-4> {out.da="Request"; out.prop="Professor"; out.theme="testAnaphora1";out.what="$$1";};
+
+$test2 = test2 {out.da="Request"; out.prop="Professor"; out.theme="testAnaphora2"; out.what="$$1";};
