@@ -584,6 +584,17 @@ public class HFCUtils{
 		return cleanXSD(context_prof.get(0));
 	}
 
+	public static String resolveObjectPronoun(String class_uri)
+	{
+		String query = String.format("select ?a ?c where ?b <rdf:type> %s ?c & ?b <univ:name> ?a ?_",class_uri);
+		QueryResult res = _agent._proxy.selectQuery(query);
+		List<List<String>> all_obj= res.getTable().getRows();
+		Collections.sort(all_obj, new ListComparator<>());
+		List<String> context_obj = all_obj.get(all_obj.size() - 1);
+		logger.log(Level.INFO, context_obj.get(0));
+		return cleanXSD(context_obj.get(0));
+	}
+
 
 
 	public HFCUtils(ChatAgent agent)

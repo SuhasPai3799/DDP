@@ -31,6 +31,8 @@ $thanks = ("$$.*"<0->);
 
 $punct = ("$$[.;?!]"|$NULL);
 
+$objectPronoun = (it | that | this | "it's" | its );
+
 $undergrads = (undergraduates | undergrads | school students | 12th pass | UG | undergraduate | under-graduate | undergrad);
 
 $postgrads = (postgrads | postgraduate | post-graduate | postgraduate | PG | postgrad);
@@ -55,7 +57,7 @@ $labs = (labs | laboratories | lab | laboratory | workshop);
 
 $prereqs = (prereqs | prerequisites | pre-requisites );
 
-$pronouns = (his | he | she | him | her | hers | her's | his's );
+$pronouns = (his | he | she | him | her | hers);
 
 $program = (programs | program | degrees | academic programs | 4-year [program|programs] | 5-year [program|programs]);
 
@@ -78,16 +80,22 @@ $courseInfo = ([$polite] (tell [me] about | describe | explain | help on) [the]
                 
             | ([$polite] what is [a|the] course "$$.*"<0-10> about {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseInfo"})
             | ([$polite] what is "$$.*"<0-10> course [about] {out.da="Request" ; out.prop="Courses" ; out.what="$$3"; out.theme="CourseInfo"})
-            | ([$polite] what is [a|the] course "$$.*"<0-10> {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseInfo"});
+            | ([$polite] what is [a|the] course "$$.*"<0-10> {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseInfo"})
+            | [$polite] what is [the] course about {out.da="Request" ; out.prop="Courses" ; out.what="objectPronoun"; out.theme="CourseInfo"}
+            | [$polite](tell [me] [more] about | describe [to me] | explain [to me] | help on) [more] $objectPronoun $course {out.da="Request" ; out.prop="Courses" ; out.what="objectPronoun"; out.theme="CourseInfo"};
 
 $courseTeacherInfo = [$polite] who $teach [course] "$$.*"<0-10> {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseTeacherInfo";} |
                      [$polite] who $teach  "$$.*"<0-10>   course {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseTeacherInfo";} |
                      [$polite] which $prof $teach  [course] "$$.*"<0-10> {out.da="Request" ; out.prop="Courses" ; out.what="$$1"; out.theme="CourseTeacherInfo";} |
-                     [$polite] which $prof $teach "$$.*"<0-10> course   {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseTeacherInfo";};
+                     [$polite] which $prof $teach "$$.*"<0-10> course   {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CourseTeacherInfo";} |
+                     [$polite] which $prof $teach $objectPronoun {out.da="Request" ; out.prop="Courses" ; out.what="objectPronoun"; out.theme="CourseTeacherInfo";} |
+                     [$polite] who $teach $objectPronoun {out.da="Request" ; out.prop="Courses" ; out.what="objectPronoun"; out.theme="CourseTeacherInfo";};
 
 $coursePrereqInfo = [$polite] [what|which] [$course] [is|are] [a | the] $prereqs for "$$.*"<0-5> $course {out.da="Request" ; out.prop="Courses" ; out.what="$$2"; out.theme="CoursePrereqInfo";}
                    |[$polite] "$$.*"<0-5> $course $prereqs [$course]{out.da="Request" ; out.prop="Courses" ; out.what="$$4"; out.theme="CoursePrereqInfo";}
-                   |[$polite] [what|which] [$course] $prereqs does "$$.*"<0-5> [$course] have {out.da="Request" ; out.prop="Courses" ; out.what="$$3"; out.theme="CoursePrereqInfo";};
+                   |[$polite] [what|which] [$course] $prereqs does "$$.*"<0-5> [$course] have {out.da="Request" ; out.prop="Courses" ; out.what="$$3"; out.theme="CoursePrereqInfo";}
+                   |[$polite] [what | which] [$course] [is|are] [a | the] $prereqs [$course] for $objectPronoun {out.da="Request" ; out.prop="Courses" ; out.what="objectPronoun"; out.theme="CoursePrereqInfo";}
+                   | [$polite] what are $objectPronoun $prereqs [$course] {out.da="Request" ; out.prop="Courses" ; out.what="objectPronoun"; out.theme="CoursePrereqInfo";} ;
 
 
 

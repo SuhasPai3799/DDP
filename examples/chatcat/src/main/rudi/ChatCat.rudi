@@ -55,11 +55,24 @@ answer_courses:
 /** Provides description about the course */
 if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseInfo")
 {	
-	course_name = lastDA().what;
-	course_info = (String)hfcutils.answerCourseInfo(course_name);
-	propose("return_course_info"){
-		emitDA(#Request(Courses, cname={course_name}, info={course_info}));
-	}
+  if(lastDA().what == "objectPronoun")
+  { 
+    course_resolved_name = (String)hfcutils.resolveObjectPronoun("<univ:Courses>");
+    course_resolved_info = (String)hfcutils.answerCourseInfo(course_resolved_name);
+    propose("return_course_info"){
+      emitDA(#Request(Courses, cname={course_resolved_name}, info={course_resolved_info}));
+    }
+  }
+  else
+  {
+    course_name = lastDA().what;
+    courseObj = new Courses;
+    courseObj.name = course_name;
+    course_info = (String)hfcutils.answerCourseInfo(course_name);
+    propose("return_course_info"){
+      emitDA(#Request(Courses, cname={course_name}, info={course_info}));
+    }
+  }
 	lastDAprocessed();
 }
 
@@ -67,11 +80,26 @@ answer_course_instructor:
 /** Provides info about which prof is teaching the course **/
 if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseTeacherInfo")
 {
-  course_name = lastDA().what;
-  course_teacher_info = (String)hfcutils.answerCourseTeacherInfo(course_name);
-  propose("return_course_teacher_info")
+  if(lastDA().what == "objectPronoun")
   {
-    emitDA(#Request(Courses, cname={course_name}, course_teacher_info={course_teacher_info}));
+    course_resolved_name = (String)hfcutils.resolveObjectPronoun("<univ:Courses>");
+    course_resolved_teacher_info = (String)hfcutils.answerCourseTeacherInfo(course_resolved_name);
+    propose("return_course_teacher_info")
+    {
+      emitDA(#Request(Courses, cname={course_resolved_name}, course_teacher_info={course_resolved_teacher_info}));
+    }
+  }
+  else
+  { 
+
+    course_name = lastDA().what;
+    courseObj = new Courses;
+    courseObj.name = course_name;
+    course_teacher_info = (String)hfcutils.answerCourseTeacherInfo(course_name);
+    propose("return_course_teacher_info")
+    {
+      emitDA(#Request(Courses, cname={course_name}, course_teacher_info={course_teacher_info}));
+    }
   }
   lastDAprocessed();
 }
@@ -80,11 +108,23 @@ answer_course_prereqs:
 /** Provides info about prerequisite courses for a given course **/
 if (lastDA()>= #Request(Courses) && lastDA().theme=="CoursePrereqInfo")
 {
-  course_name = lastDA().what;
-  course_prereq_info = (String)hfcutils.answerCoursePrereqInfo(course_name);
-  propose("return_course_prereq_info")
+  if(lastDA().what == "objectPronoun")
   {
-    emitDA(#Request(Courses, cname={course_name}, course_prereq_info={course_prereq_info}));
+    course_resolved_name = (String)hfcutils.resolveObjectPronoun("<univ:Courses>");
+    course_resolved_prereq_info = (String)hfcutils.answerCoursePrereqInfo(course_resolved_name);
+    propose("return_course_prereq_info")
+    {
+      emitDA(#Request(Courses, cname={course_resolved_name}, course_prereq_info={course_resolved_prereq_info}));
+    }
+  }
+  else
+  {
+    course_name = lastDA().what;
+    course_prereq_info = (String)hfcutils.answerCoursePrereqInfo(course_name);
+    propose("return_course_prereq_info")
+    {
+      emitDA(#Request(Courses, cname={course_name}, course_prereq_info={course_prereq_info}));
+    }
   }
   lastDAprocessed();
 }
