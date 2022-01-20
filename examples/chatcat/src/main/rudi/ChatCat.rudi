@@ -96,10 +96,25 @@ answer_prof_courses:
 if (lastDA()>= #Request(Professor) && lastDA().theme=="CourseInfo")
 {
   prof_name = lastDA().what;
-  prof_courses = (String)hfcutils.answerProfCourses(prof_name);
-  propose("return_prof_courses")
+  if(prof_name == "pronoun")
   {
-    emitDA(#Request(Professor, prof_name={prof_name}, prof_courses = {prof_courses}));
+    prof_resolved_name = (String)hfcutils.resolveProfName();
+    prof_resolved_courses = (String)hfcutils.answerProfCourses(prof_resolved_name);
+    propose("return_prof_courses")
+    {
+      emitDA(#Request(Professor, prof_name={prof_name}, prof_courses = {prof_resolved_courses}));
+    }
+  }
+  else
+  {
+    clean_prof_name = (String)hfcutils.getProfName(prof_name);
+    prof = new Professors;
+    prof.name = clean_prof_name;
+    prof_courses = (String)hfcutils.answerProfCourses(prof_name);
+    propose("return_prof_courses")
+    {
+      emitDA(#Request(Professor, prof_name={prof_name}, prof_courses = {prof_courses}));
+    }
   }
   lastDAprocessed();
 }
@@ -110,10 +125,25 @@ answer_prof_research:
 if (lastDA()>= #Request(Professor) && lastDA().theme=="ResearchInfo")
 {
   prof_name = lastDA().what;
-  prof_areas = (String)hfcutils.answerProfResearchArea(prof_name);
-  propose("return_prof_research_area")
+  if(prof_name == "pronoun")
   {
-    emitDA(#Request(Professor, prof_name={prof_name}, prof_areas = {prof_areas}));
+    prof_resolved_name = (String)hfcutils.resolveProfName();
+    prof_resolved_areas = (String)hfcutils.answerProfResearchArea(prof_resolved_name);
+    propose("return_prof_research_area")
+    {
+      emitDA(#Request(Professor, prof_name={prof_resolved_name}, prof_areas = {prof_resolved_areas}));
+    }
+  }
+  else
+  {
+    clean_prof_name = (String)hfcutils.getProfName(prof_name);
+    prof = new Professors;
+    prof.name = clean_prof_name;
+    prof_areas = (String)hfcutils.answerProfResearchArea(prof_name);
+    propose("return_prof_research_area")
+    {
+      emitDA(#Request(Professor, prof_name={prof_name}, prof_areas = {prof_areas}));
+    }
   }
   lastDAprocessed();
 }
@@ -244,8 +274,8 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="DeptInfo")
 
 if(lastDA()>= #Request(Professor) && lastDA().theme=="testAnaphora1")
 {
-  tes = new Professors;
-  tes.testProp = "hi";
+  tes = new Courses;
+  tes.name = "hi";
   lastDAprocessed();
 }
 

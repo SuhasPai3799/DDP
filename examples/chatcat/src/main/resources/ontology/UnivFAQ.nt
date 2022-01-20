@@ -222,7 +222,9 @@ _:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/19
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MTech.> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PostgradPrograms> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#name> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#name> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
-<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#name> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/2002/07/owl#Thing> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#name> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#name> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#name> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#name> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Network_Control> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Network_Control> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
@@ -310,6 +312,7 @@ _:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/19
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#teaches> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#testProp> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#testProp> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#testProp> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#testProp> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#testProp> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Transportation_Networks> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields> .

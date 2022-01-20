@@ -26,6 +26,7 @@ import de.dfki.lt.loot.jada.Pair;
 
 import static de.dfki.chatcat.ConstUtils.*;
 
+import static de.dfki.chatcat.ListComparator.*;
 
 
 
@@ -43,6 +44,26 @@ public class HFCUtils{
 	{
 		return input.split("\"")[1];
 	}
+
+	public static String getProfName(String query_prof_name)
+	{
+		query_prof_name = cleanProfNames(query_prof_name);
+		String query_prof_uri = "<univ:" + query_prof_name + ">";
+		String query = "select ?a ?b where ?a <rdf:type> <univ:Professors> ?_ & ?a <rdfs:label> ?b ?_";
+		QueryResult res = _agent._proxy.selectQuery(query);
+		Boolean flag = false;
+		for(List<String> row: res.getTable().getRows())
+		{
+			String prof_uri = String.valueOf(row.get(0));
+			String prof_name = String.valueOf(row.get(1));
+			if(prof_name.toLowerCase().contains(query_prof_name.toLowerCase()))
+			{
+				return prof_name;
+			}
+		}
+		return "NULL";
+	}
+
 	public static String cleanProfNames(String query_prof_name)
 	{
 		query_prof_name = query_prof_name.toLowerCase();
@@ -546,6 +567,7 @@ public class HFCUtils{
 
 
 
+	  
 
 	/* 
 	Anaphora Resolution
@@ -553,14 +575,13 @@ public class HFCUtils{
 
 	public static String resolveProfName()
 	{
-		String query = "select ?a where ?b <rdf:type> <univ:Professor> ?_ & ?b <univ:name> ?a ?_";
-		List<Object> res = _agent._proxy.query(query);
-		for(Object prof_name:res)
-		{
-			String prof_name_str = String.valueOf(prof_name);
-			logger.log(Level.INFO, prof_name_str);
-		}
-		return "Mani";
+		String query = "select ?a ?c where ?b <rdf:type> <univ:Professors> ?c & ?b <univ:name> ?a ?_ ";
+		QueryResult res = _agent._proxy.selectQuery(query);
+		List<List<String>> all_profs = res.getTable().getRows();
+		Collections.sort(all_profs, new ListComparator<>());
+		List<String> context_prof = all_profs.get(all_profs.size() - 1);
+		logger.log(Level.INFO, context_prof.get(0));
+		return cleanXSD(context_prof.get(0));
 	}
 
 
