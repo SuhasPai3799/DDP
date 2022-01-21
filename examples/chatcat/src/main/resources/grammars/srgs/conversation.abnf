@@ -128,7 +128,9 @@ $countDeptCourses = [$polite] how many courses does "$$.*"<0-4> offer {out.da="R
 
 $deptFacilities = [$polite] (what|which) $facilities are in [the] "$$.*"<0-4> $department {out.da="Request"; out.prop="Department"; out.what="$$2"; out.theme="Facilities";}
                 | [$polite] $facilities (in | on | offered by) [the] "$$.*"<0-4> $department {out.da="Request"; out.prop="Department"; out.what="$$2"; out.theme="Facilities";}
-                | [$polite] "$$.*"<0-4> $department $facilities {out.da="Request"; out.prop="Department"; out.what="$$3"; out.theme="Facilities";};
+                | [$polite] "$$.*"<0-4> $department $facilities {out.da="Request"; out.prop="Department"; out.what="$$3"; out.theme="Facilities";}
+                | [$polite] $objectPronoun $department $facilities {out.da="Request"; out.prop="Department"; out.what="objectPronoun"; out.theme="Facilities";}
+                | [$polite] $facilities (in | on | offered by) [the] $objectPronoun [$department] {out.da="Request"; out.prop="Department"; out.what="objectPronoun"; out.theme="Facilities";};
 
 $deptInfo = ($polite) "$$.*"<0-4> $department {out.da="Request";out.prop="Department"; out.what="$$2";out.theme="DeptInfo";}
         |    [$polite] $department "$$.*"<0-4> {out.da="Request";out.prop="Department"; out.what="$$1";out.theme="DeptInfo";} 
