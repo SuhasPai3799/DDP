@@ -595,6 +595,17 @@ public class HFCUtils{
 		return cleanXSD(context_obj.get(0));
 	}
 
+	public static Boolean checkObjectPronoun(String word)
+	{
+		for(String pronoun: objectPronouns)
+		{
+			if(word.toLowerCase().equals(pronoun.toLowerCase()))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 
 
 	public HFCUtils(ChatAgent agent)
