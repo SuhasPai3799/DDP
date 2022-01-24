@@ -64,7 +64,8 @@ if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseInfo")
   }
   else
   {
-    course_name = lastDA().what;
+    course_first_name = lastDA().what;
+    course_name = (String)hfcutils.cleanCourseNames(course_first_name);
     courseObj = new Courses;
     courseObj.name = course_name;
     course_info = (String)hfcutils.answerCourseInfo(course_name);
@@ -90,8 +91,8 @@ if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseTeacherInfo")
   }
   else
   { 
-
-    course_name = lastDA().what;
+    course_first_name = lastDA().what;
+    course_name = (String)hfcutils.cleanCourseNames(course_first_name);
     courseObj = new Courses;
     courseObj.name = course_name;
     course_teacher_info = (String)hfcutils.answerCourseTeacherInfo(course_name);
@@ -118,7 +119,8 @@ if (lastDA()>= #Request(Courses) && lastDA().theme=="CoursePrereqInfo")
   }
   else
   {
-    course_name = lastDA().what;
+    course_first_name = lastDA().what;
+    course_name = (String)hfcutils.cleanCourseNames(course_first_name);
     course_prereq_info = (String)hfcutils.answerCoursePrereqInfo(course_name);
     propose("return_course_prereq_info")
     {

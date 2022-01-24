@@ -44,7 +44,8 @@ public class HFCUtils{
 	{
 		return input.split("\"")[1];
 	}
-
+	public static String[] prof_syns = {"professors", "professor","instructors", "teachers", "instructor","teacher", "profs","dr\\.","prof\\.","prof" };
+	public static String[] dept_common_syns = {"departments", "department", "dept", "dept.", "branch","branches"};
 	public static String getProfName(String query_prof_name)
 	{
 		query_prof_name = cleanProfNames(query_prof_name);
@@ -64,25 +65,35 @@ public class HFCUtils{
 		return "NULL";
 	}
 
+	public static String cleanCourseNames(String query_course_name)
+	{
+		query_course_name = query_course_name.toLowerCase();
+		String[] splitted = query_course_name.split("\\s+");
+		for(String word: splitted)
+		{
+			logger.log(Level.INFO, word);
+		}
+		if(splitted.length == 1)
+		return splitted[0];
+		if(splitted[0].equals("the") && splitted[1].equals("course"))
+		return String.join(" ", Arrays.copyOfRange(splitted, 2, splitted.length)).trim();
+		if(splitted[0].equals("the"))
+		return String.join(" ", Arrays.copyOfRange(splitted,1,splitted.length));
+		return query_course_name;
+	}
+
 	public static String cleanProfNames(String query_prof_name)
 	{
 		query_prof_name = query_prof_name.toLowerCase();
-		if(query_prof_name.matches("prof\\..*") || query_prof_name.matches("dr\\..*"))
+		for(String prof_syn: prof_syns)
 		{
-			query_prof_name = query_prof_name.split("\\.")[1];
-			
+			if(query_prof_name.matches(prof_syn + ".*"))
+			{
+				query_prof_name = query_prof_name.split(prof_syn)[1];
+			}
 		}
 		logger.log(Level.INFO, query_prof_name);
-		if(query_prof_name.matches("prof .*") || query_prof_name.matches("dr .*"))
-		{
-			query_prof_name = query_prof_name.substring(query_prof_name.indexOf(' ')+1);
-		}
-		logger.log(Level.INFO, query_prof_name);
-		if(query_prof_name.contains("'"))
-		{
-			query_prof_name = query_prof_name.split("'")[0];
-		}
-		return query_prof_name;
+		return query_prof_name.trim();
 	}
 	
 	public static String formatNewLine(String word)
@@ -109,7 +120,19 @@ public class HFCUtils{
 	 */
 	public static String getClosestDept(String dept_name)
 	{
-		
+		String[] splitted = dept_name.split("\\s+");
+		if(splitted.length>1)
+		{
+			if(splitted[0].equals("the") && Arrays.asList(dept_common_syns).contains(splitted[1]))
+			{
+				dept_name = String.join(" ", Arrays.copyOfRange(splitted, 2, splitted.length)).trim();
+			}
+			else if(splitted[0].equals("the"))
+			{
+				dept_name = String.join(" ", Arrays.copyOfRange(splitted, 1, splitted.length)).trim();
+			}
+		}
+		logger.log(Level.INFO, dept_name);
 		for (Map.Entry mapElement : dept_syns.entrySet()) {
 			String dept_official_name = (String)mapElement.getKey();
 			List<String> dept_name_syns = (List)mapElement.getValue();
@@ -138,6 +161,7 @@ public class HFCUtils{
 	 */
 	public static String answerCourseInfo(String c_name)
 	{
+		
 		String c_name_uri = "<univ:" + c_name + ">";
 		if(c_name.matches("[a-zA-Z][a-zA-Z][0-9]+"))
 		{
@@ -155,7 +179,7 @@ public class HFCUtils{
 					
 					String course_comment_query = String.format("select ?a where %s <rdfs:comment> ?a ?x", course_id);
 					List<Object> comments = _agent._proxy.query(course_comment_query);
-					return formatNewLine((String)(comments.get(0)));
+					return formatNewLine("Info about the course " + c_name + " " +  (String)(comments.get(0)));
 				}
 			}
 		}
@@ -173,7 +197,7 @@ public class HFCUtils{
 					String course_id = row.get(0);
 					String course_comment_query = String.format("select ?a where %s <rdfs:comment> ?a ?x", course_id);
 					List<Object> comments = _agent._proxy.query(course_comment_query);
-					return formatNewLine((String)(comments.get(0)));
+					return formatNewLine("Info about the course " + c_name + " " +  (String)(comments.get(0)));
 				}
 
 			}
@@ -183,6 +207,7 @@ public class HFCUtils{
 
 	public static String answerCourseTeacherInfo(String c_name)
 	{
+		
 		String c_name_uri = "<univ:" + c_name + ">";
 		if(c_name.matches("[a-zA-Z][a-zA-Z][0-9]+"))
 		{
@@ -201,7 +226,7 @@ public class HFCUtils{
 					String course_teacher_query = String.format("select ?b where ?a <univ:teaches> %s ?_ & ?a <rdfs:label> ?b ?_", course_id);
 					List<Object> course_teacher = _agent._proxy.query(course_teacher_query);
 					logger.log(Level.INFO, String.valueOf((course_teacher.get(0))));
-					return String.valueOf((course_teacher.get(0)));
+					return "Prof. " + String.valueOf((course_teacher.get(0))) + " teaches the course " + c_name;
 				}
 			}
 		}
@@ -220,7 +245,7 @@ public class HFCUtils{
 					String course_teacher_query = String.format("select ?b where ?a <univ:teaches> %s ?_ &  ?a <rdfs:label> ?b ?_", course_id);
 					List<Object> course_teacher = _agent._proxy.query(course_teacher_query);
 					logger.log(Level.INFO, String.valueOf((course_teacher.get(0))));
-					return String.valueOf((course_teacher.get(0)));
+					return "Prof. " + String.valueOf((course_teacher.get(0))) + " teaches the course " + c_name;
 				}
 
 			}	
@@ -230,6 +255,7 @@ public class HFCUtils{
 
 	public static String answerCoursePrereqInfo(String c_name)
 	{
+		
 		String c_name_uri = "<univ:" + c_name + ">";
 		if(c_name.matches("[a-zA-Z][a-zA-Z][0-9]+"))
 		{
@@ -607,6 +633,7 @@ public class HFCUtils{
 		return false;
 	}
 
+	
 
 	public HFCUtils(ChatAgent agent)
 	{

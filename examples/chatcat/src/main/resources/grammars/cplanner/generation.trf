@@ -36,12 +36,11 @@ raw:InitialGreeting ^ Greet
 raw:Request ^ Courses
 ^ <cname>#cname ^ <info>#info
 ->
-# = :canned ^ <string>concatenate("Info about the course, ", #cname,": , ",#info).
+# = :canned ^ <string>#info.
 
-raw:Request ^ Courses
-^ <cname>#cname ^ <course_teacher_info>#info
+raw:Request ^ Courses ^ <cname>#cname ^ <course_teacher_info>#info
 ->
-# = :canned ^ <string>concatenate("Prof.", #info," teaches the course ", #cname).
+# = :canned ^ <string>#info.
 
 raw:Request ^ Courses ^ <cname>#c ^ <course_prereq_info>#cp
 ->
