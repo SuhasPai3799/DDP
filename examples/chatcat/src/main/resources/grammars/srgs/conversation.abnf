@@ -109,7 +109,7 @@ $teacherResearchInfo = ( [$polite] what (is | are) $pronouns $researchField) {ou
                       |  ( [$polite] What does $prof "$$.*"<0-4> $performingResearch) {out.da="Request" ; out.prop="Professor"; out.what="$$3"; out.theme="ResearchInfo";}
                       | ( [$polite] What does "$$.*"<0-4> $performingResearch ) {out.da="Request" ; out.prop="Professor"; out.what="$$3"; out.theme="ResearchInfo";}
                       |( [$polite] What [is | are] $prof "$$.*"<0-4>  $researchField) {out.da="Request" ; out.prop="Professor"; out.what="$$2"; out.theme="ResearchInfo";}
-                      |( [$polite] What [is | are] "$$.*"<0-4>  $researchField) {out.da="Request" ; out.prop="Professor"; out.what="$$2"; out.theme="ResearchInfo";}
+                      |( [$polite] What (is | are) "$$.*"<0-4>  $researchField) {out.da="Request" ; out.prop="Professor"; out.what="$$2"; out.theme="ResearchInfo";}
                       | [$polite] what $researchField does $pronouns $performingResearch {out.da="Request" ; out.prop="Professor"; out.what="pronoun"; out.theme="ResearchInfo";}
                       | [$polite] What  $researchField does $prof "$$.*"<0-4> $performingResearch {out.da="Request" ; out.prop="Professor"; out.what="$$2"; out.theme="ResearchInfo";}
                       | ( [$polite] What does $pronouns $performingResearch ) {out.da="Request" ; out.prop="Professor"; out.what="$$3"; out.theme="ResearchInfo";};
@@ -126,7 +126,7 @@ $profResearchField = ( [$polite] $prof in "$$.*"<0-4> $researchField) {out.da="R
 
 // Department related grammar rules
 
-$countDeptCourses = [$polite] how many courses does "$$.*"<0-4> offer {out.da="Request"; out.prop="Department"; out.what="$$2";out.theme="CourseCount";};
+$countDeptCourses = [$polite] how many courses does "$$.*"<0-4> $department offer {out.da="Request"; out.prop="Department"; out.what="$$3";out.theme="CourseCount";};
 
 $deptFacilities = [$polite] (what|which) $facilities are in [the] "$$.*"<0-4> $department {out.da="Request"; out.prop="Department"; out.what="$$2"; out.theme="Facilities";}
                 | [$polite] $facilities (in | on | offered by) [the] "$$.*"<0-4> $department {out.da="Request"; out.prop="Department"; out.what="$$2"; out.theme="Facilities";}

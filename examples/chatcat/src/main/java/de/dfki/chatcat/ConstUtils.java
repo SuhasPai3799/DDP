@@ -39,5 +39,6 @@ public static final HashMap<String, List<String>> dept_syns = new HashMap<String
 };
 
 public static final List<String> objectPronouns = Arrays.asList("that", "this","it", "it's","the","its");
+public static final List<String> personalPronouns = Arrays.asList("he","his","he's","hers","him","her","she","they","her's");
 
 }

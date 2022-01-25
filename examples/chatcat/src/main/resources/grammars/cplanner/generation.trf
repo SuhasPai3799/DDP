@@ -33,69 +33,69 @@ raw:InitialGreeting ^ Greet
 
 
 
-raw:Request ^ Courses
+raw:Inform ^ Courses
 ^ <cname>#cname ^ <info>#info
 ->
 # = :canned ^ <string>#info.
 
-raw:Request ^ Courses ^ <cname>#cname ^ <course_teacher_info>#info
+raw:Inform ^ Courses ^ <cname>#cname ^ <course_teacher_info>#info
 ->
 # = :canned ^ <string>#info.
 
-raw:Request ^ Courses ^ <cname>#c ^ <course_prereq_info>#cp
+raw:Inform ^ Courses ^ <cname>#c ^ <course_prereq_info>#cp
 ->
 # = :canned ^ <string>#cp.
 
 
 
-raw:Request ^ Professor ^ <prof_name>#p ^ <prof_courses>#c
+raw:Inform ^ Professor ^ <prof_name>#p ^ <prof_courses>#c
 ->
 # = :canned ^ <string>#c.
 
 
-raw:Request ^ Professor ^ <prof_name>#p ^ <prof_areas>#r
+raw:Inform ^ Professor ^ <prof_name>#p ^ <prof_areas>#r
 ->
 # = :canned ^ <string>#r.
 
 
-raw:Request ^ ResearchField ^ <field_name>#f ^ <prof_names>#p
+raw:Inform ^ ResearchField ^ <field_name>#f ^ <prof_names>#p
 ->
 # = :canned ^ <string>#p.
 
 
 
 
-raw:Request ^ Department
+raw:Inform ^ Department
 ^ <tot_courses>#t ^ <dept_name>#d
 ->
 # = :canned ^ <string>concatenate("The ", #d, " department offers ", #t, " courses in total").
 
-raw:Request ^ Department ^ <dept_name>#d ^ <dept_info>#di
+raw:Inform ^ Department ^ <dept_name>#d ^ <dept_info>#di
 ->
 # = :canned ^ <string> #di.
 
-raw:Request ^ Department ^ <dept_name>#d ^ <dept_facilities>#df
+raw:Inform ^ Department ^ <dept_name>#d ^ <dept_facilities>#df
 ->
 # = :canned ^ <string> #df.
 
-raw:Request ^ Department ^ <dept_name>#d ^ <course_list>#c
+raw:Inform ^ Department ^ <dept_name>#d ^ <course_list>#c
 ->
 # = :canned ^ <string> #c.
 
 
-raw:Request ^ Department ^ <dept_name>#d ^ <prof_list>#p
+raw:Inform ^ Department ^ <dept_name>#d ^ <prof_list>#p
 ->
 # = :canned ^ <string> #p.
 
 
-raw:Request ^ Department ^ <dept_name>#d ^ <program_list>#p
+raw:Inform ^ Department ^ <dept_name>#d ^ <program_list>#p
 ->
 # = :canned ^ <string> #p.
 
-raw:Request ^ Department ^ <dept_name>#d ^ <ug_program_list>#p
+raw:Inform ^ Department ^ <dept_name>#d ^ <ug_program_list>#p
 ->
 # = :canned ^ <string> #p.
 
-raw:Request ^ Department ^ <dept_name>#d ^ <pg_program_list>#p
+raw:Inform ^ Department ^ <dept_name>#d ^ <pg_program_list>#p
 ->
 # = :canned ^ <string> #p.

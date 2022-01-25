@@ -64,7 +64,14 @@ public class HFCUtils{
 		}
 		return "NULL";
 	}
-
+	public static String getProfNameFromOutput(String output)
+	{
+		if(output.equals("No such course exists."))
+		return output;
+		String res = output.split("teaches")[0].split("Prof.")[1];
+		logger.log(Level.INFO, res);
+		return res.trim();
+	}
 	public static String cleanCourseNames(String query_course_name)
 	{
 		query_course_name = query_course_name.toLowerCase();
@@ -92,7 +99,12 @@ public class HFCUtils{
 				query_prof_name = query_prof_name.split(prof_syn)[1];
 			}
 		}
+		if(query_prof_name.contains("'"))
+		{
+			query_prof_name = query_prof_name.split("'")[0];
+		}
 		logger.log(Level.INFO, query_prof_name);
+		
 		return query_prof_name.trim();
 	}
 	
@@ -253,6 +265,7 @@ public class HFCUtils{
 		return "No such course exists.";
 	}
 
+	
 	public static String answerCoursePrereqInfo(String c_name)
 	{
 		
@@ -630,9 +643,22 @@ public class HFCUtils{
 				return true;
 			}
 		}
+		logger.log(Level.INFO, word + " Doesn't match any");
 		return false;
 	}
 
+	public static Boolean checkPersonalPronoun(String word)
+	{
+		for(String pronoun: personalPronouns)
+		{
+			if(word.toLowerCase().equals(pronoun.toLowerCase()))
+			{
+				return true;
+			}
+		}
+		logger.log(Level.INFO, word + " Doesn't match any");
+		return false;
+	}
 	
 
 	public HFCUtils(ChatAgent agent)

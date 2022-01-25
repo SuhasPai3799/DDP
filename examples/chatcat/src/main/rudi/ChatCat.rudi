@@ -32,21 +32,7 @@ if (lastDA() >= #Inform(Name)) {
   }
 }
 
-proactive_greet:
-/** use this timeout exactly once */
-if (! hasActiveTimeout("robot_starts") && ! isTimedOut("robot_starts")) {
-  timeout("robot_starts", 4000) {
-  start_conversation:
-    // Salutation is the superclass of Initial-/ReturnGreeting
-    if (! (receivedInSession(#Salutation(top))
-           || saidInSession(#Salutation(top)))) {
-      propose("robot_greets") {
-        tod = Date.timeOfDay();
-        emitDA(#InitialGreeting(Greet, when={tod}));
-      }
-    }
-  }
-}
+
 
 /** Rules related to courses */
 
@@ -54,12 +40,12 @@ answer_courses:
 /** Provides description about the course */
 if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseInfo")
 {	
-  if(lastDA().what == "objectPronoun")
+  if(lastDA().what == "objectPronoun" || (Boolean)hfcutils.checkObjectPronoun(lastDA().what))
   { 
     course_resolved_name = (String)hfcutils.resolveObjectPronoun("<univ:Courses>");
     course_resolved_info = (String)hfcutils.answerCourseInfo(course_resolved_name);
     propose("return_course_info"){
-      emitDA(#Request(Courses, cname={course_resolved_name}, info={course_resolved_info}));
+      emitDA(#Inform(Courses, cname={course_resolved_name}, info={course_resolved_info}));
     }
   }
   else
@@ -70,7 +56,7 @@ if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseInfo")
     courseObj.name = course_name;
     course_info = (String)hfcutils.answerCourseInfo(course_name);
     propose("return_course_info"){
-      emitDA(#Request(Courses, cname={course_name}, info={course_info}));
+      emitDA(#Inform(Courses, cname={course_name}, info={course_info}));
     }
   }
 	lastDAprocessed();
@@ -80,13 +66,20 @@ answer_course_instructor:
 /** Provides info about which prof is teaching the course **/
 if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseTeacherInfo")
 {
-  if(lastDA().what == "objectPronoun")
+  if(lastDA().what == "objectPronoun" || (Boolean)hfcutils.checkObjectPronoun(lastDA().what))
   {
     course_resolved_name = (String)hfcutils.resolveObjectPronoun("<univ:Courses>");
     course_resolved_teacher_info = (String)hfcutils.answerCourseTeacherInfo(course_resolved_name);
+    
+    prof_name = (String)hfcutils.getProfNameFromOutput(course_resolved_teacher_info);
+    if(prof_name!= "No such course exists.")
+    {
+      prof = new Professors;
+      prof.name = prof_name;
+    }
     propose("return_course_teacher_info")
     {
-      emitDA(#Request(Courses, cname={course_resolved_name}, course_teacher_info={course_resolved_teacher_info}));
+      emitDA(#Inform(Courses, cname={course_resolved_name}, course_teacher_info={course_resolved_teacher_info}));
     }
   }
   else
@@ -96,9 +89,15 @@ if (lastDA()>= #Request(Courses) && lastDA().theme=="CourseTeacherInfo")
     courseObj = new Courses;
     courseObj.name = course_name;
     course_teacher_info = (String)hfcutils.answerCourseTeacherInfo(course_name);
+    prof_name = (String)hfcutils.getProfNameFromOutput(course_teacher_info);
+    if(prof_name!= "No such course exists.")
+    {
+      prof = new Professors;
+      prof.name = prof_name;
+    }
     propose("return_course_teacher_info")
     {
-      emitDA(#Request(Courses, cname={course_name}, course_teacher_info={course_teacher_info}));
+      emitDA(#Inform(Courses, cname={course_name}, course_teacher_info={course_teacher_info}));
     }
   }
   lastDAprocessed();
@@ -108,13 +107,13 @@ answer_course_prereqs:
 /** Provides info about prerequisite courses for a given course **/
 if (lastDA()>= #Request(Courses) && lastDA().theme=="CoursePrereqInfo")
 {
-  if(lastDA().what == "objectPronoun")
+  if(lastDA().what == "objectPronoun" || (Boolean)hfcutils.checkObjectPronoun(lastDA().what))
   {
     course_resolved_name = (String)hfcutils.resolveObjectPronoun("<univ:Courses>");
     course_resolved_prereq_info = (String)hfcutils.answerCoursePrereqInfo(course_resolved_name);
     propose("return_course_prereq_info")
     {
-      emitDA(#Request(Courses, cname={course_resolved_name}, course_prereq_info={course_resolved_prereq_info}));
+      emitDA(#Inform(Courses, cname={course_resolved_name}, course_prereq_info={course_resolved_prereq_info}));
     }
   }
   else
@@ -124,7 +123,7 @@ if (lastDA()>= #Request(Courses) && lastDA().theme=="CoursePrereqInfo")
     course_prereq_info = (String)hfcutils.answerCoursePrereqInfo(course_name);
     propose("return_course_prereq_info")
     {
-      emitDA(#Request(Courses, cname={course_name}, course_prereq_info={course_prereq_info}));
+      emitDA(#Inform(Courses, cname={course_name}, course_prereq_info={course_prereq_info}));
     }
   }
   lastDAprocessed();
@@ -137,13 +136,13 @@ answer_prof_courses:
 if (lastDA()>= #Request(Professor) && lastDA().theme=="CourseInfo")
 {
   prof_name = lastDA().what;
-  if(prof_name == "pronoun")
+  if(prof_name == "pronoun" || (Boolean)hfcutils.checkPersonalPronoun(lastDA().what))
   {
     prof_resolved_name = (String)hfcutils.resolveProfName();
     prof_resolved_courses = (String)hfcutils.answerProfCourses(prof_resolved_name);
     propose("return_prof_courses")
     {
-      emitDA(#Request(Professor, prof_name={prof_name}, prof_courses = {prof_resolved_courses}));
+      emitDA(#Inform(Professor, prof_name={prof_name}, prof_courses = {prof_resolved_courses}));
     }
   }
   else
@@ -154,7 +153,7 @@ if (lastDA()>= #Request(Professor) && lastDA().theme=="CourseInfo")
     prof_courses = (String)hfcutils.answerProfCourses(prof_name);
     propose("return_prof_courses")
     {
-      emitDA(#Request(Professor, prof_name={prof_name}, prof_courses = {prof_courses}));
+      emitDA(#Inform(Professor, prof_name={prof_name}, prof_courses = {prof_courses}));
     }
   }
   lastDAprocessed();
@@ -166,13 +165,13 @@ answer_prof_research:
 if (lastDA()>= #Request(Professor) && lastDA().theme=="ResearchInfo")
 {
   prof_name = lastDA().what;
-  if(prof_name == "pronoun")
+  if(prof_name == "pronoun" || (Boolean)hfcutils.checkPersonalPronoun(lastDA().what))
   {
     prof_resolved_name = (String)hfcutils.resolveProfName();
     prof_resolved_areas = (String)hfcutils.answerProfResearchArea(prof_resolved_name);
     propose("return_prof_research_area")
     {
-      emitDA(#Request(Professor, prof_name={prof_resolved_name}, prof_areas = {prof_resolved_areas}));
+      emitDA(#Inform(Professor, prof_name={prof_resolved_name}, prof_areas = {prof_resolved_areas}));
     }
   }
   else
@@ -183,7 +182,7 @@ if (lastDA()>= #Request(Professor) && lastDA().theme=="ResearchInfo")
     prof_areas = (String)hfcutils.answerProfResearchArea(prof_name);
     propose("return_prof_research_area")
     {
-      emitDA(#Request(Professor, prof_name={prof_name}, prof_areas = {prof_areas}));
+      emitDA(#Inform(Professor, prof_name={prof_name}, prof_areas = {prof_areas}));
     }
   }
   lastDAprocessed();
@@ -197,7 +196,7 @@ if (lastDA()>= #Request(ResearchField) && lastDA().theme=="Professor")
   field_profs = (String)hfcutils.answerFieldProfs(field_name);
   propose("return_field_profs")
   {
-    emitDA(#Request(ResearchField, prof_names={field_profs}, field_name={field_name}));
+    emitDA(#Inform(ResearchField, prof_names={field_profs}, field_name={field_name}));
   }
   lastDAprocessed();
 }
@@ -211,13 +210,13 @@ answer_dept_courses:
 /** Provides list of courses for the department */
 if (lastDA()>= #Request(Department) && lastDA().theme=="CourseList")
 {
-  if(lastDA().what == "objectPronoun")
+  if(lastDA().what == "objectPronoun" || (Boolean)hfcutils.checkObjectPronoun(lastDA().what))
   {
     dept_resolved_name = (String)hfcutils.resolveObjectPronoun("<univ:Department>");
     resolved_all_courses = (String)hfcutils.answerDeptCourseList(dept_resolved_name);
     propose("return_dept_course_list")
     {
-      emitDA(#Request(Department,dept_name={dept_resolved_name}, course_list={resolved_all_courses}));
+      emitDA(#Inform(Department,dept_name={dept_resolved_name}, course_list={resolved_all_courses}));
     }
   }
   else
@@ -228,7 +227,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="CourseList")
     all_courses = (String)hfcutils.answerDeptCourseList(dept_name);
     propose("return_dept_course_list")
     {
-      emitDA(#Request(Department,dept_name={dept_name}, course_list={all_courses}));
+      emitDA(#Inform(Department,dept_name={dept_name}, course_list={all_courses}));
     }
   }
 	lastDAprocessed();
@@ -245,7 +244,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="ProfList")
     resolved_all_profs = (String)hfcutils.answerDeptProfList(dept_resolved_name);
     propose("return_dept_prof_list")
     {
-      emitDA(#Request(Department,dept_name={dept_resolved_name}, prof_list={resolved_all_profs}));
+      emitDA(#Inform(Department,dept_name={dept_resolved_name}, prof_list={resolved_all_profs}));
     }
   }
   else
@@ -256,7 +255,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="ProfList")
     all_profs = (String)hfcutils.answerDeptProfList(dept_name);
     propose("return_dept_prof_list")
     {
-      emitDA(#Request(Department,dept_name={dept_name}, prof_list={all_profs}));
+      emitDA(#Inform(Department,dept_name={dept_name}, prof_list={all_profs}));
     }
   }
 	lastDAprocessed();
@@ -272,7 +271,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="ProgList")
     resolved_all_programs = (String)hfcutils.answerDeptProgramList(dept_resolved_name);
     propose("return_dept_program_list")
     {
-      emitDA(#Request(Department,dept_name={dept_resolved_name}, program_list={resolved_all_programs}));
+      emitDA(#Inform(Department,dept_name={dept_resolved_name}, program_list={resolved_all_programs}));
     }
   }
   else
@@ -283,7 +282,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="ProgList")
     all_programs = (String)hfcutils.answerDeptProgramList(dept_name);
     propose("return_dept_program_list")
     {
-      emitDA(#Request(Department,dept_name={dept_name}, program_list={all_programs}));
+      emitDA(#Inform(Department,dept_name={dept_name}, program_list={all_programs}));
     }
   }
 	lastDAprocessed();
@@ -299,7 +298,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="DeptInfo")
     dept_resolved_info = (String)hfcutils.answerDeptInfo(dept_resolved_name);
     propose("return_dept_info")
     {
-      emitDA(#Request(Department,dept_name={dept_resolved_name}, dept_info={dept_resolved_info}));
+      emitDA(#Inform(Department,dept_name={dept_resolved_name}, dept_info={dept_resolved_info}));
     }
   }
   else
@@ -310,7 +309,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="DeptInfo")
     dept_info = (String)hfcutils.answerDeptInfo(dept_name);
     propose("return_dept_info")
     {
-      emitDA(#Request(Department,dept_name={dept_name}, dept_info={dept_info}));
+      emitDA(#Inform(Department,dept_name={dept_name}, dept_info={dept_info}));
     }
   }
 	lastDAprocessed();
@@ -327,7 +326,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="CourseCount")
     resolved_tot_c = (String)hfcutils.answerDeptCourseCount(dept_resolved_name);
     propose("return_course_total")
     {
-      emitDA(#Request(Department,tot_courses={resolved_tot_c}, dept_name={dept_resolved_name}));
+      emitDA(#Inform(Department,tot_courses={resolved_tot_c}, dept_name={dept_resolved_name}));
     }
   }
   else
@@ -338,7 +337,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="CourseCount")
     tot_c = (String)hfcutils.answerDeptCourseCount(dept_name);
     propose("return_course_total")
     {
-      emitDA(#Request(Department,tot_courses={tot_c}, dept_name={dept_name}));
+      emitDA(#Inform(Department,tot_courses={tot_c}, dept_name={dept_name}));
     }
   }
 	lastDAprocessed();
@@ -354,7 +353,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="Facilities")
     resolved_facilities = (String)hfcutils.answerDeptFacilities(dept_resolved_name);
     propose("return_dept_facilities")
     {
-      emitDA(#Request(Department, dept_name = {dept_resolved_name}, dept_facilities = {resolved_facilities}));
+      emitDA(#Inform(Department, dept_name = {dept_resolved_name}, dept_facilities = {resolved_facilities}));
     }
   }
   else
@@ -365,7 +364,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="Facilities")
     facilities = (String)hfcutils.answerDeptFacilities(dept_name);
     propose("return_dept_facilities")
     {
-      emitDA(#Request(Department, dept_name = {dept_name}, dept_facilities = {facilities}));
+      emitDA(#Inform(Department, dept_name = {dept_name}, dept_facilities = {facilities}));
     }
   }
   lastDAprocessed();
@@ -381,7 +380,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="UGProgList")
     resolved_all_programs = (String)hfcutils.answerDeptUGProgramList(dept_resolved_name);
     propose("return_dept_ug_program_list")
     {
-      emitDA(#Request(Department,dept_name={dept_resolved_name}, ug_program_list={resolved_all_programs}));
+      emitDA(#Inform(Department,dept_name={dept_resolved_name}, ug_program_list={resolved_all_programs}));
     }
   }
   else
@@ -392,7 +391,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="UGProgList")
     all_programs = (String)hfcutils.answerDeptUGProgramList(dept_name);
     propose("return_dept_ug_program_list")
     {
-      emitDA(#Request(Department,dept_name={dept_name}, ug_program_list={all_programs}));
+      emitDA(#Inform(Department,dept_name={dept_name}, ug_program_list={all_programs}));
     }
   }
 	lastDAprocessed();
@@ -408,7 +407,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="PGProgList")
     resolved_all_programs = (String)hfcutils.answerDeptPGProgramList(dept_resolved_name);
     propose("return_dept_ug_program_list")
     {
-      emitDA(#Request(Department,dept_name={dept_resolved_name}, pg_program_list={resolved_all_programs}));
+      emitDA(#Inform(Department,dept_name={dept_resolved_name}, pg_program_list={resolved_all_programs}));
     }
   }
   else
@@ -419,7 +418,7 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="PGProgList")
     all_programs = (String)hfcutils.answerDeptPGProgramList(dept_name);
     propose("return_dept_pg_program_list")
     {
-      emitDA(#Request(Department,dept_name={dept_name}, pg_program_list={all_programs}));
+      emitDA(#Inform(Department,dept_name={dept_name}, pg_program_list={all_programs}));
     }
   }
 	lastDAprocessed();
