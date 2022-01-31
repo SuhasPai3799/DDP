@@ -146,6 +146,7 @@ $listDeptCourses = [$polite] what $course does "$$.*"<0-4> $department $offer [t
                 |  [$polite] [what] $course (is | are) (offered | taught) (in | by | from) "$$.*"<0-4> $department [this semester | this year | this time]  {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="CourseList";}
                 |  [$polite] "$$.*"<0-4> $department $course {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="CourseList";}
                 |  [$polite] what $course does $objectPronoun $offer [this semester | this year | this time] {out.da = "Request";out.prop="Department";out.what="objectPronoun";out.theme="CourseList";}
+                |  [$polite] what [is | are] [all] [the] $course [is | are] $offer [by] "$$.*"<0-4> $department   [this semester | this year | this time]  {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="CourseList";}
                 |  [$polite] what [is | are] [all] [the] $course [is | are] $offer [by] it   [this semester | this year | this time]  {out.da = "Request";out.prop="Department";out.what="objectPronoun";out.theme="CourseList";}
                 |  [$polite] what $course (do | does) [they] offer {out.da = "Request";out.prop="Department";out.what="objectPronoun";out.theme="CourseList";};
                 
