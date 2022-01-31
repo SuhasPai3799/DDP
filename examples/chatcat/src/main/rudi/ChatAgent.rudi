@@ -1,5 +1,4 @@
 
-Agent user;
-Robot robot;
+User user;
 
 [Date]. String timeOfDay();

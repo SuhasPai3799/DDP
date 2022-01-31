@@ -7,7 +7,7 @@ tag-format "semantics/1.0";
 
 meta "author" is "Suhas Pai";
 
-public $top =  ($greet |
+public $top =  [$small_talk] ($greet |
               $tellName |
               $courseInfo |
               $countDeptCourses | 
@@ -22,7 +22,7 @@ public $top =  ($greet |
               $listDeptUGPrograms |
               $listDeptPrograms |
               $listDeptPGPrograms |
-              $deptInfo 
+              $deptInfo | $small_talk
               )  {!{ out = $%1; }!} [$punct] ;
 
 $thanks = ("$$.*"<0->);
@@ -41,7 +41,7 @@ $greet = (hi | hello) {!{ out.da="InitialGreeting" ; out.prop="Greet";}!} ;
 
 $course = (course | courses | topics | subjects | topic | subject | topic);
 
-$tellName = my name is "$$.*" {out.da="Inform" ; out.prop="Name" ; out.what="$$1" ;};
+$tellName = my name is "$$.*"<0-4> {out.da="Inform" ; out.prop="Name" ; out.what="$$1" ;};
 
 $department = (dept. | department | branch | branches | departments | dept | "department's" | "branch's" | branchs );
 
@@ -187,3 +187,28 @@ $listDeptPrograms = [$polite] what $program does "$$.*"<0-4> $department $offer 
                 |  [$polite] [what] $program [is | are] [offered | taught] [in | by | from] $objectPronoun [$department] {out.da = "Request";out.prop="Department";out.what="objectPronoun";out.theme="ProgList";}
                 |  [$polite] what $program does $objectPronoun [$department] $offer {out.da = "Request";out.prop="Department";out.what="objectPronoun";out.theme="ProgList";};
 
+
+
+// Small talk rules
+
+$small_talk =  ($pos_mood 
+             | $affirmative
+             | $reject
+             | $disagreement
+             | $howareyou) {!{ out = $%1; }!} [$punct]<0-10>;
+
+
+$pos_mood = ("i'm"|i am) (fine|good|well) [thank you]{ out.da = "Inform"; out.prop = "Mood";out.polarity = "pos";};
+
+$affirmative = (ok|okay|yes|absolutely|yeah|indeed)[$punct] [i do|sure|probably|indeed|very much [so]] {out.da = "Confirm"; out.prop="top";};
+
+
+$reject = (no|(absolutely|definitely) not|no way|never|nope)
+        { out.da = "Disconfirm"; out.prop="top"; };
+
+$disagreement = (no|nope|[i] "don't" think so|rather not|not at all|not really)
+               { out.da = "Disconfirm"; out.prop="top"; };
+
+
+$howareyou = how (are you [today]|is it going)
+     { out.da = "WHQuestion"; out.prop = "Mood"};
