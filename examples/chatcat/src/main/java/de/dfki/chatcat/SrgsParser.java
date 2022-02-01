@@ -63,7 +63,7 @@ public class SrgsParser extends Interpreter {
         JSInterpreter walker = new JSInterpreter(checker);
         JSONObject object = walker.evaluate(validRule);
         String da = object.getString(DA_SLOT);
-        if (da == null) return new DialogueAct(noDA());
+        if (da == null) return null;
         String prop = object.getString(PROP_SLOT);
         if (prop == null) return null;
         StringBuilder sb = new StringBuilder();

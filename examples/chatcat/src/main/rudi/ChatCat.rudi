@@ -454,3 +454,24 @@ if(lastDA() >= #OutOfInputSpace(top))
   lastDAprocessed();
 
 }
+
+ask_user_for_next_query:
+/** If user thanks/accepts your information, ask them if they want to know something else **/
+if(lastDA() && lastDA() >= #Confirm(top) )
+{
+  if(!(myLastDA()>= #AutoPositive(top)))
+  {
+    propose("thank_and_ask_for_next_query")
+    {
+      emitDA(#AutoPositive(top));
+    }
+  }
+  else
+  {
+    propose("ask_user_for_next_query")
+    {
+      emitDA(#Offer(top));
+    }
+  }
+  lastDAprocessed();
+}

@@ -103,3 +103,12 @@ raw:Inform ^ Department ^ <dept_name>#d ^ <pg_program_list>#p
 raw:Inform ^ OutOfInputSpace
 ->
 # = :canned ^ <string>"I was unable to understand that. Could you rephrase the sentence?".
+
+raw:AutoPositive ^ top
+->
+# = :canned ^ <string>"That's great. Is there anything else I can help you with?".
+
+raw:Offer ^ top
+->
+# = :canned ^ <string>"What is your query?".
+
