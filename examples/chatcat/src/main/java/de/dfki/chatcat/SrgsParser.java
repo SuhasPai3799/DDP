@@ -40,7 +40,10 @@ public class SrgsParser extends Interpreter {
     };
     return true;
   }
-
+  public String noDA()
+  {
+    return "OutOfInputSpace(top)";
+  }
   public String clean(String text)
   {
     text = text.replace("?", "");
@@ -60,7 +63,7 @@ public class SrgsParser extends Interpreter {
         JSInterpreter walker = new JSInterpreter(checker);
         JSONObject object = walker.evaluate(validRule);
         String da = object.getString(DA_SLOT);
-        if (da == null) return null;
+        if (da == null) return new DialogueAct(noDA());
         String prop = object.getString(PROP_SLOT);
         if (prop == null) return null;
         StringBuilder sb = new StringBuilder();
@@ -72,13 +75,14 @@ public class SrgsParser extends Interpreter {
           }
         }
         sb.append(')');
+        
         return new DialogueAct(sb.toString());
       }
     }
     catch (GrammarException ex) {
       logger.error(ex.toString());
     }
-    return null;
+    return new DialogueAct(noDA());
   }
 
 }

@@ -443,3 +443,14 @@ if (! hasActiveTimeout("robot_starts") && ! isTimedOut("robot_starts")) {
   }
 }
 
+out_of_input_space:
+/** text that is not understood by the bot **/
+if(lastDA() >= #OutOfInputSpace(top))
+{
+  propose("out_of_input_space")
+  {
+    emitDA(#Inform(OutOfInputSpace));
+  }
+  lastDAprocessed();
+
+}

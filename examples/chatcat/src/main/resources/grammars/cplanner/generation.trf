@@ -99,3 +99,7 @@ raw:Inform ^ Department ^ <dept_name>#d ^ <ug_program_list>#p
 raw:Inform ^ Department ^ <dept_name>#d ^ <pg_program_list>#p
 ->
 # = :canned ^ <string> #p.
+
+raw:Inform ^ OutOfInputSpace
+->
+# = :canned ^ <string>"I was unable to understand that. Could you rephrase the sentence?".
