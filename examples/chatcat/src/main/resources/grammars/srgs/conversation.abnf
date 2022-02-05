@@ -37,11 +37,11 @@ $postgrads = (postgrads | postgraduate | post-graduate | postgraduate | PG | pos
 
 $prof = (prof | professor | prof. | instructor | teacher | profs | professors | instructors | teachers) ;
 
-$greet = (hi | hello) {!{ out.da="InitialGreeting" ; out.prop="Greet";}!} ;
+$greet = (hi | hello | good morning | good afternoon | good night) {!{ out.da="InitialGreeting" ; out.prop="Greet";}!} ;
 
 $course = (course | courses | topics | subjects | topic | subject | topic);
 
-$tellName = my name is "$$.*"<0-4> {out.da="Inform" ; out.prop="Name" ; out.what="$$1" ;};
+$tellName = (([my] name is) | "i'm" | i am ) "$$.*"<0-4> {out.da="Inform" ; out.prop="Name" ; out.what="$$1" ;};
 
 $department = (dept. | department | branch | branches | departments | dept | "department's" | "branch's" | branchs );
 
@@ -200,7 +200,8 @@ $small_talk =  ($pos_mood
 
 $pos_mood = ("i'm"|i am) (fine|good|well) [thank you]{ out.da = "Inform"; out.prop = "Mood";out.polarity = "pos";};
 
-$affirmative = (ok|okay|yes|absolutely|yeah|indeed)[$punct] [i do|sure|probably|indeed|very much [so]] {out.da = "Confirm"; out.prop="top";};
+$affirmative = (ok|okay|yes|absolutely|yeah|indeed | thanks [a lot])[$punct] [i do|sure|probably|indeed|very much [so]] {out.da = "Confirm"; out.prop="top";};
+
 
 
 $reject = (no|(absolutely|definitely) not|no way|never|nope)
@@ -212,3 +213,4 @@ $disagreement = (no|nope|[i] "don't" think so|rather not|not at all|not really)
 
 $howareyou = how (are you [today]|is it going)
      { out.da = "WHQuestion"; out.prop = "Mood"};
+

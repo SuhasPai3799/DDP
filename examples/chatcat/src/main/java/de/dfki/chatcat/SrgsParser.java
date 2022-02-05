@@ -47,6 +47,7 @@ public class SrgsParser extends Interpreter {
   public String clean(String text)
   {
     text = text.replace("?", "");
+    text = text.replace("!", "");
     text = text.replaceAll("(,)*$", "");
     text = text.replaceAll("(\\.)*$", "");
     return text;
