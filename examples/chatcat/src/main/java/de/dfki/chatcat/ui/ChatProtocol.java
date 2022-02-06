@@ -38,7 +38,7 @@ public class ChatProtocol extends JPanel {
   public final JTable _table;
   private final Listener<String> _listener;
   private final ActionListener _exe;
-  private final JScrollPane _scrollpane;
+  public final JScrollPane _scrollpane;
 
   public static Yaml yaml = new Yaml();
 
@@ -61,6 +61,7 @@ public class ChatProtocol extends JPanel {
     } catch (FileNotFoundException e) {
       // fixed by the next if
     }
+    messages = null;
     if (messages == null) {
       statusbar.setText("No chat history found, creating a new one.");
       messages = new LinkedList<>();
@@ -116,10 +117,12 @@ public class ChatProtocol extends JPanel {
   }
   public void sendMessage(String input) {
     messages.addLast(input);
-    ((AbstractTableModel) _table.getModel()).fireTableStructureChanged();
     
+    ((AbstractTableModel) _table.getModel()).fireTableStructureChanged();
     updateRowHeights();
     scrollToBottom(_scrollpane);
+    
+    System.out.println("Scrolled down");
     try {
       String homepath = System.getProperty("user.home");
       FileWriter writer = new FileWriter((homepath + "/.chat-history.yml"), false);

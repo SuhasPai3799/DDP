@@ -409,8 +409,16 @@ greet_back:
 if (lastDA() >= #InitialGreeting(Greet)) {
   propose("greet back") {
     if (!saidInSession(#Salutation(top)))
-      emitDA(#ReturnGreeting(Greet));
+      {
+        emitDA(#ReturnGreeting(Greet));
+      }
+    else if(saidInSession(#WHQuestion(Name)))
+    {
+      emitDA(#Offer(top));
+    }
+
   }
+  
   lastDAprocessed();
   user = new User;
 }
@@ -459,7 +467,7 @@ ask_user_for_next_query:
 /** If user thanks/accepts your information, ask them if they want to know something else **/
 if(lastDA() && lastDA() >= #Confirm(top) )
 {
-  if(!(myLastDA()>= #AutoPositive(top)))
+  if(!(myLastDA()>= #AutoPositive(top)) && !(myLastDA()>= #ReturnGreeting(Greet)))
   {
     propose("thank_and_ask_for_next_query")
     {
@@ -472,6 +480,15 @@ if(lastDA() && lastDA() >= #Confirm(top) )
     {
       emitDA(#Offer(top));
     }
+  }
+  lastDAprocessed();
+}
+
+if(lastDA() && lastDA() >= #Disconfirm(top) && (myLastDA()>= #Offer(top) || myLastDA() >= #AutoPositive(top)))
+{
+  propose("say_goodbye")
+  {
+    emitDA(#InitialGoodbye(top));
   }
   lastDAprocessed();
 }

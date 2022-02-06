@@ -156,6 +156,9 @@ public class GUI extends JFrame {
       e.printStackTrace();
     }
     */
+    _chat.resetMessages();
+    queryInput.setText("");
+    _statusbar.setText("History has been cleared.");
   }
 
   private void pause() {
@@ -302,7 +305,7 @@ public class GUI extends JFrame {
 
           default :
             String timestamp = Utilities.getTimeStamp();
-            _chat.sendMessage(timestamp + " " + input);
+            _chat.sendMessage("<html><pre>" + timestamp + " " + input +  "</pre></html>");
             _react.sendMessageToQueue(input);
             queryInput.setText("");
           }

@@ -112,3 +112,7 @@ raw:Offer ^ top
 ->
 # = :canned ^ <string>"What is your query?".
 
+raw:InitialGoodbye ^ top
+->
+# = :canned ^ <string>"Hope to see you again sometime!".
+
