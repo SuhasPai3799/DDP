@@ -48,14 +48,15 @@ public class SrgsParser extends Interpreter {
   {
     text = text.replace("?", "");
     text = text.replace("!", "");
-    text = text.replaceAll("(,)*$", "");
-    text = text.replaceAll("(\\.)*$", "");
+    text = text.replace("."," ");
+    text = text.replace(","," ");
     return text;
   }
   @Override
   public DialogueAct analyse(String text) {
     
     text = clean(text);
+    System.out.println(text);
     String[] tokens = text.split(" +");
     try {
       //TODO: Find out why no validRule is returned

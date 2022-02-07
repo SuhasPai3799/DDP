@@ -118,7 +118,7 @@ $teacherResearchInfo = ( [$polite] what (is | are) $pronouns $researchField) {ou
 
 
 $profResearchField = ( [$polite] $prof in "$$.*"<0-4> $researchField) {out.da="Request"; out.prop="ResearchField"; out.theme="Professor"; out.what="$$2";}
-                    |([$polite] [what|which] $prof (work | research | study ) [in] "$$.*"<0-4> ){out.da="Request"; out.prop="ResearchField"; out.theme="Professor"; out.what="$$1";}
+                    |([$polite] [what|which] $prof (work | research | study ) [in] [the] "$$.*"<0-4> $researchField ){out.da="Request"; out.prop="ResearchField"; out.theme="Professor"; out.what="$$2";}
                     |( [$polite] (list|enumerate|mention|tell) [all] [the] $prof $performingResearch "$$.*"<0-4>){out.da="Request"; out.prop="ResearchField"; out.theme="Professor"; out.what="$$1";}
                     |([$polite] [list|enumerate|mention|tell] (what [are]|which [are]|who [are]) [all] [the] $prof $performingResearch "$$.*"<0-4> ){out.da="Request"; out.prop="ResearchField"; out.theme="Professor"; out.what="$$1";} ;
 

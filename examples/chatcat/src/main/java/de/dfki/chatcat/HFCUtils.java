@@ -44,7 +44,7 @@ public class HFCUtils{
 	{
 		return input.split("\"")[1];
 	}
-	public static String[] prof_syns = {"professors", "professor","instructors", "teachers", "instructor","teacher", "profs","dr\\.","prof\\.","prof" };
+	public static String[] prof_syns = {"professors", "professor","instructors", "teachers", "instructor","teacher", "profs","dr\\.","prof\\.","prof","dr" };
 	public static String[] dept_common_syns = {"departments", "department", "dept", "dept.", "branch","branches"};
 	public static String getProfName(String query_prof_name)
 	{
