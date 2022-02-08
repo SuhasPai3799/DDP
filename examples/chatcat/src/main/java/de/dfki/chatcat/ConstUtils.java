@@ -40,5 +40,17 @@ public static final HashMap<String, List<String>> dept_syns = new HashMap<String
 
 public static final List<String> objectPronouns = Arrays.asList("that", "this","it", "it's","the","its");
 public static final List<String> personalPronouns = Arrays.asList("he","his","he's","hers","him","her","she","they","her's");
+public static final List<String> BTech_syns = Arrays.asList("btech.", "btech","bachelors","bachelors of technology","beng.","beng","b.tech.", "bachelor of technology");
+public static final List<String> MTech_syns = Arrays.asList("mtech.", "mtech","masters", "masters of technology","master of technology", "meng");
+public static final List<String> PHD_syns = Arrays.asList("phd","p.h.d","phd.","doctorate","doctor of philosphy","doctors of philosophy");
+
+public static final HashMap<String, List<String>> program_syns = new HashMap<String, List<String>> ()
+{
+    {
+        put("BTech.", BTech_syns);
+        put("MTech.", MTech_syns);
+        put("PHD.", PHD_syns);
+    };
+};
 
 }

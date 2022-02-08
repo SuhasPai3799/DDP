@@ -395,6 +395,22 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="PGProgList")
 }
 
 
+// Program related rules
+
+answer_program_info:
+if (lastDA()>= #Request(Programs) && lastDA().theme=="ProgramInfo")
+{
+  dept_name = lastDA().dept;
+  program_name = lastDA().program_type;
+  program_info  = (String)hfcutils.answerProgramInfo(dept_name, program_name);
+  propose("return_program_info")
+  {
+    emitDA(#Inform(Programs,program_info={program_info}));
+  }
+  lastDAprocessed();
+}
+
+
 // Small Talk Rules
 
 ask_for_name:

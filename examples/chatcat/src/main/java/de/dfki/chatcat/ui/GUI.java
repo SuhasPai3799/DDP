@@ -156,9 +156,7 @@ public class GUI extends JFrame {
       e.printStackTrace();
     }
     */
-    _chat.resetMessages();
-    queryInput.setText("");
-    _statusbar.setText("History has been cleared.");
+
   }
 
   private void pause() {

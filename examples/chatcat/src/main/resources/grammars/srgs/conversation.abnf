@@ -22,7 +22,8 @@ public $top =  [$small_talk] ($greet |
               $listDeptUGPrograms |
               $listDeptPrograms |
               $listDeptPGPrograms |
-              $deptInfo | $small_talk
+              $deptInfo | $small_talk |
+              $programInfo
               )  {!{ out = $%1; }!} [$punct] ;
 
 $thanks = ("$$.*"<0->);
@@ -191,13 +192,18 @@ $deptInfo = ($req_polite) "$$.*"<0-4> $department {out.da="Request";out.prop="De
         |    [$polite] $department "$$.*"<0-4> {out.da="Request";out.prop="Department"; out.what="$$1";out.theme="DeptInfo";} 
         |   [$polite] $objectPronoun $department {out.da="Request";out.prop="Department"; out.what="objectPronoun";out.theme="DeptInfo";} ;
 
+
+$programInfo = [$polite] $program_names in "$$.*"<0-4> $program {out.da = "Request"; out.prop="Programs"; out.program_type="$$4"; out.dept = "$$2"; out.theme="ProgramInfo";};
+         
+
 // Small talk rules
 
 $small_talk =  ($pos_mood 
              | $affirmative
              | $reject
              | $disagreement
-             | $howareyou) {!{ out = $%1; }!} [$punct]<0-10>;
+             | $howareyou
+             | $greet) {!{ out = $%1; }!} [$punct]<0-10>;
 
 
 $pos_mood = ("i'm"|i am) (fine|good|well) [thank you]{ out.da = "Inform"; out.prop = "Mood";out.polarity = "pos";};
@@ -218,3 +224,11 @@ $howareyou = how (are you [today]|is it going)
 
 
 $req_polite = ( [ could | can ] [you] [please] (tell | describe | explain | list | enumerate | talk ) [to] [me] (about) [some] );
+
+$btech_names = (BTech. | btech | beng. | beng | bachelors | bachelor of technology | bachelors of technology);
+
+$mtech_names = (MTech. | mtech | masters | masters of technology | master of technology );
+
+$phd_names = (phd. | phd | postdoc | postdoc | doctor of philosophy | doctorate);
+
+$program_names = ($btech_names | $mtech_names | $phd_names);

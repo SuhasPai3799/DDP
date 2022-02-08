@@ -35,7 +35,14 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasAdmissionRequisites">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Programs"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Qualifications"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -184,9 +191,15 @@
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#name">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -196,8 +209,14 @@
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#testProp">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -479,6 +498,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech._Computer_Science">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech."/>
+        <UnivFAQ:hasAdmissionRequisites rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced"/>
+        <UnivFAQ:hasAdmissionRequisites rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard"/>
         <rdfs:comment>The B.Tech. program is a four-year course oriented undergraduate program. The course work is spread accross all the semesters. The courses include a set of core courses offered by the department, a set of departmental electives and some free electives. In total, the academic activities include 7 department electives and 8 free electives. A B.Tech project is optional and the student can take 2 additional department electives in lieu of the B.Tech project.</rdfs:comment>
         <rdfs:label>BTech. Computer Science</rdfs:label>
     </owl:NamedIndividual>
@@ -501,31 +522,11 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dual_Degree"/>
+        <UnivFAQ:hasAdmissionRequisites rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced"/>
+        <UnivFAQ:hasAdmissionRequisites rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard"/>
         <UnivFAQ:offeredBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
         <rdfs:comment>The Dual Degree program is a five year program. At the end of five years, the student is awarded both a B.Tech. and M.Tech. degree.</rdfs:comment>
         <rdfs:label>Dual Degree (BTech. + MTech.) Computer Science</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-MTech -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-MTech">
-        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MTech."/>
-        <UnivFAQ:offeredBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
-        <rdfs:comment>The M.Tech. program is a two-year course oriented graduate program. The student has to take a set of core courses and a set of electives. The course work is spread accross the first two semesters with an option of taking one elective in the third semester. This is followed by a project in the third and fourth semester in which the student can take up a project of his or her interest, supervised by a faculty member.</rdfs:comment>
-        <rdfs:label>MTech. Computer Science</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-PhD -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-PhD">
-        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PhD"/>
-        <UnivFAQ:offeredBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
-        <rdfs:comment>PhD. programs are postgraduate research oriented programs. The scholar works in an area of his/her interest under the supervision of a faculty member. The scholar has to obtain a minimum number of credits by taking courses. The highlight of the program is the independent research work taken by scholar, leading to a dissertation at the end of the program. The average duration of a PhD. program is between four to five years.</rdfs:comment>
-        <rdfs:label>PHD. Computer Science</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -626,6 +627,8 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Chandra_Sekhar">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor"/>
         <UnivFAQ:headsDepartment rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Artificial_Intelligence"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Reinforcement_Learning"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6910"/>
         <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C Chandra Sekhar</UnivFAQ:name>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C Chandra Sekhar</rdfs:label>
@@ -731,6 +734,15 @@ We perform a variety of research work from absolute fundamentals to component de
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#GATE -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#GATE">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests"/>
+        <rdfs:label>GATE</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Information_Theory -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Information_Theory">
@@ -743,13 +755,19 @@ We perform a variety of research work from absolute fundamentals to component de
 
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests"/>
+        <rdfs:label>JEE Advanced</rdfs:label>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Mains -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Mains"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Mains">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests"/>
+        <rdfs:label>JEE Mains</rdfs:label>
+    </owl:NamedIndividual>
     
 
 
@@ -762,6 +780,19 @@ We perform a variety of research work from absolute fundamentals to component de
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE6150"/>
         <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Krishna Jagannathan</UnivFAQ:name>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Krishna Jagannathan</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MTech._Computer_Science -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MTech._Computer_Science">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MTech."/>
+        <UnivFAQ:hasAdmissionRequisites rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#GATE"/>
+        <UnivFAQ:hasAdmissionRequisites rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Undergraduates_With_BTech"/>
+        <UnivFAQ:offeredBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
+        <rdfs:comment>The M.Tech. program is a two-year course oriented graduate program. The student has to take a set of core courses and a set of electives. The course work is spread accross the first two semesters with an option of taking one elective in the third semester. This is followed by a project in the third and fourth semester in which the student can take up a project of his or her interest, supervised by a faculty member.</rdfs:comment>
+        <rdfs:label>MTech. Computer Science</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -823,6 +854,17 @@ We perform a variety of research work from absolute fundamentals to component de
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#InstituteFacilities"/>
         <rdfs:comment>Programming Languages, Architecture and Compilers Education Laboratory</rdfs:comment>
         <rdfs:label>PACE Lab</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PHD._Computer_Science -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PHD._Computer_Science">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PhD"/>
+        <UnivFAQ:offeredBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
+        <rdfs:comment>PhD. programs are postgraduate research oriented programs. The scholar works in an area of his/her interest under the supervision of a faculty member. The scholar has to obtain a minimum number of credits by taking courses. The highlight of the program is the independent research work taken by scholar, leading to a dissertation at the end of the program. The average duration of a PhD. program is between four to five years.</rdfs:comment>
+        <rdfs:label>PHD. Computer Science</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -912,12 +954,28 @@ We perform a variety of research work from absolute fundamentals to component de
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Undergraduates_With_BTech -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Undergraduates_With_BTech">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Qualifications"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#VLSI_Lab -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#VLSI_Lab">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#InstituteFacilities"/>
         <rdfs:comment>Involved in research in the areas of analog, mixed signal, and RF design, analysis and simulation of noise in circuits, VLSI DSP architectures, Programmable Analog Pulse Shaping for Ultra-Wideband Applications and reconfigurable computing.</rdfs:comment>
         <rdfs:label>VLSI Lab</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Qualifications"/>
     </owl:NamedIndividual>
     
 

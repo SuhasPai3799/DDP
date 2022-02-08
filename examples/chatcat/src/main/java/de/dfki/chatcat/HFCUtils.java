@@ -16,8 +16,7 @@ import de.dfki.lt.hfc.db.server.HfcDbServer;
 import de.dfki.mlt.rudimant.agent.Agent;
 import de.dfki.mlt.rudimant.agent.Behaviour;
 import de.dfki.mlt.rudimant.agent.DialogueAct;
-
-
+import opennlp.ccgbank.parse.start;
 import de.dfki.lt.hfc.db.QueryException;
 import de.dfki.lt.hfc.db.QueryResult;
 import de.dfki.lt.hfc.types.XsdAnySimpleType;
@@ -46,6 +45,7 @@ public class HFCUtils{
 	}
 	public static String[] prof_syns = {"professors", "professor","instructors", "teachers", "instructor","teacher", "profs","dr\\.","prof\\.","prof","dr" };
 	public static String[] dept_common_syns = {"departments", "department", "dept", "dept.", "branch","branches"};
+	
 	public static String getProfName(String query_prof_name)
 	{
 		query_prof_name = cleanProfNames(query_prof_name);
@@ -157,6 +157,24 @@ public class HFCUtils{
 			}
 			
 			logger.log(Level.INFO, dept_official_name);
+		}
+		return "NULL";
+	}
+
+	public static String getClosestProg(String program_name)
+	{
+		
+		for(Map.Entry mapElement: program_syns.entrySet())
+		{
+			String program_official_name = (String)mapElement.getKey();
+			List<String> program_name_syns = (List)mapElement.getValue();
+			for(String syn:program_name_syns)
+			{
+				if((syn.toLowerCase()).equals(program_name.toLowerCase()))
+				{
+					return program_official_name;
+				}
+			}
 		}
 		return "NULL";
 	}
@@ -598,7 +616,31 @@ public class HFCUtils{
 			return "No department with name " + dept_name + " exists";
 		}
 		String dept_uri = "<univ:" + closest_dept_name + ">";
+	
 		String query = String.format("select ?b where %s <rdfs:comment> ?b ?_", dept_uri);
+		List<Object> res = _agent._proxy.query(query);
+		logger.log(Level.INFO, String.valueOf(res.get(0)));
+		return formatNewLine(String.valueOf(res.get(0)));
+	}
+
+
+	/* Program related queries */
+
+	public static String answerProgramInfo(String dept_name, String program_name)
+	{
+		String closest_dept_name = getClosestDept(dept_name);
+		if(closest_dept_name=="NULL")
+		{
+			return "No department with name " + dept_name + " exists";
+		}
+		String closest_program_name = getClosestProg(program_name);
+		if(closest_program_name=="NULL")
+		{
+			return "No program with name " + program_name + " exists";
+		}
+		String program_uri = "<univ:"+closest_program_name + "_" + closest_dept_name + ">";
+		logger.log(Level.INFO, program_uri);
+		String query = String.format("select ?b where %s <rdfs:comment> ?b ?_",program_uri);
 		List<Object> res = _agent._proxy.query(query);
 		logger.log(Level.INFO, String.valueOf(res.get(0)));
 		return formatNewLine(String.valueOf(res.get(0)));
