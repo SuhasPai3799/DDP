@@ -400,12 +400,28 @@ if (lastDA()>= #Request(Department) && lastDA().theme=="PGProgList")
 answer_program_info:
 if (lastDA()>= #Request(Programs) && lastDA().theme=="ProgramInfo")
 {
-  dept_name = lastDA().dept;
-  program_name = lastDA().program_type;
-  program_info  = (String)hfcutils.answerProgramInfo(dept_name, program_name);
-  propose("return_program_info")
+  if(lastDA().dept == "objectPronoun" || (Boolean)hfcutils.checkObjectPronoun(lastDA().dept))
   {
-    emitDA(#Inform(Programs,program_info={program_info}));
+    dept_resolved_name = (String)hfcutils.resolveObjectPronoun("<univ:Department>");
+    program_name = lastDA().program_type;
+    program_resolved_info  = (String)hfcutils.answerProgramInfo(dept_resolved_name, program_name);
+    propose("return_program_info")
+    {
+      emitDA(#Inform(Programs,program_info={program_resolved_info}));
+    }
+
+  }
+  else
+  {
+    dept_name = lastDA().dept;
+    dept = new Department;
+    dept.name = dept_name;
+    program_name = lastDA().program_type;
+    program_info  = (String)hfcutils.answerProgramInfo(dept_name, program_name);
+    propose("return_program_info")
+    {
+      emitDA(#Inform(Programs,program_info={program_info}));
+    } 
   }
   lastDAprocessed();
 }

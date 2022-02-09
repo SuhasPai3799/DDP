@@ -44,7 +44,7 @@ public class HFCUtils{
 		return input.split("\"")[1];
 	}
 	public static String[] prof_syns = {"professors", "professor","instructors", "teachers", "instructor","teacher", "profs","dr\\.","prof\\.","prof","dr" };
-	public static String[] dept_common_syns = {"departments", "department", "dept", "dept.", "branch","branches"};
+	public static String[] dept_common_syns = {"departments", "department", "dept.", "dept","branches", "branch"};
 	
 	public static String getProfName(String query_prof_name)
 	{
@@ -144,6 +144,14 @@ public class HFCUtils{
 				dept_name = String.join(" ", Arrays.copyOfRange(splitted, 1, splitted.length)).trim();
 			}
 		}
+		for(String syns:dept_common_syns)
+		{
+			if(dept_name.contains(syns))
+			{
+				dept_name = dept_name.replaceAll(syns, "");
+			}
+		}
+		dept_name = dept_name.trim();
 		logger.log(Level.INFO, dept_name);
 		for (Map.Entry mapElement : dept_syns.entrySet()) {
 			String dept_official_name = (String)mapElement.getKey();

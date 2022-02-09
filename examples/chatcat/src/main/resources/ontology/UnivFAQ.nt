@@ -26,6 +26,8 @@ _:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.semantic
 _:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid10 .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Qualifications> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard> <http://www.w3.org/2000/01/rdf-schema#comment> "Candidate must have a 12th standard pass certificiate from a recognized board." .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard> <http://www.w3.org/2000/01/rdf-schema#label> "12th Standard" .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Abishek_Sinha> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isSpecializedIn> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Information_Theory> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Abishek_Sinha> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isSpecializedIn> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Network_Control> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Abishek_Sinha> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#name> "Abishek Sinha" .
@@ -148,17 +150,17 @@ _:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid10 .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6910> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6910> <http://www.w3.org/2000/01/rdf-schema#comment> "Neural Networks have made tremendous impact on various AI fields in the recent past. In this course, we study the basics of Neural Networks and their various variants such as the Convolutional Neural Networks and Recurrent Neural Networks. We also study the different ways in which they can be used to solve problems in various domains such as Computer Vision, Speech and NLP. We also look at the latest results and trends in the field." .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6910> <http://www.w3.org/2000/01/rdf-schema#label> "Deep Learning" .
-<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasAdmissionRequisites> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard> .
-<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasAdmissionRequisites> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced> .
-<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offeredBy> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> .
-<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dual_Degree> .
-<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD> <http://www.w3.org/2000/01/rdf-schema#comment> "The Dual Degree program is a five year program. At the end of five years, the student is awarded both a B.Tech. and M.Tech. degree." .
-<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD> <http://www.w3.org/2000/01/rdf-schema#label> "Dual Degree (BTech. + MTech.) Computer Science" .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DCF_Lab> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#InstituteFacilities> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DCF_Lab> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DCF_Lab> <http://www.w3.org/2000/01/rdf-schema#comment> "Departmental Computing Facility (DCF) is an exclusive departmental digital laboratory with sophisticated technology" .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DCF_Lab> <http://www.w3.org/2000/01/rdf-schema#label> "DCF Lab" .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Computer_Science> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasAdmissionRequisites> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Computer_Science> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasAdmissionRequisites> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Computer_Science> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#offeredBy> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Computer_Science> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dual_Degree> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Computer_Science> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Computer_Science> <http://www.w3.org/2000/01/rdf-schema#comment> "The Dual Degree program is a five year program. At the end of five years, the student is awarded both a B.Tech. and M.Tech. degree." .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Computer_Science> <http://www.w3.org/2000/01/rdf-schema#label> "Dual Degree (BTech. + MTech.) Computer Science" .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dual_Degree> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dual_Degree> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#UndergradPrograms> .
@@ -186,6 +188,7 @@ _:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid10 .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#FinancialScholarship> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#GATE> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#GATE> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#GATE> <http://www.w3.org/2000/01/rdf-schema#comment> "Candidate must have passed the GATE exam." .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#GATE> <http://www.w3.org/2000/01/rdf-schema#label> "GATE" .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasAdmissionRequisites> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasAdmissionRequisites> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Programs> .
@@ -223,9 +226,11 @@ _:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid10 .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isSpecializedIn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced> <http://www.w3.org/2000/01/rdf-schema#comment> "Candidate must have passed JEE Advanced exam" .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced> <http://www.w3.org/2000/01/rdf-schema#label> "JEE Advanced" .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Mains> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Mains> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Mains> <http://www.w3.org/2000/01/rdf-schema#comment> "Candidate must have passed JEE Mains exam." .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Mains> <http://www.w3.org/2000/01/rdf-schema#label> "JEE Mains" .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Krishna_Jagannathan> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isSpecializedIn> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Network_Control> .
 <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Krishna_Jagannathan> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isSpecializedIn> <http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Transportation_Networks> .

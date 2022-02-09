@@ -518,19 +518,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS-DD">
-        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dual_Degree"/>
-        <UnivFAQ:hasAdmissionRequisites rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced"/>
-        <UnivFAQ:hasAdmissionRequisites rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard"/>
-        <UnivFAQ:offeredBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
-        <rdfs:comment>The Dual Degree program is a five year program. At the end of five years, the student is awarded both a B.Tech. and M.Tech. degree.</rdfs:comment>
-        <rdfs:label>Dual Degree (BTech. + MTech.) Computer Science</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1100 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1100">
@@ -687,6 +674,19 @@ The department has been funded by FIST program from DST, Govt. of India in 2002 
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Computer_Science -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Computer_Science">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dual_Degree"/>
+        <UnivFAQ:hasAdmissionRequisites rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced"/>
+        <UnivFAQ:hasAdmissionRequisites rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard"/>
+        <UnivFAQ:offeredBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
+        <rdfs:comment>The Dual Degree program is a five year program. At the end of five years, the student is awarded both a B.Tech. and M.Tech. degree.</rdfs:comment>
+        <rdfs:label>Dual Degree (BTech. + MTech.) Computer Science</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE3002 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE3002">
@@ -738,6 +738,7 @@ We perform a variety of research work from absolute fundamentals to component de
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#GATE">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests"/>
+        <rdfs:comment>Candidate must have passed the GATE exam.</rdfs:comment>
         <rdfs:label>GATE</rdfs:label>
     </owl:NamedIndividual>
     
@@ -757,6 +758,7 @@ We perform a variety of research work from absolute fundamentals to component de
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Advanced">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests"/>
+        <rdfs:comment>Candidate must have passed JEE Advanced exam</rdfs:comment>
         <rdfs:label>JEE Advanced</rdfs:label>
     </owl:NamedIndividual>
     
@@ -766,6 +768,7 @@ We perform a variety of research work from absolute fundamentals to component de
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#JEE_Mains">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests"/>
+        <rdfs:comment>Candidate must have passed JEE Mains exam.</rdfs:comment>
         <rdfs:label>JEE Mains</rdfs:label>
     </owl:NamedIndividual>
     
@@ -976,6 +979,8 @@ We perform a variety of research work from absolute fundamentals to component de
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#12th_Standard">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Qualifications"/>
+        <rdfs:comment>Candidate must have a 12th standard pass certificiate from a recognized board.</rdfs:comment>
+        <rdfs:label>12th Standard</rdfs:label>
     </owl:NamedIndividual>
     
 
