@@ -21,6 +21,7 @@ public $top =  [$small_talk] ($greet |
               $listDeptProfs |
               $listDeptUGPrograms |
               $programInfo |
+              $programAdmissionInfo |
               $listDeptPrograms |
               $listDeptPGPrograms |
               $deptInfo | $small_talk
@@ -36,6 +37,9 @@ $objectPronoun = (it | that | this | "it's" | its | the | them | they | their);
 $undergrads = (undergraduates | undergrads | school students | 12th pass | UG | undergraduate | under-graduate | undergrad);
 
 $postgrads = (postgrads | postgraduate | post-graduate | postgraduate | PG | postgrad);
+
+$admissionReqs = (admission  [requirements | requisites | requirement | requisite | criteria | criterias | criterion]| admissions [requirements | requisites | requirement | requisite | criteria | criterias | criterion]  
+                 minimum [qualification | qualifications] | admission [cutoffs | cutoff] );
 
 $prof = (prof | professor | prof. | instructor | teacher | profs | professors | instructors | teachers) ;
 
@@ -65,6 +69,7 @@ $facilities = ([$labs] facilities | [$labs] facility | labs | lab | laboratory |
               equipments | equipment | amenity | amenities);
 
 $polite = ( [ could | can ] [you] [please] [tell | describe | explain | list | enumerate | talk ] [to] [me] [about] [some] );
+$req_polite = ( [ could | can ] [you] [please] (tell | describe | explain | list | enumerate | talk | inform ) [to] [me] (about) [some] );
 
 $performingResearch = (performing research [in|on] | studying [in|on] | researching [in|on] | doing research [in|on] | specializing [in|on] | working [in|on] | research [in|on] | study [in|on]
                         | specialize [in|on] | work [in|on]);
@@ -195,10 +200,18 @@ $deptInfo = ($req_polite) "$$.*"<0-4> $department {out.da="Request";out.prop="De
         |   [$polite] $objectPronoun $department {out.da="Request";out.prop="Department"; out.what="objectPronoun";out.theme="DeptInfo";} ;
 
 
-$programInfo = [$polite] $program_names (in|from|of) [the] $all_depts [$department] [$program] {out.da = "Request"; out.prop="Programs"; out.program_type="$$6"; out.dept = "$$3"; out.theme="ProgramInfo";}
+// Program related rules
+
+
+$programInfo = [$polite] $program_names [in|from|of] [the] $all_depts [$department] [$program] {out.da = "Request"; out.prop="Programs"; out.program_type="$$6"; out.dept = "$$3"; out.theme="ProgramInfo";}
         |      [$polite] $all_depts [$department] $program_names [$program] {out.da = "Request"; out.prop="Programs"; out.program_type="$$2"; out.dept = "$$4"; out.theme="ProgramInfo";}
-        |      [$polite] $program_names [$program] (in|from|of) $objectPronoun [$department] {out.da="Request";out.prop="Programs";out.program_type="$$5";out.dept="objectPronoun";out.theme="ProgramInfo";};
+        |      [$polite] $program_names [$program] [in|from|of] $objectPronoun [$department] {out.da="Request";out.prop="Programs";out.program_type="$$5";out.dept="objectPronoun";out.theme="ProgramInfo";}
+        |      $req_polite $objectPronoun $program {out.da="Request";out.prop="Programs";out.theme="ProgramInfo";out.pronoun="True";};
          
+$programAdmissionInfo = [$polite] [what|which] [is|are] [the] $admissionReqs (for | of) $program_names [in|from|of] [the] $all_depts [$department] [$program] {out.da = "Request"; out.prop="Programs"; out.program_type="$$6"; out.dept = "$$3"; out.theme="ProgramAdmissionInfo";}
+        |               [$polite] [what|which] [is|are] [the] $admissionReqs (for | of) $all_depts [$department] $program_names [$program] {out.da = "Request"; out.prop="Programs"; out.program_type="$$2"; out.dept = "$$4"; out.theme="ProgramAdmissionInfo";}
+        |               [$polite] [what|which] [is|are] [the] $admissionReqs (for | of) $program_names [$program] [in|from|of] $objectPronoun [$department]  {out.da="Request";out.prop="Programs";out.program_type="$$5";out.dept="objectPronoun";out.theme="ProgramAdmissionInfo";}
+        |               [$polite] $admissionReqs (for | of) $objectPronoun [$program] {out.da="Request";out.prop="Programs";out.theme="ProgramAdmissionInfo"; out.pronoun="True";};
 
 // Small talk rules
 
@@ -227,15 +240,17 @@ $howareyou = how (are you [today]|is it going)
      { out.da = "WHQuestion"; out.prop = "Mood"};
 
 
-$req_polite = ( [ could | can ] [you] [please] (tell | describe | explain | list | enumerate | talk ) [to] [me] (about) [some] );
 
-$btech_names = (BTech. | btech | beng. | beng | bachelors | bachelor of technology | bachelors of technology);
+
+$btech_names = (BTech. | btech | beng. | beng | bachelors | bachelor of technology | bachelors of technology) [degree | deg | deg.];
+
+$dd_names = (DD | dual degree | dual | dual deg | "double deg" | "integrated deg" | "integrated" | "integrated degree") [degree| deg | deg.];
 
 $mtech_names = (MTech. | mtech | masters | masters of technology | master of technology );
 
 $phd_names = (phd. | phd | postdoc | postdoc | doctor of philosophy | doctorate);
 
-$program_names = ($btech_names | $mtech_names | $phd_names);
+$program_names = ($btech_names | $mtech_names | $phd_names | $dd_names);
 
 $cs_names = (cs | "comp.sci" | "comp. sci" | computer science | comp. science | comp.science | "computer science" |  "cs" | "CSE" | "CSE." | "Comp. Sci" |  "Comp. Science" );
 

@@ -654,6 +654,34 @@ public class HFCUtils{
 		return formatNewLine(String.valueOf(res.get(0)));
 	}
 
+	public static String answerProgramAdmissionInfo(String dept_name, String program_name)
+	{
+		String closest_dept_name = getClosestDept(dept_name);
+		if(closest_dept_name=="NULL")
+		{
+			return "No department with name " + dept_name + " exists";
+		}
+		String closest_program_name = getClosestProg(program_name);
+		if(closest_program_name=="NULL")
+		{
+			return "No program with name " + program_name + " exists";
+		}
+		logger.log(Level.INFO, "Check check");
+		String program_uri = "<univ:"+closest_program_name + "_" + closest_dept_name + ">";
+		String query = String.format("select ?c ?b where ?a <rdfs:label> ?b ?_ & %s <univ:hasAdmissionRequisites> ?a ?_ & ?a <rdfs:comment> ?c ?_", program_uri);
+		QueryResult res = _agent._proxy.selectQuery(query);
+		Integer count = 1;
+		String ret = "The program " + closest_program_name + " in " + dept_name + " has the following admission requisites: \n";
+		for(List<String> admit_row: res.getTable().getRows())
+		{
+			String admit_label = cleanXSD(String.valueOf(admit_row.get(1)));
+			String admit_comment = cleanXSD(String.valueOf(admit_row.get(0)));
+			
+			ret += String.valueOf(count) + ". " + admit_label + ":" + admit_comment + "\n";
+			count++;
+		}
+		return ret;
+	}
 
 
 	  

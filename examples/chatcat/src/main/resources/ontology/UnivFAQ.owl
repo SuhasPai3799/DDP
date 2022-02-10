@@ -197,6 +197,7 @@
                     <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
                     <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
                     <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Programs"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>

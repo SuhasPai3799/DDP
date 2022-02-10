@@ -104,6 +104,10 @@ raw:Inform ^ Programs ^ <program_info>#i
 ->
 # = :canned ^ <string> #i.
 
+raw:Inform ^ Programs ^ <program_admission_info>#i
+->
+# = :canned ^ <string> #i.
+
 raw:Inform ^ OutOfInputSpace
 ->
 # = :canned ^ <string>"I was unable to understand that. Could you rephrase the sentence?".

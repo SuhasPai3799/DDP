@@ -43,6 +43,7 @@ public static final List<String> personalPronouns = Arrays.asList("he","his","he
 public static final List<String> BTech_syns = Arrays.asList("btech.", "btech","bachelors","bachelors of technology","beng.","beng","b.tech.", "bachelor of technology");
 public static final List<String> MTech_syns = Arrays.asList("mtech.", "mtech","masters", "masters of technology","master of technology", "meng");
 public static final List<String> PHD_syns = Arrays.asList("phd","p.h.d","phd.","doctorate","doctor of philosphy","doctors of philosophy");
+public static final List<String> Dual_syns = Arrays.asList("dual", "dd", "dual degree","dual deg", "double deg", "integrated deg", "integrated", "integrated degree");
 
 public static final HashMap<String, List<String>> program_syns = new HashMap<String, List<String>> ()
 {
@@ -50,6 +51,7 @@ public static final HashMap<String, List<String>> program_syns = new HashMap<Str
         put("BTech.", BTech_syns);
         put("MTech.", MTech_syns);
         put("PHD.", PHD_syns);
+        put("DD", Dual_syns);
     };
 };
 
