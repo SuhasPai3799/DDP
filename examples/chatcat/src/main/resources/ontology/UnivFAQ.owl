@@ -451,6 +451,19 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_Seshadri_Sekhar -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_Seshadri_Sekhar">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor"/>
+        <UnivFAQ:headsDepartment rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Mechanical_Engineering"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Rotordynamics"/>
+        <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME2200"/>
+        <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A Seshadri Sekhar</UnivFAQ:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A Seshadri Sekhar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Abishek_Sinha -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Abishek_Sinha">
@@ -491,6 +504,16 @@
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1100"/>
         <UnivFAQ:name>Arun Rajkumar</UnivFAQ:name>
         <rdfs:label>Arun Rajkumar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Automation_In_Manufacturing_Research -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Automation_In_Manufacturing_Research">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:comment>Automation, in the context of manufacturing, is the use of equipment to automate systems or production processes.</rdfs:comment>
+        <rdfs:label>Automation In Manfacturing</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -688,6 +711,18 @@ The department has been funded by FIST program from DST, Govt. of India in 2002 
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dhiman_Chatterjee -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dhiman_Chatterjee">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Fluid_Mechanics"/>
+        <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME1100"/>
+        <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dhiman Chatterjee</UnivFAQ:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dhiman Chatterjee</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE3002 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE3002">
@@ -735,12 +770,49 @@ We perform a variety of research work from absolute fundamentals to component de
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Fault_Diagnosis_and_Prognosis -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Fault_Diagnosis_and_Prognosis">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:comment>Prognosis is the capability to use available observations to predict upcoming states of machine or forecast the fault before it occurs.</rdfs:comment>
+        <rdfs:label>Fault Diagnosis and Prognosis</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Fluid_Mechanics -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Fluid_Mechanics">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:comment>Fluid mechanics is the branch of physics concerned with the mechanics of fluids and the forces on them.</rdfs:comment>
+        <rdfs:label>Fluid Mechanics</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#GATE -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#GATE">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests"/>
         <rdfs:comment>Candidate must have passed the GATE exam.</rdfs:comment>
         <rdfs:label>GATE</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#HTTP_Lab -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#HTTP_Lab">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#InstituteFacilities"/>
+        <rdfs:comment>Heat Transfer and Thermal Power Labarotory.
+
+-Studies on Thermal Conductivity of Two-Phase Systems
+-Porous Medium and Biological Transport Process Studies
+-Nano to Macro Scale Heat Transport Studies
+-Nanofluid, Bio-MEMS and Microfluidics Studies
+-Multi-Mode and Inverse Heat Transfer Studies
+-Fluidized Bed Combustion Studies for Biomass and Coal</rdfs:comment>
+        <rdfs:label>HTTP Lab</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -788,6 +860,58 @@ We perform a variety of research work from absolute fundamentals to component de
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME1100 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME1100">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+        <UnivFAQ:offeredBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Mechanical_Engineering"/>
+        <rdfs:comment>To learn the first and second laws of thermodynamics and their application to equipment and devices of relevance to mechanical engineering.</rdfs:comment>
+        <rdfs:label>Thermodynamics</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME1480 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME1480">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+        <rdfs:comment>To introduce students to manual and computer aided drawing</rdfs:comment>
+        <rdfs:label>Engineering Drawing</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME2200 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME2200">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+        <rdfs:comment>Fundamental understanding of the correlation between the structure and properties of materials forms an integral part of any successful design. The main objective of this course is to provide a basic knowledge concerning the internal structure of materials, their mechanical properties and various methods to quantify their mechanical integrity and failure criteria. Phases and heat treatment methods to tailor the properties of Fe-C alloys, which forms perhaps the most important set of engineering</rdfs:comment>
+        <rdfs:label>Materials and Design</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME3302 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME3302">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+        <UnivFAQ:offeredBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Mechanical_Engineering"/>
+        <rdfs:comment>To understand the importance of automation in the of field machine tool based manufacturing To get the knowledge of various elements of manufacturing automation – CAD/CAM, sensors, pneumatics, hydraulics, CNC etc To know the product design and manufacturing by considering manufacturing automation</rdfs:comment>
+        <rdfs:label>Automation in manufacturing</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MES_Lab -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MES_Lab">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#InstituteFacilities"/>
+        <rdfs:comment>The Manufacturing Engineering Section is spread over three laboratories: one housed in the Ranganathan Building, one in the Machine Tool Laboratory in the workshop building, and the third in MSB. We are served by 13 faculty, 5 technical staff and 2 administrative staff.</rdfs:comment>
+        <rdfs:label>MES Lab</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MTech._Computer_Science -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MTech._Computer_Science">
@@ -807,6 +931,24 @@ We perform a variety of research work from absolute fundamentals to component de
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
         <rdfs:comment>Machine learning is the study of computer algorithms that can improve automatically through experience and by the use of data. It is seen as a part of artificial intelligence</rdfs:comment>
         <rdfs:label>Machine Learning</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Mechanical_Engineering -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Mechanical_Engineering">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
+        <UnivFAQ:hasFacility rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#HTTP_Lab"/>
+        <UnivFAQ:hasFacility rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MES_Lab"/>
+        <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME1480"/>
+        <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME2200"/>
+        <rdfs:comment>Mechanical Engineering is one of the major activities in the engineering profession and its principles are involved in the design, study, development and construction of nearly all of the physical devices and systems. Continued research and development have led to better machines and processes helping the mankind.
+
+The Department of Mechanical Engineering at IIT Madras is as old as the Institute itself. Its impact on the institute and on society is easily demonstrated by noting the alignment of the department&apos;s evolution with key events and technological advances in the India and elsewhere. Today, the department of Mechanical engineering of IIT Madras attracts and features an extraordinary rich diversity and quantity of talented individuals, with nearly 700 undergraduates, 500 graduate students and over 60 faculty members. The impressive array of students makes the department as the largest in the country and one of the largest in Asia.
+
+In addition to teaching undergraduate and graduate students, the faculty of Mechanical Engineering actively pursues research through graduate students. The current graduate students include nearly 150 Master of Technology students (M.Tech), 170 Master of Science (by research) students (M.S.) and 300 students pursuing their doctoral programme (Ph.D).</rdfs:comment>
+        <rdfs:label>Mechanical Engineering Department</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -873,6 +1015,18 @@ We perform a variety of research work from absolute fundamentals to component de
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Piyush_Shakya -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Piyush_Shakya">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#AssistantProfessor"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Fault_Diagnosis_and_Prognosis"/>
+        <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME1480"/>
+        <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Piyush Shakya</UnivFAQ:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Piyush Shakya</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#RFIC_Design -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#RFIC_Design">
@@ -888,6 +1042,16 @@ We perform a variety of research work from absolute fundamentals to component de
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Reinforcement_Learning">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
         <rdfs:label>Reinforcement Learning</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Rotordynamics -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Rotordynamics">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:comment>Rotordynamics, also known as rotor dynamics, is a specialized branch of applied mechanics concerned with the behavior and diagnosis of rotating structures.</rdfs:comment>
+        <rdfs:label>Rotordynamics</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -913,6 +1077,17 @@ We perform a variety of research work from absolute fundamentals to component de
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE3002"/>
         <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S Aniruddhan</UnivFAQ:name>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S Aniruddhan</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Sathyan_Subbiah -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Sathyan_Subbiah">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Automation_In_Manufacturing_Research"/>
+        <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME3302"/>
+        <rdfs:label>Sathyan Subbiah</rdfs:label>
     </owl:NamedIndividual>
     
 

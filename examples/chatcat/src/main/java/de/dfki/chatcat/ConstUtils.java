@@ -27,14 +27,16 @@ import de.dfki.lt.loot.jada.Pair;
 public interface ConstUtils{
 
 
-public static final List<String> CS_syns = Arrays.asList("Computer Science", "CS","CSE","CSE.", "Comp. Sci", "Comp. Science");
+public static final List<String> CS_syns = Arrays.asList("Computer Science", "CS","CSE","CSE.", "Comp. Sci", "Comp. Science", "Computer Science Engineering");
 public static final List<String> Elec_syns = Arrays.asList("Electrical Engineering", "EEE", "Elec. Engg", "Elec", "Electrical", "Electronics", "ECE", "EE");
+public static final List<String> Mech_syns = Arrays.asList("Mechanical Engineering", "Mechanical", "Mech", "Mech.", "Mechatronics", "ME", "Mech. Engg", "Mechanical Engg");
 
 public static final HashMap<String, List<String>> dept_syns = new HashMap<String, List<String>> ()
 {
     {
         put("Computer_Science", CS_syns);
         put("Electrical_Engineering", Elec_syns);
+        put("Mechanical_Engineering",Mech_syns);
     };
 };
 
