@@ -313,12 +313,17 @@ public class HFCUtils{
 					QueryResult prereq_res = _agent._proxy.selectQuery(prereq_query);
 					Integer count = 1;
 					String ret = "The course : " + c_name + " has the following prerequisite courses: \n";
+					
 					for(List<String> course_row: prereq_res.getTable().getRows())
 					{
 						String prereq_course_label = cleanXSD(String.valueOf(course_row.get(1)));
 						String prereq_course_id = getNameFromURI(String.valueOf(course_row.get(0)));
 						ret += String.valueOf(count) + ". " + prereq_course_id + " - " + prereq_course_label + "\n";
 						count++;
+					}
+					if(count == 1)
+					{
+						ret = "The course : " + c_name + " has no prerequisistes.";
 					}
 					return ret;
 				}

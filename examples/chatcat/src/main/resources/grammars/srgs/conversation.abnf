@@ -257,4 +257,6 @@ $elec_names = ("Electrical Engineering" |  "EEE" |  "Elec. Engg" |  "Elec" |  "E
 
 $mech_names = ("Mechanical Engineering" | "Mechanical" | "Mech" | "Mech." |  "Mechatronics" | "ME" | "Mech Engg" | "Mechanical Engg");
 
-$all_depts = ($cs_names | $elec_names | $mech_names);
+$chem_names = ("Chemical Engineering" | "Chemical" | "Chem Engineering" | "Chem Engg" | "Chem" | "ChemE");
+
+$all_depts = ($cs_names | $elec_names | $mech_names | $chem_names);

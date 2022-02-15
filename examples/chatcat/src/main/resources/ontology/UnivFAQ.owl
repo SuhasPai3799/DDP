@@ -530,6 +530,16 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech._Electrical_Engineering -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech._Electrical_Engineering">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech."/>
+        <rdfs:comment>The coveted Bachelors of Technology program awards students an undergraduate degree in an engineering discipline after four years of study. Entrance to the B.Tech programme is through the Joint Engineering Entrance (JEE) (Mains) and JEE (Advanced); conducted at various centres across the country. Admission to the particular branch of study is decided by the Joint Admission Committee.</rdfs:comment>
+        <rdfs:label>BTech. Electrical Engineering</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#B_Ravindran -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#B_Ravindran">
@@ -538,6 +548,47 @@
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS6700"/>
         <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Balaram Ravindran</UnivFAQ:name>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Balaram Ravindran</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH1020 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH1020">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+        <UnivFAQ:taughtBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Preeti_Aghalayam"/>
+        <rdfs:comment>The main objectives of this course are to write material and energy balances for various chemical process units and combination of units. It is an introductory course that serves as an important precursor to all other Chemical Engg courses</rdfs:comment>
+        <rdfs:label>Principles &amp; Calculations in Chemical</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH4250 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH4250">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+        <rdfs:comment>By the end of this course, students would be able to develop a process flowsheet to produce a specified product at given production rates. Towards this, they would specifically be able to: • Conduct surveys for information on available technologies, markets, prices, safety/environment impacts • Develop a process flowsheet based on chemical engineering principles and heuristics • Perform preliminary &amp; detailed economic analysis of the process • Analyse material and energy balances for a complete integrated process using flowsheeting software such as Aspen Plus • Develop a complete process flow diagram (PFD) for a process • Carry out Chemical Engineering design of major items of equipment such as reactors, distillation columns, heat exchangers, pumps, compressors, etc • Carry out Mechanical design of one or more equipment with reference to appropriate codes and design standards • Conduct safety, health, and sustainability analysis of an integrated process</rdfs:comment>
+        <rdfs:label>Process Engineering</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH5030 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH5030">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+        <rdfs:comment>know the constitutive relationships in mass, momentum, and energy transport - know the generalized equations for mass, momentum, and energy conservation - recognize the transport phenomena involved in an engineering problem - be able to apply the generalized equations for mass, momentum, and energy conservation for practical problems - be able to mathematically represent the practical transport phenomena problems - be able to solve one-dimensional transport phenomena problems</rdfs:comment>
+        <rdfs:label>Transport Phenomena</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH5370 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH5370">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+        <rdfs:comment>To provide a fundamental understanding of pollutants, their characteristics and the mechanisms underlying the fate and transport of pollutants in the environment. The course is meant for environmental engineers.</rdfs:comment>
+        <rdfs:label>Environmental Quality Monitoring &amp; Analysis</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -647,6 +698,34 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Chemical_Engineering -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Chemical_Engineering">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
+        <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH1020"/>
+        <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH4250"/>
+        <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH5030"/>
+        <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH5370"/>
+        <rdfs:comment>Chemical Engineering is a constantly evolving discipline which keeps pace with the developing world. Our department reflects this in its teaching curriculum, research thrusts, industry partnerships and entrepreneurial initiatives. Founded in 1959 along with the rest of the Institute, the Department in its early days bore the imprint of German collaboration in nearly every functional aspect. The laboratories were well equipped with large-scale equipment that are still fully operational. While the trend towards miniaturization has led to ongoing replacement, faculty still carry out consultancy assignments for industry using these. They also give the students an early appreciation of the “shop floor” in factories.
+
+The recent re-introduction of an “Introduction to Chemical Engineering” course for first-year undergraduates has been widely welcomed by the students. Combining a variety of lectures by faculty and industry practitioners with visits to manufacturing locations, the course is an eye-opener for many who choose the discipline without quite knowing its scope. Core courses that emphasize the fundamentals, electives that broaden the horizon, and laboratories—for UGs and graduate students– that reinforce classroom learning ensure that we graduate students who are equally capable of pursuing higher degrees and industry careers.
+
+Undergraduates are encouraged to take up research projects in their 2nd year and carry them through to their Senior Year. They undertake one mandatory summer internship in Indian industry, and usually Doctoral candidates and postdoctoral Fellows ensure a research focus that is ever-intensifying. With an average of 5-6 Ph.D. students and 1-2 PDFs per faculty, research Groups are now reaching critical mass. Publication metrics, conference participation and patent filings are among the best in India, befitting an Institution that has been ranked # 1 in India four years in a row, and most recently, was also recognized as one that has the best innovation/ incubation ecosystem. Nearly 20% of the faculty in ChE are actively involved in start-up’s, facilitated by India’s first and still only University-based Research Park located next door.</rdfs:comment>
+        <rdfs:label>Chemical Engineering Department</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Clean_Energy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Clean_Energy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:comment>Clean energy is energy that comes from renewable, zero emission sources that do not pollute the atmosphere when used</rdfs:comment>
+        <rdfs:label>Clean Energy</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Compilers -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Compilers">
@@ -711,6 +790,16 @@ The department has been funded by FIST program from DST, Govt. of India in 2002 
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Electrical_Engineering -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Electrical_Engineering">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dual_Degree"/>
+        <rdfs:comment>Dual Degree programs offered in select engineering and sciences disciplines earns a student an undergraduate and a master’s degree after five years of study. Entrance to the programme is through the Joint Engineering Entrance (JEE) (Mains) and JEE (Advanced); conducted at various centres across the country.</rdfs:comment>
+        <rdfs:label>Dual Degree (BTech. + MTech.) Electrical Engineering</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dhiman_Chatterjee -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dhiman_Chatterjee">
@@ -759,9 +848,13 @@ The department has been funded by FIST program from DST, Govt. of India in 2002 
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
         <UnivFAQ:hasFacility rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Microelectronics_and_MEMS_laboratory"/>
         <UnivFAQ:hasFacility rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#VLSI_Lab"/>
+        <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech._Electrical_Engineering"/>
+        <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Electrical_Engineering"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE3002"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE6112"/>
         <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE6150"/>
+        <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MTech._Electrical_Engineering"/>
+        <UnivFAQ:offers rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PHD._Electrical_Engineering"/>
         <rdfs:comment>The Electrical Engineering department was established in 1959. We currently have about 1000 students, 60 faculty members, 30 supporting staff members and 2 post-doctoral fellows with us.
 
 We perform a variety of research work from absolute fundamentals to component design to system integration to deployment/commercialisation. We have strong industry interaction and have been involved in development of state-of-art products. We house extensive fabrication, calibration and testing facilities for carrying out academic projects, sponsored research and consultancy projects.</rdfs:comment>
@@ -813,6 +906,17 @@ We perform a variety of research work from absolute fundamentals to component de
 -Multi-Mode and Inverse Heat Transfer Studies
 -Fluidized Bed Combustion Studies for Biomass and Coal</rdfs:comment>
         <rdfs:label>HTTP Lab</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Himanshu_Goyal -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Himanshu_Goyal">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#AssistantProfessor"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Clean_Energy"/>
+        <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH5030"/>
+        <rdfs:label>Himanshu Goyal</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -885,6 +989,7 @@ We perform a variety of research work from absolute fundamentals to component de
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME2200">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Courses"/>
+        <UnivFAQ:hasPrerequisite rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ME1480"/>
         <rdfs:comment>Fundamental understanding of the correlation between the structure and properties of materials forms an integral part of any successful design. The main objective of this course is to provide a basic knowledge concerning the internal structure of materials, their mechanical properties and various methods to quantify their mechanical integrity and failure criteria. Phases and heat treatment methods to tailor the properties of Fe-C alloys, which forms perhaps the most important set of engineering</rdfs:comment>
         <rdfs:label>Materials and Design</rdfs:label>
     </owl:NamedIndividual>
@@ -921,6 +1026,16 @@ We perform a variety of research work from absolute fundamentals to component de
         <UnivFAQ:offeredBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
         <rdfs:comment>The M.Tech. program is a two-year course oriented graduate program. The student has to take a set of core courses and a set of electives. The course work is spread accross the first two semesters with an option of taking one elective in the third semester. This is followed by a project in the third and fourth semester in which the student can take up a project of his or her interest, supervised by a faculty member.</rdfs:comment>
         <rdfs:label>MTech. Computer Science</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MTech._Electrical_Engineering -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MTech._Electrical_Engineering">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#MTech."/>
+        <rdfs:comment>The four-semester M.Tech programmes offered in various disciplines and programmes by different departments of the institute are based on the credit system and provide a student with a wide choice of courses. Each programme comprises several core and elective courses, project work and has a faculty advisor to help the students in the choice of academic options for elective courses. Students may be permitted to do their project work in industries and other approved organizations.</rdfs:comment>
+        <rdfs:label>MTech. Electrical Engineering</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1015,6 +1130,20 @@ In addition to teaching undergraduate and graduate students, the faculty of Mech
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PHD._Electrical_Engineering -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PHD._Electrical_Engineering">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PhD"/>
+        <rdfs:comment>Course work :   Introduction to Research (ID 6020), two core courses and two elective courses. The core courses and list of electives are prescribed individually for each student by the Doctoral Committee (DC). ID 6020 is a compulsory course for all Ph.D. students and is usually taken in the first semester. The courses must be completed within three semesters after enrollment into the Ph.D.
+
+Comprehensive exam :   All students must clear the comprehensive exam within the one and half years of joining the program. Details of the comprehensive exam are provided on the department web site (see the useful links section below).
+
+Research :    All students are expected to do high quality research resulting in publications in reputed international journals.</rdfs:comment>
+        <rdfs:label>PHD Electrical Engineering</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Piyush_Shakya -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Piyush_Shakya">
@@ -1027,12 +1156,56 @@ In addition to teaching undergraduate and graduate students, the faculty of Mech
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Preeti_Aghalayam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Preeti_Aghalayam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Underground_Coal_Gasification"/>
+        <rdfs:label>Preeti Aghalayam</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Process_System_Engineering -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Process_System_Engineering">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:comment>Process Systems Engineering (PSEng) is a broad category of engineering that deals with the process design for the purpose of converting raw goods to usable end products, including energy</rdfs:comment>
+        <rdfs:label>Process System Engineering</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#RFIC_Design -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#RFIC_Design">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
         <rdfs:comment>RF IC design, much like niche areas of analog IC design, is often a custom process that is aided by one, or often, many EDA tools. Part of the precise nature of RF IC design is that parasitics and packaging characteristics have first-order impact on the performance of RF circuits. Therefore, RF IC design is often an iterative process that involves the extensive use of EM simulation, parasitic modeling, and package modeling throughout the IC design process.</rdfs:comment>
         <rdfs:label>RFIC Design</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#R_Ravi_Krishna -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#R_Ravi_Krishna">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#AssociateProfessor"/>
+        <UnivFAQ:headsDepartment rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Chemical_Engineering"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Treatment_and_Control_Processes"/>
+        <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH5370"/>
+        <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">R Ravi Krishna</UnivFAQ:name>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">R Ravi Krishna</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Rajagopalan_Srinivasan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Rajagopalan_Srinivasan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Process_System_Engineering"/>
+        <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CH4250"/>
+        <rdfs:label>Rajagopalan Srinivasan</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1133,10 +1306,30 @@ In addition to teaching undergraduate and graduate students, the faculty of Mech
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Treatment_and_Control_Processes -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Treatment_and_Control_Processes">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:comment>Process control is the study and application of automatic control in the field of chemical engineering.</rdfs:comment>
+        <rdfs:label>Treatment and Control Processes</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Undergraduates_With_BTech -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Undergraduates_With_BTech">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Qualifications"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Underground_Coal_Gasification -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Underground_Coal_Gasification">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:comment>Underground coal gasification is an industrial process which converts coal into product gas. UCG is an in-situ gasification process, carried out in non-mined coal seams using injection of oxidants and steam.</rdfs:comment>
+        <rdfs:label>Underground Coal Gasification</rdfs:label>
     </owl:NamedIndividual>
     
 
