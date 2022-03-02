@@ -68,7 +68,7 @@ $program = (programs | program | degrees | academic programs | 4-year [program|p
 $facilities = ([$labs] facilities | [$labs] facility | labs | lab | laboratory | laboratories | workshop | workstation | space | spaces | provisions | provision |
               equipments | equipment | amenity | amenities);
 
-$polite = ( [ could | can ] [you] [please] [tell | describe | explain | list | enumerate | talk ] [to] [me] [about] [some] );
+$polite = ( [ could | can ] [you] [please] [tell | describe | explain | list | enumerate | talk | inform | give information | give] [to] [me] [about] [some] );
 $req_polite = ( [ could | can ] [you] [please] (tell | describe | explain | list | enumerate | talk | inform ) [to] [me] (about) [some] );
 
 $performingResearch = (performing research [in|on] | studying [in|on] | researching [in|on] | doing research [in|on] | specializing [in|on] | working [in|on] | research [in|on] | study [in|on]
@@ -186,7 +186,7 @@ $listDeptPGPrograms = [$polite] what $postgrads $program does [the] $all_depts $
 $listDeptPrograms = [$polite] what [are] [all] [the] $program does "$$.*"<0-4> $department $offer {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="ProgList";}
                 |  [$polite] what  [are] [all] [the] $program does [the] $department [of] $all_depts $offer {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="ProgList";}
                 |  [$polite] [what] [are] [all] [the] $program [is | are] [offered | taught] [in | by | from] [the] ($all_depts|$objectPronoun) $department {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="ProgList";}
-                |  [$polite] $all_depts $department $program {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="ProgList";}
+                |  [$polite] $all_depts [$department] $program {out.da = "Request";out.prop="Department";out.what="$$3";out.theme="ProgList";}
                 |  [$polite] (what|which) [are|is] [all] [the] $program in "$$.*"<0-4> $department {out.da = "Request";out.prop="Department";out.what="$$2";out.theme="ProgList";}
                 |  [$polite] (what|which) [are|is] [all] [the] $program in $objectPronoun $department {out.da = "Request";out.prop="Department";out.what="objectPronoun";out.theme="ProgList";} 
                 |  [$polite] $objectPronoun $department $program {out.da = "Request";out.prop="Department";out.what="objectPronoun";out.theme="ProgList";}
@@ -205,7 +205,7 @@ $deptInfo = [$polite] $all_depts $department {out.da="Request";out.prop="Departm
 $programInfo = [$polite] $program_names [in|from|of] [the] $all_depts [$department] [$program] {out.da = "Request"; out.prop="Programs"; out.program_type="$$6"; out.dept = "$$3"; out.theme="ProgramInfo";}
         |      [$polite] $all_depts [$department] $program_names [$program] {out.da = "Request"; out.prop="Programs"; out.program_type="$$2"; out.dept = "$$4"; out.theme="ProgramInfo";}
         |      [$polite] $program_names [$program] [in|from|of] $objectPronoun [$department] {out.da="Request";out.prop="Programs";out.program_type="$$5";out.dept="objectPronoun";out.theme="ProgramInfo";}
-        |      $req_polite $objectPronoun $program {out.da="Request";out.prop="Programs";out.theme="ProgramInfo";out.pronoun="True";};
+        |      [$polite] $objectPronoun $program {out.da="Request";out.prop="Programs";out.theme="ProgramInfo";out.pronoun="True";};
          
 $programAdmissionInfo = [$polite] [what|which] [is|are] [the] $admissionReqs (for | of) $program_names [in|from|of] [the] $all_depts [$department] [$program] {out.da = "Request"; out.prop="Programs"; out.program_type="$$6"; out.dept = "$$3"; out.theme="ProgramAdmissionInfo";}
         |               [$polite] [what|which] [is|are] [the] $admissionReqs (for | of) $all_depts [$department] $program_names [$program] {out.da = "Request"; out.prop="Programs"; out.program_type="$$2"; out.dept = "$$4"; out.theme="ProgramAdmissionInfo";}
