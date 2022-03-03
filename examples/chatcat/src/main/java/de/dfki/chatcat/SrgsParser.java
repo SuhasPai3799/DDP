@@ -1,6 +1,8 @@
 package de.dfki.chatcat;
 
 import static de.dfki.chatcat.Constants.*;
+import static de.dfki.chatcat.ConstUtils.*;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +32,8 @@ import java.util.*;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.util.EntityUtils;
+
 
 import org.json.JSONObject;
 
@@ -74,6 +78,7 @@ public class SrgsParser extends Interpreter {
       //Creating a HttpGet object
       JSONObject json = new JSONObject();
       StringEntity params = null;
+      System.out.println(text);
       json.put("text", text);
       try{
       params = new StringEntity(json.toString());
@@ -113,10 +118,21 @@ public class SrgsParser extends Interpreter {
 
       //Printing the status line
       System.out.println(httpresponse.getStatusLine());
+      String jsonResult = "";
+      try{
+      jsonResult = EntityUtils.toString(httpresponse.getEntity());
+      }
+      catch(IOException e)
+      {
+        e.printStackTrace();
+      }
+      getDialogueAct(jsonResult);
+      logger.error(jsonResult);
       while(sc.hasNext()) {
          System.out.println(sc.nextLine());
       }
   }
+
 
 
   @Override
@@ -124,7 +140,7 @@ public class SrgsParser extends Interpreter {
     
     text = clean(text);
     System.out.println(text);
-    rasaNLU("check");
+    rasaNLU(text);
     String[] tokens = text.split(" +");
     try {
       //TODO: Find out why no validRule is returned
@@ -145,7 +161,7 @@ public class SrgsParser extends Interpreter {
           }
         }
         sb.append(')');
-        
+        logger.error(sb.toString());
         return new DialogueAct(sb.toString());
       }
     }

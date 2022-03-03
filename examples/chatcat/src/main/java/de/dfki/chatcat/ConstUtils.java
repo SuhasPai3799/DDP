@@ -23,6 +23,9 @@ import de.dfki.lt.hfc.db.QueryResult;
 import de.dfki.lt.hfc.types.XsdAnySimpleType;
 import de.dfki.lt.hfc.types.XsdDateTime;
 import de.dfki.lt.loot.jada.Pair;
+import org.json.JSONObject;
+import org.json.JSONArray;
+
 
 public interface ConstUtils{
 
@@ -58,4 +61,32 @@ public static final HashMap<String, List<String>> program_syns = new HashMap<Str
     };
 };
 
+public static final HashMap<String,String> course_info = new HashMap<String,String>()
+{
+    {
+        put("da", "Request");
+        put("prop","Courses");
+        put("what","*");
+        put("theme","CourseInfo");
+    }
+};
+
+public static String getDialogueAct(String rasaOutput)
+{
+    JSONObject json =  new JSONObject(rasaOutput);
+    System.out.println(json.keySet());
+
+    JSONObject intent = json.getJSONObject("intent");
+
+    JSONArray entities = json.getJSONArray("entities");
+
+    System.out.println(intent);
+    
+    return "Happy";
 }
+
+
+}
+
+
+
