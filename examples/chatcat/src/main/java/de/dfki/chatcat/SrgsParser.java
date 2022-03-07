@@ -71,7 +71,7 @@ public class SrgsParser extends Interpreter {
     return text;
   }
 
-  public void rasaNLU(String text)
+  public String rasaNLU(String text)
   {
       CloseableHttpClient httpclient = HttpClients.createDefault();
 
@@ -126,11 +126,12 @@ public class SrgsParser extends Interpreter {
       {
         e.printStackTrace();
       }
-      getDialogueAct(jsonResult);
-      logger.error(jsonResult);
+      String res = getDialogueAct(jsonResult);
+      logger.error(res);
       while(sc.hasNext()) {
          System.out.println(sc.nextLine());
       }
+      return res;
   }
 
 
@@ -140,7 +141,16 @@ public class SrgsParser extends Interpreter {
     
     text = clean(text);
     System.out.println(text);
-    rasaNLU(text);
+    String rasaDA = rasaNLU(text);
+    if(rasaDA.equals("NULL"))
+    {
+      ;
+    }
+    else
+    { 
+      logger.error("Rasa DA being returned");
+      return new DialogueAct(rasaDA);
+    }
     String[] tokens = text.split(" +");
     try {
       //TODO: Find out why no validRule is returned

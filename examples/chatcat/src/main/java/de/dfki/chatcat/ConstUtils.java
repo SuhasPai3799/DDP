@@ -81,9 +81,183 @@ public static String getDialogueAct(String rasaOutput)
     JSONArray entities = json.getJSONArray("entities");
 
     System.out.println(intent);
+
+    String intent_name = intent.getString("name");
+    Double intent_conf = intent.getDouble("confidence");
+
+    if(intent_name.equals("prof_course_info"))
+    {
+        return getDAProfCourseInfo(intent, entities);
+    }
+    if(intent_name.equals("prof_research_info"))
+    {
+        return getDAProfResearchInfo(intent, entities);
+    }
+    if(intent_name.equals("course_info"))
+    {
+        return getDACourseInfo(intent, entities);
+    }
+    if(intent_name.equals("course_prereq_info"))
+    {
+        return getDACoursePrereqInfo(intent, entities);
+    }
+    if(intent_name.equals("course_prof_info"))
+    {
+        return getDACourseProfInfo(intent, entities);
+    }
     
-    return "Happy";
+   return "NULL"; 
+    
+   
 }
+
+public static String getDAProfCourseInfo(JSONObject intent, JSONArray entities)
+{
+    String intent_name = intent.getString("name");
+    Double intent_conf = intent.getDouble("confidence");
+    String prof_name = "";
+    for(int i=0; i<entities.length(); i++)
+    {
+        JSONObject entity = entities.getJSONObject(i);
+        String entity_name = entity.getString("entity");
+        String entity_val = entity.getString("value");
+
+        if(entity_name.equals("Professors"))
+        {
+            String res = String.format("Request(Professor, what=\"%1$s\", theme=\"CourseInfo\")",  entity_val);
+            return res;
+        }
+        else if(entity_name.equals("Pronoun"))
+        {
+            String res = String.format("Request(Professor, what=\"%1$s\", theme=\"CourseInfo\")",  "pronoun");
+            return res;
+        }
+        
+
+    }
+    
+    return "NULL";
+    
+
+}
+
+public static String getDAProfResearchInfo(JSONObject intent, JSONArray entities)
+{
+    String intent_name = intent.getString("name");
+    Double intent_conf = intent.getDouble("confidence");
+    String prof_name = "";
+    for(int i=0; i<entities.length(); i++)
+    {
+        JSONObject entity = entities.getJSONObject(i);
+        String entity_name = entity.getString("entity");
+        String entity_val = entity.getString("value");
+
+        if(entity_name.equals("Professors"))
+        {
+            String res = String.format("Request(Professor, what=\"%1$s\", theme=\"ResearchInfo\")",  entity_val);
+            return res;
+        }
+        else if(entity_name.equals("Pronoun"))
+        {
+            String res = String.format("Request(Professor, what=\"%1$s\", theme=\"ResearchInfo\")",  "pronoun");
+            return res;
+        }
+
+    }
+    
+    return "NULL";
+    
+
+}
+
+public static String getDACourseInfo(JSONObject intent, JSONArray entities)
+{
+    String intent_name = intent.getString("name");
+    Double intent_conf = intent.getDouble("confidence");
+    String prof_name = "";
+    for(int i=0; i<entities.length(); i++)
+    {
+        JSONObject entity = entities.getJSONObject(i);
+        String entity_name = entity.getString("entity");
+        String entity_val = entity.getString("value");
+
+        if(entity_name.equals("Courses"))
+        {
+            String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CourseInfo\")",  entity_val);
+            return res;
+        }
+        else if(entity_name.equals("ObjectPronoun"))
+        {
+            String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CourseInfo\")",  "objectPronoun");
+            return res;
+        }
+
+    }
+    
+    return "NULL";
+    
+
+}
+
+public static String getDACoursePrereqInfo(JSONObject intent, JSONArray entities)
+{
+    String intent_name = intent.getString("name");
+    Double intent_conf = intent.getDouble("confidence");
+    String prof_name = "";
+    for(int i=0; i<entities.length(); i++)
+    {
+        JSONObject entity = entities.getJSONObject(i);
+        String entity_name = entity.getString("entity");
+        String entity_val = entity.getString("value");
+
+        if(entity_name.equals("Courses"))
+        {
+            String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CoursePrereqInfo\")",  entity_val);
+            return res;
+        }
+        else if(entity_name.equals("ObjectPronoun"))
+        {
+            String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CoursePrereqInfo\")",  "objectPronoun");
+            return res;
+        }
+
+    }
+    
+    return "NULL";
+    
+
+}
+
+public static String getDACourseProfInfo(JSONObject intent, JSONArray entities)
+{
+    String intent_name = intent.getString("name");
+    Double intent_conf = intent.getDouble("confidence");
+    String prof_name = "";
+    for(int i=0; i<entities.length(); i++)
+    {
+        JSONObject entity = entities.getJSONObject(i);
+        String entity_name = entity.getString("entity");
+        String entity_val = entity.getString("value");
+
+        if(entity_name.equals("Courses"))
+        {
+            String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CourseTeacherInfo\")",  entity_val);
+            return res;
+        }
+        else if(entity_name.equals("ObjectPronoun"))
+        {
+            String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CourseTeacherInfo\")",  "objectPronoun");
+            return res;
+        }
+
+    }
+    
+    return "NULL";
+    
+
+}
+
+
 
 
 }
