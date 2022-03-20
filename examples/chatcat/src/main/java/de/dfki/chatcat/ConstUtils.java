@@ -114,6 +114,10 @@ public static String getDialogueAct(String rasaOutput)
     {
         return getDADeptProfsInfo(intent, entities);
     }
+    if(intent_name.equals("dept_programs_info"))
+    {
+        return getDADeptProgInfo(intent, entities);
+    }
     if(intent_name.equals("dept_ug_programs_info"))
     {
         return getDADeptUGProgInfo(intent, entities);
@@ -125,6 +129,10 @@ public static String getDialogueAct(String rasaOutput)
     if(intent_name.equals("dept_info"))
     {
         return getDADeptInfo(intent, entities);
+    }
+    if(intent_name.equals("dept_facilities_info"))
+    {
+        return getDADeptFacilitiesInfo(intent, entities);
     }
     if(intent_name.equals("program_info"))
     {
@@ -150,7 +158,7 @@ public static String getDAProfCourseInfo(JSONObject intent, JSONArray entities)
         JSONObject entity = entities.getJSONObject(i);
         String entity_name = entity.getString("entity");
         String entity_val = entity.getString("value");
-
+        Double entity_conf = entity.getDouble("confidence_entity");
         if(entity_name.equals("Professors"))
         {
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"CourseInfo\")",  entity_val);
@@ -159,6 +167,11 @@ public static String getDAProfCourseInfo(JSONObject intent, JSONArray entities)
         else if(entity_name.equals("Pronouns"))
         {
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"CourseInfo\")",  "pronoun");
+            return res;
+        }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Professor, what=\"%1$s\", theme=\"CourseInfo\")",  entity_val);
             return res;
         }
         
@@ -180,7 +193,7 @@ public static String getDAProfResearchInfo(JSONObject intent, JSONArray entities
         JSONObject entity = entities.getJSONObject(i);
         String entity_name = entity.getString("entity");
         String entity_val = entity.getString("value");
-
+        Double entity_conf = entity.getDouble("confidence_entity");
         if(entity_name.equals("Professors"))
         {
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"ResearchInfo\")",  entity_val);
@@ -189,6 +202,11 @@ public static String getDAProfResearchInfo(JSONObject intent, JSONArray entities
         else if(entity_name.equals("Pronouns"))
         {
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"ResearchInfo\")",  "pronoun");
+            return res;
+        }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Professor, what=\"%1$s\", theme=\"ResearchInfo\")",  entity_val);
             return res;
         }
 
@@ -213,6 +231,7 @@ public static String getDACourseInfo(JSONObject intent, JSONArray entities)
         JSONObject entity = entities.getJSONObject(i);
         String entity_name = entity.getString("entity");
         String entity_val = entity.getString("value");
+        Double entity_conf = entity.getDouble("confidence_entity");
 
         if(entity_name.equals("Courses"))
         {
@@ -222,6 +241,11 @@ public static String getDACourseInfo(JSONObject intent, JSONArray entities)
         else if(entity_name.equals("ObjectPronoun"))
         {
             String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CourseInfo\")",  "objectPronoun");
+            return res;
+        }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CourseInfo\")",  entity_val);
             return res;
         }
 
@@ -242,6 +266,7 @@ public static String getDACoursePrereqInfo(JSONObject intent, JSONArray entities
         JSONObject entity = entities.getJSONObject(i);
         String entity_name = entity.getString("entity");
         String entity_val = entity.getString("value");
+        Double entity_conf = entity.getDouble("confidence_entity");
 
         if(entity_name.equals("Courses"))
         {
@@ -251,6 +276,11 @@ public static String getDACoursePrereqInfo(JSONObject intent, JSONArray entities
         else if(entity_name.equals("ObjectPronoun"))
         {
             String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CoursePrereqInfo\")",  "objectPronoun");
+            return res;
+        }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CoursePrereqInfo\")",  entity_val);
             return res;
         }
 
@@ -266,12 +296,13 @@ public static String getDACourseProfInfo(JSONObject intent, JSONArray entities)
     String intent_name = intent.getString("name");
     Double intent_conf = intent.getDouble("confidence");
     String prof_name = "";
+    
     for(int i=0; i<entities.length(); i++)
     {
         JSONObject entity = entities.getJSONObject(i);
         String entity_name = entity.getString("entity");
         String entity_val = entity.getString("value");
-
+        Double entity_conf = entity.getDouble("confidence_entity");
         if(entity_name.equals("Courses"))
         {
             String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CourseTeacherInfo\")",  entity_val);
@@ -280,6 +311,11 @@ public static String getDACourseProfInfo(JSONObject intent, JSONArray entities)
         else if(entity_name.equals("ObjectPronoun"))
         {
             String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CourseTeacherInfo\")",  "objectPronoun");
+            return res;
+        }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Courses, what=\"%1$s\", theme=\"CourseTeacherInfo\")",  entity_val);
             return res;
         }
 
@@ -298,12 +334,13 @@ public static String getDADeptCourseInfo(JSONObject intent, JSONArray entities)
     String intent_name = intent.getString("name");
     Double intent_conf = intent.getDouble("confidence");
     String prof_name = "";
+    
     for(int i=0; i<entities.length(); i++)
     {
         JSONObject entity = entities.getJSONObject(i);
         String entity_name = entity.getString("entity");
         String entity_val = entity.getString("value");
-
+        Double entity_conf = entity.getDouble("confidence_entity");
         if(entity_name.equals("Department"))
         {
             String res = String.format("Request(Department, what=\"%1$s\", theme=\"CourseList\")",  entity_val);
@@ -312,6 +349,11 @@ public static String getDADeptCourseInfo(JSONObject intent, JSONArray entities)
         else if(entity_name.equals("ObjectPronoun"))
         {
             String res = String.format("Request(Department, what=\"%1$s\", theme=\"CourseList\")",  "objectPronoun");
+            return res;
+        }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Department, what=\"%1$s\", theme=\"CourseList\")",  entity_val);
             return res;
         }
 
@@ -330,7 +372,7 @@ public static String getDADeptProfsInfo(JSONObject intent, JSONArray entities)
         JSONObject entity = entities.getJSONObject(i);
         String entity_name = entity.getString("entity");
         String entity_val = entity.getString("value");
-
+        Double entity_conf = entity.getDouble("confidence_entity");
         if(entity_name.equals("Department"))
         {
             String res = String.format("Request(Department, what=\"%1$s\", theme=\"ProfList\")",  entity_val);
@@ -341,10 +383,46 @@ public static String getDADeptProfsInfo(JSONObject intent, JSONArray entities)
             String res = String.format("Request(Department, what=\"%1$s\", theme=\"ProfList\")",  "objectPronoun");
             return res;
         }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Department, what=\"%1$s\", theme=\"ProfList\")",  entity_val);
+            return res;
+        }
 
     }
     return "NULL";
 
+}
+
+public static String getDADeptProgInfo(JSONObject intent, JSONArray entities)
+{
+    String intent_name = intent.getString("name");
+    Double intent_conf = intent.getDouble("confidence");
+    String prof_name = "";
+    for(int i=0; i<entities.length(); i++)
+    {
+        JSONObject entity = entities.getJSONObject(i);
+        String entity_name = entity.getString("entity");
+        String entity_val = entity.getString("value");
+        Double entity_conf = entity.getDouble("confidence_entity");
+        if(entity_name.equals("Department"))
+        {
+            String res = String.format("Request(Department, what=\"%1$s\", theme=\"ProgList\")",  entity_val);
+            return res;
+        }
+        else if(entity_name.equals("ObjectPronoun"))
+        {
+            String res = String.format("Request(Department, what=\"%1$s\", theme=\"ProgList\")",  "objectPronoun");
+            return res;
+        }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Department, what=\"%1$s\", theme=\"ProgList\")",  entity_val);
+            return res;
+        }
+
+    }
+    return "NULL";
 }
 
 public static String getDADeptUGProgInfo(JSONObject intent, JSONArray entities)
@@ -357,7 +435,7 @@ public static String getDADeptUGProgInfo(JSONObject intent, JSONArray entities)
         JSONObject entity = entities.getJSONObject(i);
         String entity_name = entity.getString("entity");
         String entity_val = entity.getString("value");
-
+        Double entity_conf = entity.getDouble("confidence_entity");
         if(entity_name.equals("Department"))
         {
             String res = String.format("Request(Department, what=\"%1$s\", theme=\"UGProgList\")",  entity_val);
@@ -368,10 +446,16 @@ public static String getDADeptUGProgInfo(JSONObject intent, JSONArray entities)
             String res = String.format("Request(Department, what=\"%1$s\", theme=\"UGProgList\")",  "objectPronoun");
             return res;
         }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Department, what=\"%1$s\", theme=\"UGProgList\")",  entity_val);
+            return res;
+        }
 
     }
     return "NULL";
 }
+
 
 
 public static String getDADeptPGProgInfo(JSONObject intent, JSONArray entities)
@@ -384,7 +468,7 @@ public static String getDADeptPGProgInfo(JSONObject intent, JSONArray entities)
         JSONObject entity = entities.getJSONObject(i);
         String entity_name = entity.getString("entity");
         String entity_val = entity.getString("value");
-
+        Double entity_conf = entity.getDouble("confidence_entity");
         if(entity_name.equals("Department"))
         {
             String res = String.format("Request(Department, what=\"%1$s\", theme=\"PGProgList\")",  entity_val);
@@ -393,6 +477,11 @@ public static String getDADeptPGProgInfo(JSONObject intent, JSONArray entities)
         else if(entity_name.equals("ObjectPronoun"))
         {
             String res = String.format("Request(Department, what=\"%1$s\", theme=\"PGProgList\")",  "objectPronoun");
+            return res;
+        }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Department, what=\"%1$s\", theme=\"PGProgList\")",  entity_val);
             return res;
         }
 
@@ -411,7 +500,7 @@ public static String getDADeptInfo(JSONObject intent, JSONArray entities)
         JSONObject entity = entities.getJSONObject(i);
         String entity_name = entity.getString("entity");
         String entity_val = entity.getString("value");
-
+        Double entity_conf = entity.getDouble("confidence_entity");
         if(entity_name.equals("Department"))
         {
             String res = String.format("Request(Department, what=\"%1$s\", theme=\"DeptInfo\")",  entity_val);
@@ -422,6 +511,43 @@ public static String getDADeptInfo(JSONObject intent, JSONArray entities)
             String res = String.format("Request(Department, what=\"%1$s\", theme=\"DeptInfo\")",  "objectPronoun");
             return res;
         }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Department, what=\"%1$s\", theme=\"DeptInfo\")",  entity_val);
+            return res;
+        }
+
+    }
+    return "NULL";
+}
+
+public static String getDADeptFacilitiesInfo(JSONObject intent, JSONArray entities)
+{
+    String intent_name = intent.getString("name");
+    Double intent_conf = intent.getDouble("confidence");
+    String prof_name = "";
+    for(int i=0; i<entities.length(); i++)
+    {
+        JSONObject entity = entities.getJSONObject(i);
+        String entity_name = entity.getString("entity");
+        String entity_val = entity.getString("value");
+        Double entity_conf = entity.getDouble("confidence_entity");
+        if(entity_name.equals("Department"))
+        {
+            String res = String.format("Request(Department, what=\"%1$s\", theme=\"Facilities\")",  entity_val);
+            return res;
+        }
+        else if(entity_name.equals("ObjectPronoun"))
+        {
+            String res = String.format("Request(Department, what=\"%1$s\", theme=\"Facilities\")",  "objectPronoun");
+            return res;
+        }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Department, what=\"%1$s\", theme=\"Facilities\")",  entity_val);
+            return res;
+        }
+
 
     }
     return "NULL";
