@@ -22,11 +22,30 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#advises -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#advises">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isAdvisedBy"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Person"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Person"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#belongsTo -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#belongsTo">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#enrolledIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#enrolledIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Student"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Programs"/>
     </owl:ObjectProperty>
     
 
@@ -98,6 +117,12 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isAdvisedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isAdvisedBy"/>
     
 
 
@@ -198,6 +223,7 @@
                     <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
                     <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
                     <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Programs"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Student"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
@@ -392,6 +418,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchStudents -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchStudents">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Student"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#isAdvisedBy"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests"/>
@@ -482,6 +526,17 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Analog">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
         <rdfs:label>Analog</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Arnav_Mhaske -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Arnav_Mhaske">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Student"/>
+        <UnivFAQ:enrolledIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Computer_Science"/>
+        <UnivFAQ:isAdvisedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Chandra_Sekhar"/>
+        <rdfs:label>Arnav Mhaske</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -680,6 +735,17 @@
         <UnivFAQ:offeredBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Computer_Science"/>
         <rdfs:comment>Neural Networks have made tremendous impact on various AI fields in the recent past. In this course, we study the basics of Neural Networks and their various variants such as the Convolutional Neural Networks and Recurrent Neural Networks. We also study the different ways in which they can be used to solve problems in various domains such as Computer Vision, Speech and NLP. We also look at the latest results and trends in the field.</rdfs:comment>
         <rdfs:label>Deep Learning</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#C_Gautam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#C_Gautam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Student"/>
+        <UnivFAQ:enrolledIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Computer_Science"/>
+        <UnivFAQ:isAdvisedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#N_S_Narayanaswamy"/>
+        <rdfs:label>C Gautam</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1296,6 +1362,29 @@ Research :    All students are expected to do high quality research resulting in
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Suhas_Pai -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Suhas_Pai">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Student"/>
+        <UnivFAQ:enrolledIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#DD_Computer_Science"/>
+        <UnivFAQ:isAdvisedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Sreenivasa_Kumar"/>
+        <UnivFAQ:name>Suhas Pai</UnivFAQ:name>
+        <rdfs:label>Suhas Pai</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Suresh_Saharan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Suresh_Saharan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Student"/>
+        <UnivFAQ:enrolledIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PHD._Computer_Science"/>
+        <UnivFAQ:isAdvisedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Sreenivasa_Kumar"/>
+        <rdfs:label>Suresh Saharan</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Transportation_Networks -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Transportation_Networks">
@@ -1340,6 +1429,16 @@ Research :    All students are expected to do high quality research resulting in
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#InstituteFacilities"/>
         <rdfs:comment>Involved in research in the areas of analog, mixed signal, and RF design, analysis and simulation of noise in circuits, VLSI DSP architectures, Programmable Analog Pulse Shaping for Ultra-Wideband Applications and reconfigurable computing.</rdfs:comment>
         <rdfs:label>VLSI Lab</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#V_Sriram -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#V_Sriram">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Student"/>
+        <UnivFAQ:enrolledIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#BTech._Computer_Science"/>
+        <rdfs:label>V Sriram</rdfs:label>
     </owl:NamedIndividual>
     
 
