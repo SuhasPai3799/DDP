@@ -93,9 +93,20 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasPublication -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasPublication">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#inResearchField"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasPublished -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#hasPublished">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#publishedBy"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
     </owl:ObjectProperty>
@@ -117,6 +128,12 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professors"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Department"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#inResearchField -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#inResearchField"/>
     
 
 
@@ -166,6 +183,12 @@
             </owl:Class>
         </rdfs:range>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#publishedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#publishedBy"/>
     
 
 
@@ -495,6 +518,28 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_Differentially_Private_Stochastic_Gradient_Descent_Algorithm_for_Multiparty_Classification -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_Differentially_Private_Stochastic_Gradient_Descent_Algorithm_for_Multiparty_Classification">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Artificial_Intelligence"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Arun_Rajkumar"/>
+        <rdfs:label>A Differentially Private Stochastic Gradient Descent Algorithm for Multiparty Classification</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_Newtonian_rheological_model_for_the_interface_of_microbubble_contrast_agents -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_Newtonian_rheological_model_for_the_interface_of_microbubble_contrast_agents">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Fluid_Mechanics"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Dhiman_Chatterjee"/>
+        <rdfs:label>A Newtonian rheological model for the interface of microbubble contrast agents</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_Seshadri_Sekhar -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_Seshadri_Sekhar">
@@ -508,6 +553,39 @@
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_compact_kinetic_model_for_biomass_pyrolysis_at_gasification_conditions -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_compact_kinetic_model_for_biomass_pyrolysis_at_gasification_conditions">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Clean_Energy"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Himanshu_Goyal"/>
+        <rdfs:label>A compact kinetic model for biomass pyrolysis at gasification conditions</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_heuristic_for_placement_of_limited_range_wavelength_converters_in_all-optical_networks -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_heuristic_for_placement_of_limited_range_wavelength_converters_in_all-optical_networks">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Ontologies_and_Application"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Sreenivasa_Kumar"/>
+        <rdfs:label>A heuristic for placement of limited range wavelength converters in all-optical networks</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_quantitative_study_of_irregular_programs_on_GPUs -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_quantitative_study_of_irregular_programs_on_GPUs">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Compilers"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Rupesh_Nasre"/>
+        <rdfs:label>A quantitative study of irregular programs on GPUs</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Abishek_Sinha -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Abishek_Sinha">
@@ -517,6 +595,17 @@
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#EE6112"/>
         <UnivFAQ:name>Abishek Sinha</UnivFAQ:name>
         <rdfs:label>Abishek Sinha</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#An_autoencoder_approach_to_learning_bilingual_word_representations -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#An_autoencoder_approach_to_learning_bilingual_word_representations">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Reinforcement_Learning"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#B_Ravindran"/>
+        <rdfs:label>An autoencoder approach to learning bilingual word representations</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -792,6 +881,17 @@ Undergraduates are encouraged to take up research projects in their 2nd year and
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Comparison_of_Millimeter_Quadrature_VCOs_for_28GHz_5G_applications -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Comparison_of_Millimeter_Quadrature_VCOs_for_28GHz_5G_applications">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#RFIC_Design"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#S_Aniruddhan"/>
+        <rdfs:label>Comparison of Millimeter Quadrature VCOs for 28GHz 5G applications</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Compilers -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Compilers">
@@ -819,6 +919,17 @@ Today the Department has a vibrant student body numbering about 700. Over 60% ar
 
 The department has been funded by FIST program from DST, Govt. of India in 2002 and 2017. The Secure Systems Laboratory is funded by FIST program 2017.</rdfs:comment>
         <rdfs:label>Computer Science Department</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Converter_placement_in_all-optical_networks_using_genetic_algorithms -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Converter_placement_in_all-optical_networks_using_genetic_algorithms">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Genetic_Algorithms"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Sreenivasa_Kumar"/>
+        <rdfs:label>Converter placement in all-optical networks using genetic algorithms</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -929,12 +1040,34 @@ We perform a variety of research work from absolute fundamentals to component de
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Faster_parameterized_algorithms_using_linear_programming -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Faster_parameterized_algorithms_using_linear_programming">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Theoretical_Computer_Science"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#N_S_Narayanaswamy"/>
+        <rdfs:label>Faster parameterized algorithms using linear programming</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Fault_Diagnosis_and_Prognosis -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Fault_Diagnosis_and_Prognosis">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
         <rdfs:comment>Prognosis is the capability to use available observations to predict upcoming states of machine or forecast the fault before it occurs.</rdfs:comment>
         <rdfs:label>Fault Diagnosis and Prognosis</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Fault_detection_in_rotor_bearing_systems_using_time_frequency_techniques -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Fault_detection_in_rotor_bearing_systems_using_time_frequency_techniques">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Rotordynamics"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#A_Seshadri_Sekhar"/>
+        <rdfs:label>Fault detection in rotor bearing systems using time frequency techniques</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -955,6 +1088,15 @@ We perform a variety of research work from absolute fundamentals to component de
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#StandardizedTests"/>
         <rdfs:comment>Candidate must have passed the GATE exam.</rdfs:comment>
         <rdfs:label>GATE</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Genetic_Algorithms -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Genetic_Algorithms">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:label>Genetic Algorithms</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1148,6 +1290,7 @@ In addition to teaching undergraduate and graduate students, the faculty of Mech
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#N_S_Narayanaswamy">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Professor"/>
         <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Artificial_Intelligence"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Theoretical_Computer_Science"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS1200"/>
         <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">N.S. Narayanaswamy</UnivFAQ:name>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">N.S. Narayanaswamy</rdfs:label>
@@ -1161,6 +1304,17 @@ In addition to teaching undergraduate and graduate students, the faculty of Mech
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
         <rdfs:comment>A Networked Control System (NCS) is a control system wherein the control loops are closed through a communication network. The defining feature of an NCS is that control and feedback signals are exchanged among the system&apos;s components in the form of information packages through a network.</rdfs:comment>
         <rdfs:label>Network Control</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Online_handwritten_character_recognition_of_devanagari_and_telugu_characters_using_support_vector_machines -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Online_handwritten_character_recognition_of_devanagari_and_telugu_characters_using_support_vector_machines">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Reinforcement_Learning"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Chandra_Sekhar"/>
+        <rdfs:label>Online handwritten character recognition of devanagari and telugu characters using support vector machines</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1206,6 +1360,17 @@ Comprehensive exam :   All students must clear the comprehensive exam within the
 
 Research :    All students are expected to do high quality research resulting in publications in reputed international journals.</rdfs:comment>
         <rdfs:label>PHD Electrical Engineering</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Photocatalytic_degradation_of_gaseous_organic_species_on_photonic_band-gap_titania -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Photocatalytic_degradation_of_gaseous_organic_species_on_photonic_band-gap_titania">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Treatment_and_Control_Processes"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#R_Ravi_Krishna"/>
+        <rdfs:label>Photocatalytic degradation of gaseous organic species on photonic band-gap titania</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1331,6 +1496,17 @@ Research :    All students are expected to do high quality research resulting in
     
 
 
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Scheduling_policies_for_minimizing_age_of_information_in_broadcast_wireless_networks -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Scheduling_policies_for_minimizing_age_of_information_in_broadcast_wireless_networks">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Network_Control"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Abishek_Sinha"/>
+        <rdfs:label>Scheduling policies for minimizing age of information in broadcast wireless networks</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Scholarship_1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Scholarship_1"/>
@@ -1341,6 +1517,7 @@ Research :    All students are expected to do high quality research resulting in
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Shweta_Agarwal">
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#AssociateProfessor"/>
+        <UnivFAQ:isSpecializedIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Cryptography"/>
         <UnivFAQ:teaches rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#CS2800"/>
         <UnivFAQ:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shweta Agarwal</UnivFAQ:name>
         <rdfs:comment>Cryptography, or cryptology, is the practice and study of techniques for secure communication in the presence of adversarial behavior.</rdfs:comment>
@@ -1381,6 +1558,15 @@ Research :    All students are expected to do high quality research resulting in
         <UnivFAQ:enrolledIn rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#PHD._Computer_Science"/>
         <UnivFAQ:isAdvisedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Sreenivasa_Kumar"/>
         <rdfs:label>Suresh Saharan</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Theoretical_Computer_Science -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Theoretical_Computer_Science">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ResearchFields"/>
+        <rdfs:label>Theoretical Computer Science</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1449,6 +1635,61 @@ Research :    All students are expected to do high quality research resulting in
         <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Qualifications"/>
         <rdfs:comment>Candidate must have a 12th standard pass certificiate from a recognized board.</rdfs:comment>
         <rdfs:label>12th Standard</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Agent-based_supply_chain_management—1:_framework -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Agent-based_supply_chain_management—1:_framework">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Process_System_Engineering"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Rajagopalan_Srinivasan"/>
+        <rdfs:label>Agent-based supply chain management—1: framework</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Bearing_diagnosis_based_on_Mahalanobis–Taguchi–Gram–Schmidt_method -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Bearing_diagnosis_based_on_Mahalanobis–Taguchi–Gram–Schmidt_method">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Fault_Diagnosis_and_Prognosis"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Piyush_Shakya"/>
+        <rdfs:label>Bearing diagnosis based on Mahalanobis–Taguchi–Gram–Schmidt method</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ERONTO:_a_tool_for_extracting_ontologies_from_extended_E/R_diagrams -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#ERONTO:_a_tool_for_extracting_ontologies_from_extended_E/R_diagrams">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Ontologies_and_Application"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Sreenivasa_Kumar"/>
+        <rdfs:label>ERONTO: a tool for extracting ontologies from extended E/R diagrams</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Non-cooperative_spectrum_access—The_dedicated_vs._free_spectrum_choice -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Non-cooperative_spectrum_access—The_dedicated_vs._free_spectrum_choice">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Network_Control"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Krishna_Jagannathan"/>
+        <rdfs:label>Non-cooperative spectrum access—The dedicated vs. free spectrum choice</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Underground_coal_gasification:_A_new_clean_coal_utilization_technique_for_India -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Underground_coal_gasification:_A_new_clean_coal_utilization_technique_for_India">
+        <rdf:type rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Publication"/>
+        <UnivFAQ:inResearchField rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Underground_Coal_Gasification"/>
+        <UnivFAQ:publishedBy rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Preeti_Aghalayam"/>
+        <rdfs:label>Underground coal gasification: A new clean coal utilization technique for India</rdfs:label>
     </owl:NamedIndividual>
     
 
