@@ -16,6 +16,7 @@ public $top =  [$small_talk] ($greet |
               $teacherCourseInfo |
               $teacherResearchInfo |
               $profResearchField |
+              $profPublicationInfo |
               $deptFacilities |
               $listDeptCourses |
               $listDeptProfs |
@@ -123,6 +124,7 @@ $teacherResearchInfo = ( [$polite] what (is | are) $pronouns $researchField) {ou
                       | ( [$polite] What does $pronouns $performingResearch ) {out.da="Request" ; out.prop="Professor"; out.what="$$3"; out.theme="ResearchInfo";};
 
 
+$profPublicationInfo = ( [$polite] what work has [$prof] "$$.*"<0-3> done ) {out.da="Request"; out.prop="Professor"; out.what="$$2"; out.theme="PublicationInfo";};
 
 $profResearchField = ( [$polite] $prof in "$$.*"<0-4> $researchField) {out.da="Request"; out.prop="ResearchField"; out.theme="Professor"; out.what="$$2";}
                     |([$polite] [what|which] $prof (work | research | study ) [in] [the] "$$.*"<0-4> $researchField ){out.da="Request"; out.prop="ResearchField"; out.theme="Professor"; out.what="$$2";}

@@ -171,13 +171,14 @@ public class SrgsParser extends Interpreter {
           }
         }
         sb.append(')');
-        logger.error(sb.toString());
+        logger.error(sb.toString() + " srgs ");
         return new DialogueAct(sb.toString());
       }
     }
     catch (GrammarException ex) {
       logger.error(ex.toString());
     }
+    logger.error("srgs returning null");
     return new DialogueAct(noDA());
   }
 

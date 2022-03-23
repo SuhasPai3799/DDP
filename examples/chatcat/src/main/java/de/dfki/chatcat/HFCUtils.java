@@ -402,6 +402,42 @@ public class HFCUtils{
 		return "There is no Prof with the name - " + query_prof_name;
 		
 	}
+	public static String answerProfPublications(String query_prof_name)
+	{
+
+		query_prof_name = cleanProfNames(query_prof_name);
+		String query_prof_uri = "<univ:" + query_prof_name + ">";
+		String query = "select ?a ?b where ?a <rdf:type> <univ:Professors> ?_ & ?a <rdfs:label> ?b ?_";
+		QueryResult res = _agent._proxy.selectQuery(query);
+		Boolean flag = false;
+		for(List<String> row: res.getTable().getRows())
+		{
+			String prof_uri = String.valueOf(row.get(0));
+			String prof_name = String.valueOf(row.get(1));
+			if(prof_name.toLowerCase().contains(query_prof_name.toLowerCase()))
+			{
+				String prof_publication_query = String.format("select ?a ?b where %s <univ:hasPublished> ?a ?_  & ?a <rdfs:label> ?b ?_ ", prof_uri);
+				QueryResult publication_res = _agent._proxy.selectQuery(prof_publication_query);
+				flag = true;
+				Integer count = 1;
+				String ret = query_prof_name + " has the following publications : \n" ;
+				for(List<String> publication_row: publication_res.getTable().getRows())
+				{
+					
+					String publication_name = cleanXSD(String.valueOf(publication_row.get(1)));
+					ret += String.valueOf(count) + ". " + publication_name + "\n";
+					count++;
+				}
+				return ret;
+			}
+		}
+		if(!flag)
+		{
+			return "Prof." + query_prof_name + " does not have any publications. "; 
+		}
+		return "There is no Prof with the name - " + query_prof_name;
+		
+	}
 
 	public static String answerProfResearchArea(String query_prof_name)
 	{

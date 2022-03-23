@@ -138,6 +138,10 @@ public static String getDialogueAct(String rasaOutput)
     {
         return getDAProgramInfo(intent, entities);
     }
+    if(intent_name.equals("prof_publication_info"))
+    {
+        return getDAProfPublicationInfo(intent, entities);
+    }
     
    return "NULL"; 
     
@@ -172,6 +176,41 @@ public static String getDAProfCourseInfo(JSONObject intent, JSONArray entities)
         else if(entity_conf > 0.5)
         {
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"CourseInfo\")",  entity_val);
+            return res;
+        }
+        
+
+    }
+    
+    return "NULL";
+    
+
+}
+
+public static String getDAProfPublicationInfo(JSONObject intent, JSONArray entities)
+{
+    String intent_name = intent.getString("name");
+    Double intent_conf = intent.getDouble("confidence");
+    String prof_name = "";
+    for(int i=0; i<entities.length(); i++)
+    {
+        JSONObject entity = entities.getJSONObject(i);
+        String entity_name = entity.getString("entity");
+        String entity_val = entity.getString("value");
+        Double entity_conf = entity.getDouble("confidence_entity");
+        if(entity_name.equals("Professors"))
+        {
+            String res = String.format("Request(Professor, what=\"%1$s\", theme=\"PublicationInfo\")",  entity_val);
+            return res;
+        }
+        else if(entity_name.equals("Pronouns"))
+        {
+            String res = String.format("Request(Professor, what=\"%1$s\", theme=\"PublicationInfo\")",  "pronoun");
+            return res;
+        }
+        else if(entity_conf > 0.5)
+        {
+            String res = String.format("Request(Professor, what=\"%1$s\", theme=\"PublicationInfo\")",  entity_val);
             return res;
         }
         

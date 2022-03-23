@@ -158,6 +158,34 @@ if (lastDA()>= #Request(Professor) && lastDA().theme=="ResearchInfo")
   lastDAprocessed();
 }
 
+answer_prof_publications:
+/** Provides answers on research work done by a prof */
+if (lastDA()>= #Request(Professor) && lastDA().theme=="PublicationInfo")
+{
+  prof_name = lastDA().what;
+  if(prof_name == "pronoun" || (Boolean)hfcutils.checkPersonalPronoun(lastDA().what))
+  {
+    prof_resolved_name = (String)hfcutils.resolveProfName();
+    prof_resolved_publications = (String)hfcutils.answerProfPublications(prof_resolved_name);
+    propose("return_prof_publications")
+    {
+      emitDA(#Inform(Professor, prof_name={prof_resolved_name}, prof_publications = {prof_resolved_publications}));
+    }
+  }
+  else
+  {
+    clean_prof_name = (String)hfcutils.getProfName(prof_name);
+    prof = new Professors;
+    prof.name = clean_prof_name;
+    prof_publications = (String)hfcutils.answerProfPublications(prof_name);
+    propose("return_prof_publications")
+    {
+      emitDA(#Inform(Professor, prof_name={prof_name}, prof_publications = {prof_publications}));
+    }
+  }
+  lastDAprocessed();
+}
+
 answer_researchField_profs:
 /** Provides answer on profs in a given research aread */
 if (lastDA()>= #Request(ResearchField) && lastDA().theme=="Professor")
