@@ -439,6 +439,40 @@ public class HFCUtils{
 		
 	}
 
+	public static String answerProfAdvisees(String query_prof_name)
+	{
+		query_prof_name = cleanProfNames(query_prof_name);
+		String query_prof_uri = "<univ:" + query_prof_name + ">";
+		String query = "select ?a ?b where ?a <rdf:type> <univ:Professors> ?_ & ?a <rdfs:label> ?b ?_";
+		QueryResult res = _agent._proxy.selectQuery(query);
+		Boolean flag = false;
+		for(List<String> row: res.getTable().getRows())
+		{
+			String prof_uri = String.valueOf(row.get(0));
+			String prof_name = String.valueOf(row.get(1));
+			if(prof_name.toLowerCase().contains(query_prof_name.toLowerCase()))
+			{
+				String prof_advisee_query = String.format("select ?a ?b where %s <univ:advises> ?a ?_  & ?a <rdfs:label> ?b ?_ ", prof_uri);
+				QueryResult publication_res = _agent._proxy.selectQuery(prof_advisee_query);
+				flag = true;
+				Integer count = 1;
+				String ret = query_prof_name + " guides the following people : \n" ;
+				for(List<String> publication_row: publication_res.getTable().getRows())
+				{
+					
+					String publication_name = cleanXSD(String.valueOf(publication_row.get(1)));
+					ret += String.valueOf(count) + ". " + publication_name + "\n";
+					count++;
+				}
+				return ret;
+			}
+		}
+		if(!flag)
+		{
+			return "Prof." + query_prof_name + " does not have any advisees. "; 
+		}
+		return "There is no Prof with the name - " + query_prof_name;
+	}
 	public static String answerProfResearchArea(String query_prof_name)
 	{
 		query_prof_name = cleanProfNames(query_prof_name);
@@ -503,7 +537,29 @@ public class HFCUtils{
 
 	}
 
+	/* Functions related to students */
 
+	public static String answerResearchStudentsInfo(String dept_name)
+	{
+		String closest_dept_name = getClosestDept(dept_name);
+		if(closest_dept_name == "NULL")
+		{
+			return "-1";
+		}
+		String dept_uri = "<univ:" + closest_dept_name + ">";
+		String query = String.format("select ?c ?d ?e ?f where %s <univ:offers> ?a ?_ & ?a <rdf:type> <univ:Programs> ?_ & ?c <univ:enrolledIn> ?a ?_ & ?c <univ:isAdvisedBy> ?e ?_ & ?c <rdfs:label> ?d ?_ & ?e <rdfs:label> ?f ?_", dept_uri);
+		QueryResult res = _agent._proxy.selectQuery(query);
+		Integer count = 1;
+		String ret = dept_name + " department has the following students performing research : \n";
+		for(List<String> student_row: res.getTable().getRows())
+		{
+			String student_name = cleanXSD(student_row.get(1));
+			String prof_name = cleanXSD(student_row.get(3));
+			ret += String.valueOf(count) + ". " + student_name + " performs research under Prof." + prof_name + "\n";
+			count++;
+		}
+		return ret;
+	}
 
 	/* 
 	Functions related to answering dept-related queries

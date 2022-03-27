@@ -61,12 +61,21 @@ raw:Inform ^ Professor ^ <prof_name>#p ^ <prof_publications>#r
 ->
 # = :canned ^ <string>#r.
 
+raw:Inform ^ Professor ^ <prof_name>#p ^ <prof_advisees>#a
+->
+# = :canned ^ <string>#a.
+
+
 
 
 raw:Inform ^ ResearchField ^ <field_name>#f ^ <prof_names>#p
 ->
 # = :canned ^ <string>#p.
 
+
+raw:Inform ^ Student ^ <research_students>#r 
+->
+# = :canned ^ <string>#r.
 
 
 

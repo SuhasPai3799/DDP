@@ -16,6 +16,7 @@ public $top =  [$small_talk] ($greet |
               $teacherCourseInfo |
               $teacherResearchInfo |
               $profResearchField |
+              $profAdviseeInfo |
               $profPublicationInfo |
               $deptFacilities |
               $listDeptCourses |
@@ -25,6 +26,7 @@ public $top =  [$small_talk] ($greet |
               $programAdmissionInfo |
               $listDeptPrograms |
               $listDeptPGPrograms |
+              $researchStudents |
               $deptInfo | $small_talk
              
               )  {!{ out = $%1; }!} [$punct] ;
@@ -131,7 +133,7 @@ $profResearchField = ( [$polite] $prof in "$$.*"<0-4> $researchField) {out.da="R
                     |( [$polite] (list|enumerate|mention|tell) [all] [the] $prof $performingResearch "$$.*"<0-4>){out.da="Request"; out.prop="ResearchField"; out.theme="Professor"; out.what="$$1";}
                     |([$polite] [list|enumerate|mention|tell] (what [are]|which [are]|who [are]) [all] [the] $prof $performingResearch "$$.*"<0-4> ){out.da="Request"; out.prop="ResearchField"; out.theme="Professor"; out.what="$$1";} ;
 
-
+$profAdviseeInfo = ( [$polite] who does [$prof] "$$.*"<0-3> advise) {out.da="Request"; out.prop="Professor"; out.what="$$2"; out.theme="AdviseeInfo";};
 
 
 // Department related grammar rules
@@ -213,6 +215,11 @@ $programAdmissionInfo = [$polite] [what|which] [is|are] [the] $admissionReqs (fo
         |               [$polite] [what|which] [is|are] [the] $admissionReqs (for | of) $all_depts [$department] $program_names [$program] {out.da = "Request"; out.prop="Programs"; out.program_type="$$2"; out.dept = "$$4"; out.theme="ProgramAdmissionInfo";}
         |               [$polite] [what|which] [is|are] [the] $admissionReqs (for | of) $program_names [$program] [in|from|of] $objectPronoun [$department]  {out.da="Request";out.prop="Programs";out.program_type="$$5";out.dept="objectPronoun";out.theme="ProgramAdmissionInfo";}
         |               [$polite] $admissionReqs (for | of) $objectPronoun [$program] {out.da="Request";out.prop="Programs";out.theme="ProgramAdmissionInfo"; out.pronoun="True";};
+
+
+// Student related rules
+
+$researchStudents = [$polite] who are the students $performingResearch in $all_depts [$department] {out.da="Request"; out.prop="Student"; out.dept = "$$2" ;out.theme="ResearchStudents";};
 
 // Small talk rules
 

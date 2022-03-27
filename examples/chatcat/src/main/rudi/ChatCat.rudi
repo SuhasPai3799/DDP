@@ -186,6 +186,35 @@ if (lastDA()>= #Request(Professor) && lastDA().theme=="PublicationInfo")
   lastDAprocessed();
 }
 
+answer_prof_advisees:
+/** Provides answers on people that a particular professor guides */
+if (lastDA()>= #Request(Professor) && lastDA().theme=="AdviseeInfo")
+{
+  prof_name = lastDA().what;
+  if(prof_name == "pronoun" || (Boolean)hfcutils.checkPersonalPronoun(lastDA().what))
+  {
+    prof_resolved_name = (String)hfcutils.resolveProfName();
+    prof_resolved_advisees = (String)hfcutils.answerProfAdvisees(prof_resolved_name);
+    propose("return_prof_advisees")
+    {
+      emitDA(#Inform(Professor, prof_name={prof_resolved_name}, prof_advisees = {prof_resolved_advisees}));
+    }
+  }
+  else
+  {
+    clean_prof_name = (String)hfcutils.getProfName(prof_name);
+    prof = new Professors;
+    prof.name = clean_prof_name;
+    prof_advisees = (String)hfcutils.answerProfAdvisees(prof_name);
+    propose("return_prof_advisees")
+    {
+      emitDA(#Inform(Professor, prof_name={prof_resolved_name}, prof_advisees = {prof_advisees}));
+    }
+  }
+  lastDAprocessed();
+}
+
+
 answer_researchField_profs:
 /** Provides answer on profs in a given research aread */
 if (lastDA()>= #Request(ResearchField) && lastDA().theme=="Professor")
@@ -512,6 +541,36 @@ if (lastDA()>= #Request(Programs) && lastDA().theme=="ProgramAdmissionInfo")
         emitDA(#Inform(Programs, program_admission_info = {program_admission_info}));
       }
     }
+  }
+  lastDAprocessed();
+
+}
+
+// Student info rules
+
+answer_student_research_info:
+if(lastDA()>= #Request(Student) && lastDA().theme=="ResearchStudents")
+{
+  if(lastDA().dept == "objectPronoun" || (Boolean)hfcutils.checkObjectPronoun(lastDA().dept))
+  {
+      dept_resolved_name = (String)hfcutils.resolveObjectPronoun("<univ:Department>");
+      research_students = (String)hfcutils.answerResearchStudentsInfo(dept_resolved_name);
+      propose("return_student_research_info")
+      {
+        emitDA(#Inform(Student, research_students = {research_students}));
+      }
+  }
+  else
+  {
+    dept_name = lastDA().dept;
+    dept = new Department;
+    dept.name = dept_name;
+    research_students = (String)hfcutils.answerResearchStudentsInfo(dept_name);
+    propose("return_student_research_info")
+    {
+      emitDA(#Inform(Student, research_students = {research_students}));
+    }
+
   }
   lastDAprocessed();
 

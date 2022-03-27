@@ -86,6 +86,11 @@ public static String getDialogueAct(String rasaOutput)
     String intent_name = intent.getString("name");
     Double intent_conf = intent.getDouble("confidence");
 
+    if(intent_conf < 0.9)
+    {
+        return "NULL";
+    }
+
     if(intent_name.equals("prof_course_info"))
     {
         return getDAProfCourseInfo(intent, entities);
