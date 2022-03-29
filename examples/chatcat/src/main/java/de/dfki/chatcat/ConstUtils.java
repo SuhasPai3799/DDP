@@ -86,11 +86,30 @@ public static String getDialogueAct(String rasaOutput)
     String intent_name = intent.getString("name");
     Double intent_conf = intent.getDouble("confidence");
 
+
+    if(intent_name.equals("mood_great"))
+    {
+        return "Inform(Mood, polarity=\"pos\")";
+    }
+    if(intent_name.equals("affirm"))
+    {
+        return "Confirm(top)";
+    }
+    if(intent_name.equals("deny"))
+    {
+        return "Disconfirm(top)";
+    }
+    if(intent_name.equals("greet"))
+    {
+        return "InitialGreeting(Greet)";
+    }
+
+    
     if(intent_conf < 0.9)
     {
         return "NULL";
     }
-
+    
     if(intent_name.equals("prof_course_info"))
     {
         return getDAProfCourseInfo(intent, entities);
@@ -147,11 +166,22 @@ public static String getDialogueAct(String rasaOutput)
     {
         return getDAProfPublicationInfo(intent, entities);
     }
+    if(intent_name.equals("prof_advisee_info"))
+    {
+        return getDAProfAdviseeInfo(intent, entities);
+    }
+    if(intent_name.equals("student_research_info"))
+    {
+        return getDAStudentResearchInfo(intent, entities);
+    }
+
     
    return "NULL"; 
     
    
 }
+
+
 
 
 // Prof related queries
@@ -190,6 +220,34 @@ public static String getDAProfCourseInfo(JSONObject intent, JSONArray entities)
     return "NULL";
     
 
+}
+public static String getDAProfAdviseeInfo(JSONObject intent, JSONArray entities)
+{
+    String intent_name = intent.getString("name");
+    Double intent_conf = intent.getDouble("confidence");
+    String prof_name = "";
+    for(int i=0; i<entities.length(); i++)
+    {
+        JSONObject entity = entities.getJSONObject(i);
+        String entity_name = entity.getString("entity");
+        String entity_val = entity.getString("value");
+        Double entity_conf = entity.getDouble("confidence_entity");
+        if(entity_name.equals("Professors"))
+        {
+            String res = String.format("Request(Professor, what=\"%1$s\", theme=\"AdviseeInfo\")",  entity_val);
+            return res;
+        }
+        else if(entity_name.equals("Pronouns"))
+        {
+            String res = String.format("Request(Professor, what=\"%1$s\", theme=\"AdviseeInfo\")",  "pronoun");
+            return res;
+        }
+       
+        
+
+    }
+    
+    return "NULL";
 }
 
 public static String getDAProfPublicationInfo(JSONObject intent, JSONArray entities)
@@ -259,6 +317,34 @@ public static String getDAProfResearchInfo(JSONObject intent, JSONArray entities
     return "NULL";
     
 
+}
+
+public static String getDAStudentResearchInfo(JSONObject intent, JSONArray entities)
+{
+    String intent_name = intent.getString("name");
+    Double intent_conf = intent.getDouble("confidence");
+    for(int i=0; i<entities.length(); i++)
+    {
+        JSONObject entity = entities.getJSONObject(i);
+        String entity_name = entity.getString("entity");
+        String entity_val = entity.getString("value");
+        Double entity_conf = entity.getDouble("confidence_entity");
+
+        if(entity_name.equals("Department"))
+        {
+            String res = String.format("Request(Student, dept=\"%1$s\", theme=\"ResearchStudents\")",  entity_val);
+            return res;
+        }
+        else if(entity_name.equals("ObjectPronoun"))
+        {
+            String res = String.format("Request(Student, dept=\"%1$s\", theme=\"ResearchStudents\")",  "objectPronoun");
+            return res;
+        }
+        
+
+    }
+    
+    return "NULL";
 }
 
 
