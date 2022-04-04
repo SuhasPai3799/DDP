@@ -162,6 +162,10 @@ public static String getDialogueAct(String rasaOutput)
     {
         return getDAProgramInfo(intent, entities);
     }
+    if(intent_name.equals("program_admission_info"))
+    {
+        return getDAProgramAdmissionInfo(intent, entities);
+    }
     if(intent_name.equals("prof_publication_info"))
     {
         return getDAProfPublicationInfo(intent, entities);
@@ -745,6 +749,75 @@ public static String getDAProgramInfo(JSONObject intent, JSONArray entities)
                 }
             }
             String res = String.format("Request(Programs, theme=\"ProgramInfo\", dept=\"%1$s\", program_type=\"%2$s\" )", dept_name, program_name);
+            return res;
+
+        }
+    }
+    return "NULL";
+}
+
+public static String getDAProgramAdmissionInfo(JSONObject intent, JSONArray entities)
+{
+    String intent_name = intent.getString("name");
+    Double intent_conf = intent.getDouble("confidence");
+    System.out.println(String.valueOf(entities.length()));
+    if(entities.length() == 1)
+    {
+        
+        String res = "Request(Programs, theme=\"ProgramAdmissionInfo\", pronoun=\"True\")";
+        return res;
+    }
+    else if(entities.length() == 2)
+    {
+        Boolean flag = false;
+        for(int i=0; i<entities.length(); i++)
+        {   
+            JSONObject entity = entities.getJSONObject(i);
+            String entity_name = entity.getString("entity");
+            String entity_val = entity.getString("value");
+            if(entity_name.equals("ObjectPronoun"))
+            {
+                flag=true;
+                break;
+            }
+        }
+        if(flag)
+        {
+            String program_name = "NULL";
+            for(int i=0; i<entities.length(); i++)
+            {
+                JSONObject entity = entities.getJSONObject(i);
+                String entity_name = entity.getString("entity");
+                String entity_val = entity.getString("value");
+                if(entity_name.equals("Program"))
+                {
+                    program_name = entity_val;
+                }
+            }
+            String res = String.format("Request(Programs, theme=\"ProgramAdmissionInfo\", dept=\"objectPronoun\", program_type=\"%1$s\" )", program_name);
+            return res;
+        }
+        else
+        {
+            String program_name = "NULL";
+            String dept_name = "NULL";
+
+            
+            for(int i=0; i<entities.length(); i++)
+            {
+                JSONObject entity = entities.getJSONObject(i);
+                String entity_name = entity.getString("entity");
+                String entity_val = entity.getString("value");
+                if(entity_name.equals("Program"))
+                {
+                    program_name = entity_val;
+                }
+                else if(entity_name.equals("Department"))
+                {
+                    dept_name = entity_val;
+                }
+            }
+            String res = String.format("Request(Programs, theme=\"ProgramAdmissionInfo\", dept=\"%1$s\", program_type=\"%2$s\" )", dept_name, program_name);
             return res;
 
         }
