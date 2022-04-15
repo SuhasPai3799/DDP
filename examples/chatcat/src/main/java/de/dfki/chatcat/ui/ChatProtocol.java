@@ -135,7 +135,8 @@ public class ChatProtocol extends JPanel {
   public void writeLog() throws FileNotFoundException, UnsupportedEncodingException {
     String homepath = System.getProperty("user.home");
     try {
-      PrintWriter writer = new PrintWriter(homepath + "/Desktop/log.txt", "UTF-8");
+      PrintWriter writer = new PrintWriter(new FileOutputStream(new File(homepath + "/Desktop/" + "log.txt"),true));
+      writer.println(" \n \n ############# New Session ############# \n \n");
       for (String x : messages) {
           writer.println(x);
       }
@@ -148,7 +149,10 @@ public class ChatProtocol extends JPanel {
   public void writeLog(String filename) throws FileNotFoundException, UnsupportedEncodingException {
     String homepath = System.getProperty("user.home");
     try {
-      PrintWriter writer = new PrintWriter(homepath + "/Desktop/" + filename + ".txt", "UTF-8");
+      PrintWriter writer = new PrintWriter(new FileOutputStream(new File(homepath + "/Desktop/" + filename + ".txt"),true));
+
+      writer.println(" \n \n ############# New Session ############# \n \n");
+
       for (String x : messages) {
           writer.println(x);
       }

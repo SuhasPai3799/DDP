@@ -644,6 +644,17 @@ if(lastDA() >= #OutOfInputSpace(top))
 
 }
 
+user_happy_ask_next_query:
+if(lastDA() >= #Inform(Mood) && lastDA().polarity=="pos")
+{
+  
+  propose("ask_user_for_next_query")
+    {
+      emitDA(#Offer(top));
+    }
+  lastDAprocessed();
+}
+
 ask_user_for_next_query:
 /** If user thanks/accepts your information, ask them if they want to know something else **/
 if(lastDA() && lastDA() >= #Confirm(top) )

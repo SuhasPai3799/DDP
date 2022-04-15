@@ -469,6 +469,12 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Student">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Person"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#enrolledIn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/suhaspai/ontologies/2021/4/UnivFAQ#Programs"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
