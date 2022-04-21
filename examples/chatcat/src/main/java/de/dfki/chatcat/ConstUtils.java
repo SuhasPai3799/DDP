@@ -207,7 +207,7 @@ public static String getDAProfCourseInfo(JSONObject intent, JSONArray entities)
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"CourseInfo\")",  entity_val);
             return res;
         }
-        else if(entity_name.equals("Pronouns"))
+        else if(entity_name.equals("Pronouns") || entity_name.equals("ObjectPronoun"))
         {
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"CourseInfo\")",  "pronoun");
             return res;
@@ -241,7 +241,7 @@ public static String getDAProfAdviseeInfo(JSONObject intent, JSONArray entities)
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"AdviseeInfo\")",  entity_val);
             return res;
         }
-        else if(entity_name.equals("Pronouns"))
+        else if(entity_name.equals("Pronouns") || entity_name.equals("ObjectPronoun"))
         {
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"AdviseeInfo\")",  "pronoun");
             return res;
@@ -270,7 +270,7 @@ public static String getDAProfPublicationInfo(JSONObject intent, JSONArray entit
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"PublicationInfo\")",  entity_val);
             return res;
         }
-        else if(entity_name.equals("Pronouns"))
+        else if(entity_name.equals("Pronouns") || entity_name.equals("ObjectPronoun"))
         {
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"PublicationInfo\")",  "pronoun");
             return res;
@@ -305,7 +305,7 @@ public static String getDAProfResearchInfo(JSONObject intent, JSONArray entities
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"ResearchInfo\")",  entity_val);
             return res;
         }
-        else if(entity_name.equals("Pronouns"))
+        else if(entity_name.equals("Pronouns") || entity_name.equals("ObjectPronoun"))
         {
             String res = String.format("Request(Professor, what=\"%1$s\", theme=\"ResearchInfo\")",  "pronoun");
             return res;

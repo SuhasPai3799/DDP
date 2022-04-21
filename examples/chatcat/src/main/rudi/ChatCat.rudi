@@ -90,6 +90,8 @@ if (lastDA()>= #Request(Courses) && lastDA().theme=="CoursePrereqInfo")
   {
     course_first_name = lastDA().what;
     course_name = (String)hfcutils.cleanCourseNames(course_first_name);
+    courseObj = new Courses;
+    courseObj.name = course_name;
     course_prereq_info = (String)hfcutils.answerCoursePrereqInfo(course_name);
     propose("return_course_prereq_info")
     {
@@ -106,7 +108,7 @@ answer_prof_courses:
 if (lastDA()>= #Request(Professor) && lastDA().theme=="CourseInfo")
 {
   prof_name = lastDA().what;
-  if(prof_name == "pronoun" || (Boolean)hfcutils.checkPersonalPronoun(lastDA().what))
+  if(prof_name == "pronoun" || (Boolean)hfcutils.checkPersonalPronoun(lastDA().what) || lastDA().what == "objectPronoun" )
   {
     prof_resolved_name = (String)hfcutils.resolveProfName();
     prof_resolved_courses = (String)hfcutils.answerProfCourses(prof_resolved_name);
@@ -135,7 +137,7 @@ answer_prof_research:
 if (lastDA()>= #Request(Professor) && lastDA().theme=="ResearchInfo")
 {
   prof_name = lastDA().what;
-  if(prof_name == "pronoun" || (Boolean)hfcutils.checkPersonalPronoun(lastDA().what))
+  if(prof_name == "pronoun" || (Boolean)hfcutils.checkPersonalPronoun(lastDA().what) || lastDA().what == "objectPronoun")
   {
     prof_resolved_name = (String)hfcutils.resolveProfName();
     prof_resolved_areas = (String)hfcutils.answerProfResearchArea(prof_resolved_name);
@@ -163,7 +165,7 @@ answer_prof_publications:
 if (lastDA()>= #Request(Professor) && lastDA().theme=="PublicationInfo")
 {
   prof_name = lastDA().what;
-  if(prof_name == "pronoun" || (Boolean)hfcutils.checkPersonalPronoun(lastDA().what))
+  if(prof_name == "pronoun" || (Boolean)hfcutils.checkPersonalPronoun(lastDA().what) || lastDA().what == "objectPronoun")
   {
     prof_resolved_name = (String)hfcutils.resolveProfName();
     prof_resolved_publications = (String)hfcutils.answerProfPublications(prof_resolved_name);
@@ -191,7 +193,7 @@ answer_prof_advisees:
 if (lastDA()>= #Request(Professor) && lastDA().theme=="AdviseeInfo")
 {
   prof_name = lastDA().what;
-  if(prof_name == "pronoun" || (Boolean)hfcutils.checkPersonalPronoun(lastDA().what))
+  if(prof_name == "pronoun" || (Boolean)hfcutils.checkPersonalPronoun(lastDA().what) || lastDA().what == "objectPronoun")
   {
     prof_resolved_name = (String)hfcutils.resolveProfName();
     prof_resolved_advisees = (String)hfcutils.answerProfAdvisees(prof_resolved_name);

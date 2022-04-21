@@ -454,19 +454,25 @@ public class HFCUtils{
 			{
 				String prof_advisee_query = String.format("select ?a ?b where %s <univ:advises> ?a ?_  & ?a <rdfs:label> ?b ?_ ", prof_uri);
 				QueryResult publication_res = _agent._proxy.selectQuery(prof_advisee_query);
-				flag = true;
+				
 				Integer count = 1;
-				String ret = query_prof_name + " guides the following people : \n" ;
-				for(List<String> publication_row: publication_res.getTable().getRows())
+				String ret = query_prof_name + " guides the following people : \n" ;	
+				for(List<String> student_row: publication_res.getTable().getRows())
 				{
+					flag = true;
+					String student_name = cleanXSD(String.valueOf(student_row.get(1)));
 					
-					String publication_name = cleanXSD(String.valueOf(publication_row.get(1)));
-					ret += String.valueOf(count) + ". " + publication_name + "\n";
+					ret += String.valueOf(count) + ". " + student_name + "\n";
 					count++;
+				}
+				if(!flag)
+				{
+					return "Prof." + query_prof_name + " does not have any advisees. "; 
 				}
 				return ret;
 			}
 		}
+		
 		if(!flag)
 		{
 			return "Prof." + query_prof_name + " does not have any advisees. "; 
